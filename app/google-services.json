@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "561103468944",
+    "project_id": "gili-s-day-care",
+    "storage_bucket": "gili-s-day-care.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:561103468944:android:44efb25c81301cb1c21b15",
+        "android_client_info": {
+          "package_name": "com.example.gilis_day_care"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBLlLHKWJnT-dseBcSolHCAMjjtL1IWw94"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

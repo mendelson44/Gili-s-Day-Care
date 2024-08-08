@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="selected_color">#001588</color> <!-- or any color of your choice -->
+    <color name="unselected_color">#757575</color> <!-- or any color of your choice -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="red">#C70303</color>
+    <color name="orange">#FFDD00</color>
+    <color name="birthDayColor">#FFDD00</color>
+    <color name="purple">#813BFF</color>
+    <color name="buttonDaysColorUnchecked">#D9FFCC</color>
+    <color name="buttonDaysColorChecked">#5DED2C</color>
+    <color name="cardButtonAlert">#F1FF63</color>
+    <color name="cardButtonSport">#FFA989</color>
+    <color name="kidBoy">#8BCBFF</color>
+    <color name="kidGirl">#F1B3FB</color>
+    <color name="darkWhite">#FFF9C7</color>
+
+
+</resources>
