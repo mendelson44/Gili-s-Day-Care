@@ -27,10 +27,20 @@ import java.util.concurrent.CountDownLatch;
 public class Manager {
 
     private ArrayList<Kid> kidsList = new ArrayList<>();
+    private ArrayList<Kid> presentList = new ArrayList<>();
+    private ArrayList<Kid> workDayList = new ArrayList<>();
     private MyFireBase database;
 
     public Manager() {
         this.database = new MyFireBase();
+    }
+
+    public ArrayList<Kid> getKidsList() {
+        return kidsList;
+    }
+
+    public ArrayList<Kid> getPresentList() {
+        return presentList;
     }
 
     public void loadKidsListFireBase(Context context, KidsListCallback callback) {
@@ -53,6 +63,7 @@ public class Manager {
             }
         });
     }
+
 
     // Callback interface for handling the data once it's loaded
     public interface KidsListCallback {

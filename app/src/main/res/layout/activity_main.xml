@@ -7,7 +7,8 @@ android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:id="@+id/main"
 tools:context=".Activities.MainActivity"
-android:background="@drawable/daycare_main_background">
+android:background="@drawable/daycare_main_background"
+android:layoutDirection="rtl">
 
 
 
@@ -136,7 +137,21 @@ android:background="@drawable/daycare_main_background">
                             android:layout_height="0dp"
                             android:layout_weight="0.5">
 
-
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/DayCare_main_LBL_dayOfWeek"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:fontFamily="@font/poppinsbold"
+                                android:text="יום ראשון"
+                                android:textColor="@color/orange"
+                                android:shadowColor="@color/black"
+                                android:shadowDx="4"
+                                android:shadowDy="4"
+                                android:shadowRadius="4"
+                                android:paddingEnd="12dp"
+                                android:textSize="16sp"
+                                android:textStyle="bold"/>
 
                         </RelativeLayout>
 
@@ -190,21 +205,9 @@ android:background="@drawable/daycare_main_background">
                     app:itemTextAppearanceInactive="@style/BottomNavigationTextStyle"
                     app:compatShadowEnabled="true"
                     android:background="@color/white" />
+
             </com.google.android.material.card.MaterialCardView>
-
-
         </RelativeLayout>
-
-
-
-
-
     </androidx.appcompat.widget.LinearLayoutCompat>
-
-
-
-
-
-
 </RelativeLayout>
 

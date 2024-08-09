@@ -250,16 +250,17 @@
                                         android:layout_weight="1">
 
                                         <androidx.cardview.widget.CardView
+                                            android:id="@+id/DayCare_kidData_CV_day5"
                                             android:layout_width="40dp"
                                             android:layout_height="40dp"
                                             app:cardCornerRadius="6dp"
                                             app:cardElevation="6dp"
                                             android:elevation="6dp"
-                                            app:cardBackgroundColor="@color/buttonDaysColorChecked"
+                                            app:cardBackgroundColor="@color/buttonDaysColorUnchecked"
                                             android:layout_gravity="center">
 
                                             <androidx.appcompat.widget.AppCompatButton
-                                                android:id="@+id/DayCare_kidData_BTN_day1"
+                                                android:id="@+id/DayCare_kidData_BTN_day5"
                                                 android:layout_width="match_parent"
                                                 android:layout_height="match_parent"
                                                 android:text="חמישי"
@@ -282,6 +283,7 @@
                                         android:layout_weight="1">
 
                                         <androidx.cardview.widget.CardView
+                                            android:id="@+id/DayCare_kidData_CV_day4"
                                             android:layout_width="40dp"
                                             android:layout_height="40dp"
                                             app:cardCornerRadius="6dp"
@@ -291,7 +293,7 @@
                                             android:layout_gravity="center">
 
                                             <androidx.appcompat.widget.AppCompatButton
-                                                android:id="@+id/DayCare_kidData_BTN_day2"
+                                                android:id="@+id/DayCare_kidData_BTN_day4"
                                                 android:layout_width="match_parent"
                                                 android:layout_height="match_parent"
                                                 android:text="רביעי"
@@ -314,6 +316,7 @@
                                         android:layout_weight="1">
 
                                         <androidx.cardview.widget.CardView
+                                            android:id="@+id/DayCare_kidData_CV_day3"
                                             android:layout_width="40dp"
                                             android:layout_height="40dp"
                                             app:cardCornerRadius="6dp"
@@ -346,16 +349,17 @@
                                         android:layout_weight="1">
 
                                         <androidx.cardview.widget.CardView
+                                            android:id="@+id/DayCare_kidData_CV_day2"
                                             android:layout_width="40dp"
                                             android:layout_height="40dp"
                                             app:cardCornerRadius="6dp"
                                             app:cardElevation="6dp"
                                             android:elevation="6dp"
-                                            app:cardBackgroundColor="@color/buttonDaysColorChecked"
+                                            app:cardBackgroundColor="@color/buttonDaysColorUnchecked"
                                             android:layout_gravity="center">
 
                                             <androidx.appcompat.widget.AppCompatButton
-                                                android:id="@+id/DayCare_kidData_BTN_day4"
+                                                android:id="@+id/DayCare_kidData_BTN_day2"
                                                 android:layout_width="match_parent"
                                                 android:layout_height="match_parent"
                                                 android:text="שני"
@@ -378,6 +382,7 @@
                                         android:layout_weight="1">
 
                                         <androidx.cardview.widget.CardView
+                                            android:id="@+id/DayCare_kidData_CV_day1"
                                             android:layout_width="40dp"
                                             android:layout_height="40dp"
                                             app:cardCornerRadius="6dp"
@@ -387,7 +392,7 @@
                                             android:layout_gravity="center">
 
                                             <androidx.appcompat.widget.AppCompatButton
-                                                android:id="@+id/DayCare_kidData_BTN_day5"
+                                                android:id="@+id/DayCare_kidData_BTN_day1"
                                                 android:layout_width="match_parent"
                                                 android:layout_height="match_parent"
                                                 android:text="ראשון"

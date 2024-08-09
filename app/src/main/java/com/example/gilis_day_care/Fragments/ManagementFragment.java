@@ -11,6 +11,7 @@ import com.example.gilis_day_care.R;
 import com.google.android.material.textview.MaterialTextView;
 
 import java.text.SimpleDateFormat;
+import java.time.DayOfWeek;
 import java.util.Date;
 import java.util.Locale;
 
@@ -68,7 +69,6 @@ public class ManagementFragment extends Fragment {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMMM yyyy", Locale.ENGLISH);
         String formattedDate = dateFormat.format(currentDate);
         DayCare_home_MTV_date.setText(formattedDate);
-
     }
 
 }

@@ -3,6 +3,7 @@ package com.example.gilis_day_care.Fragments;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class Kid {
 
@@ -40,6 +41,18 @@ public class Kid {
         this.present = false;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Kid)) return false;
+        Kid kid = (Kid) o;
+        return Objects.equals(getName(), kid.getName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getName());
+    }
 
     public String getName() {
         return name;

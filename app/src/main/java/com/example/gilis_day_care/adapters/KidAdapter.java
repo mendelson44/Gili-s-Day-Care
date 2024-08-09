@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.gilis_day_care.R;
@@ -40,11 +42,26 @@ public class KidAdapter extends RecyclerView.Adapter<KidAdapter.KidViewHolder> {
             holder.DayCare_kidData_LBL_address.setText(kid.getAddress());
             holder.DayCare_kidData_LBL_class.setText(kid.getClassName());
             holder.DayCare_kidData_LBL_birthYear.setText(kid.getBirthYear());
-            holder.DayCare_kidData_LBL_parent1.setText(kid.getParent1() + kid.getPhone1());
-            holder.DayCare_kidData_LBL_parent2.setText(kid.getParent2() + kid.getPhone2());
+            holder.DayCare_kidData_LBL_parent1.setText(kid.getParent1() + "," + kid.getPhone1());
+            holder.DayCare_kidData_LBL_parent2.setText(kid.getParent2() + "," + kid.getPhone2());
             holder.DayCare_kidData_LBL_email.setText(kid.getEmail());
             holder.DayCare_kidData_LBL_allergies.setText(kid.getAllergies());
             holder.DayCare_kidData_LBL_SOS.setText(kid.getSos());
+
+        if(kid.getDays().contains(1))
+            holder.DayCare_kidData_CV_day1.setCardBackgroundColor(ContextCompat.getColor(context, R.color.buttonDaysColorChecked));
+        if(kid.getDays().contains(2))
+            holder.DayCare_kidData_CV_day2.setCardBackgroundColor(ContextCompat.getColor(context, R.color.buttonDaysColorChecked));
+        if(kid.getDays().contains(3))
+            holder.DayCare_kidData_CV_day3.setCardBackgroundColor(ContextCompat.getColor(context, R.color.buttonDaysColorChecked));
+        if(kid.getDays().contains(4))
+            holder.DayCare_kidData_CV_day4.setCardBackgroundColor(ContextCompat.getColor(context, R.color.buttonDaysColorChecked));
+        if(kid.getDays().contains(5))
+            holder.DayCare_kidData_CV_day5.setCardBackgroundColor(ContextCompat.getColor(context, R.color.buttonDaysColorChecked));
+
+
+
+
     }
 
     @Override
@@ -69,6 +86,11 @@ public class KidAdapter extends RecyclerView.Adapter<KidAdapter.KidViewHolder> {
         private MaterialTextView DayCare_kidData_LBL_parent1;
         private MaterialTextView DayCare_kidData_LBL_parent2;
         private MaterialTextView DayCare_kidData_LBL_SOS;
+        private CardView DayCare_kidData_CV_day1;
+        private CardView DayCare_kidData_CV_day2;
+        private CardView DayCare_kidData_CV_day3;
+        private CardView DayCare_kidData_CV_day4;
+        private CardView DayCare_kidData_CV_day5;
 
         public KidViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -82,6 +104,12 @@ public class KidAdapter extends RecyclerView.Adapter<KidAdapter.KidViewHolder> {
             DayCare_kidData_LBL_parent1 = itemView.findViewById(R.id.DayCare_kidData_LBL_parent1);
             DayCare_kidData_LBL_parent2 = itemView.findViewById(R.id.DayCare_kidData_LBL_parent2);
             DayCare_kidData_LBL_SOS = itemView.findViewById(R.id.DayCare_kidData_LBL_SOS);
+            DayCare_kidData_CV_day1 = itemView.findViewById(R.id.DayCare_kidData_CV_day1);
+            DayCare_kidData_CV_day2 = itemView.findViewById(R.id.DayCare_kidData_CV_day2);
+            DayCare_kidData_CV_day3 = itemView.findViewById(R.id.DayCare_kidData_CV_day3);
+            DayCare_kidData_CV_day4 = itemView.findViewById(R.id.DayCare_kidData_CV_day4);
+            DayCare_kidData_CV_day5 = itemView.findViewById(R.id.DayCare_kidData_CV_day5);
+
         }
     }
 

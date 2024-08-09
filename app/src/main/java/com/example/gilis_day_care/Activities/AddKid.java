@@ -76,8 +76,6 @@ public class AddKid extends AppCompatActivity {
     @Override
     public void onResume() {
         super.onResume();
-        initCurrentUser();
-        initHomeFragmentUI();
 
     }
 
@@ -158,8 +156,6 @@ public class AddKid extends AppCompatActivity {
         DayCare_addKid_LAY_SOS.setError(null);
     }
 
-    private void initCurrentUser() {
-    }
 
     private void findViews() {
 
@@ -279,21 +275,6 @@ public class AddKid extends AppCompatActivity {
     }
 
 
-
-    private void initHomeFragmentUI() {
-        initDate();
-    }
-
-
-
-
-    private void initDate() {
-        Date currentDate = new Date();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMMM yyyy", Locale.ENGLISH);
-        String formattedDate = dateFormat.format(currentDate);
-        DayCare_addKid_MTV_date.setText(formattedDate);
-
-    }
 
     private void showDatePickerDialog() {
         final Calendar calendar = Calendar.getInstance();

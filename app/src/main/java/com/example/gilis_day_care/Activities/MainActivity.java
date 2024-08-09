@@ -1,5 +1,6 @@
 package com.example.gilis_day_care.Activities;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,20 +17,28 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.gilis_day_care.Fragments.HomeFragment;
 import com.example.gilis_day_care.Fragments.Kid;
+import com.example.gilis_day_care.Fragments.KidsFragment;
 import com.example.gilis_day_care.Fragments.ManagementFragment;
 import com.example.gilis_day_care.databinding.ActivityMainBinding;
 import com.example.gilis_day_care.R;
 import com.example.gilis_day_care.model.Manager;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.textview.MaterialTextView;
 
+import java.time.DayOfWeek;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
     private ArrayList<Kid> kidsList = new ArrayList<>();
+    private ArrayList<Kid> workDayList = new ArrayList<>();
     private FloatingActionButton DayCare_main_BTN_addKid;
     private Manager manager;
+    private MaterialTextView DayCare_main_LBL_dayOfWeek;
+    private int dayOfWeek;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         EdgeToEdge.enable(this);
+
+
         Manager manager = new Manager();
         manager.loadKidsListFireBase(this, new Manager.KidsListCallback() {
             @Override
@@ -46,6 +57,9 @@ public class MainActivity extends AppCompatActivity {
                 // Assign the loaded data to the MainActivity's kidsList field
                 MainActivity.this.kidsList = loadedKidsList;
                 Log.d("MainActivity", "kids list." + MainActivity.this.kidsList);
+                UpdateWorkList(dayOfWeek);
+                Log.d("MainActivity", "work day kids list." + MainActivity.this.workDayList);
+
 
                 // Initialize RecyclerView with the kidsList here if needed
             }
@@ -57,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         findViews();
+        this.dayOfWeek = getDayOfWeek();
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.bottomNavigationView), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(0, 0, 0, 0);
@@ -69,12 +84,16 @@ public class MainActivity extends AppCompatActivity {
             Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.Main_frame_layout);
 
             if (item.getItemId() == R.id.home) {
-                selectedFragment = new HomeFragment(kidsList);
+                selectedFragment = new HomeFragment(workDayList);
+                toLeft = false;
+            }
+            else if (item.getItemId() == R.id.kids) {
+                selectedFragment = new KidsFragment(kidsList);
                 toLeft = true;
             }
             else if (item.getItemId() == R.id.management) {
                 selectedFragment = new ManagementFragment();
-                toLeft = false;
+                toLeft = true;
             }
 
             if (selectedFragment != null) {
@@ -90,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
     private void findViews() {
 
         DayCare_main_BTN_addKid = findViewById(R.id.DayCare_main_BTN_addKid);
+        DayCare_main_LBL_dayOfWeek = findViewById(R.id.DayCare_main_LBL_dayOfWeek);
     }
 
     @Override
@@ -106,16 +126,12 @@ public class MainActivity extends AppCompatActivity {
         if (toLeft) {
             fragmentTransaction.setCustomAnimations(
                     R.anim.slide_in_left,  // Enter animation
-                    R.anim.slide_out_right,  // Exit animation
-                    R.anim.slide_in_left,  // Pop enter animation (optional)
-                    R.anim.slide_out_right   // Pop exit animation (optional)
+                    R.anim.slide_out_right  // Exit animation
             );
         } else {
             fragmentTransaction.setCustomAnimations(
                     R.anim.slide_in_right,  // Enter animation
-                    R.anim.slide_out_left,  // Exit animation
-                    R.anim.slide_in_right,  // Pop enter animation (optional)
-                    R.anim.slide_out_left   // Pop exit animation (optional)
+                    R.anim.slide_out_left  // Exit animation
             );
         }
 
@@ -133,5 +149,58 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+
+    private int getDayOfWeek() {
+        final Calendar calendar = Calendar.getInstance();
+        int day = calendar.get(Calendar.DAY_OF_WEEK);
+
+        // Adjust day to match DayOfWeek enum
+        int adjustedDay = (day == Calendar.SUNDAY) ? 7 : day - 1;
+
+        // Log the adjusted day of the week
+        Log.d("MainActivity", "Day Of Week: " + DayOfWeek.of(adjustedDay));
+        updateDate_UI(day);
+
+        return day;
+    }
+
+    private void updateDate_UI(int day) {
+        switch (day) {
+            case Calendar.SUNDAY:
+                DayCare_main_LBL_dayOfWeek.setText("יום ראשון");
+                break;
+            case Calendar.MONDAY:
+                DayCare_main_LBL_dayOfWeek.setText("יום שני");
+                break;
+            case Calendar.TUESDAY:
+                DayCare_main_LBL_dayOfWeek.setText("יום שלישי");
+                break;
+            case Calendar.WEDNESDAY:
+                DayCare_main_LBL_dayOfWeek.setText("יום רביעי");
+                break;
+            case Calendar.THURSDAY:
+                DayCare_main_LBL_dayOfWeek.setText("יום חמישי");
+                break;
+            case Calendar.FRIDAY:
+                DayCare_main_LBL_dayOfWeek.setText("יום שישי");
+                break;
+            case Calendar.SATURDAY:
+                DayCare_main_LBL_dayOfWeek.setText("יום שבת");
+                break;
+            default:
+                // Handle unexpected value (though it should never happen)
+                break;
+        }
+    }
+
+    public void UpdateWorkList(int day) {
+
+        for (Kid kid: kidsList) {
+            //if (kid.getDays().contains(day))    // TODO: JUST FOR TEST
+                workDayList.add(kid);
+        }
+    }
+
+
 }
 

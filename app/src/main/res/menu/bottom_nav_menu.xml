@@ -10,18 +10,12 @@
         android:title="דף הבית" />
 
     <item
-        android:id="@+id/presence"
+        android:id="@+id/kids"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:icon="@drawable/children"
-        android:title="נוכחות" />
+        android:title="ילדים" />
 
-    <item
-        android:id="@+id/food"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:icon="@drawable/children"
-        android:title="אוכל" />
     <item
         android:id="@+id/management"
         android:layout_width="wrap_content"
