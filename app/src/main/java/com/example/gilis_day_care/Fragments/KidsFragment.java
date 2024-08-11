@@ -21,15 +21,11 @@ import java.util.ArrayList;
 
 public class KidsFragment extends Fragment {
 
-    private KidAdapter adapter;
-    private RecyclerView DayCare_kids_RV_kidsList;
     private ArrayList<Kid> kidsList;
-    private Manager manager;
 
 
-    public KidsFragment(ArrayList<Kid> kidsList) {
-       this.kidsList = kidsList;
-       this.manager = new Manager();
+    public KidsFragment() {
+
     }
 
     @Override
@@ -37,16 +33,9 @@ public class KidsFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_kids, container, false);
         findViews(view);
-        // Get the RecyclerView and adapter from the MainActivity
-        MainActivity mainActivity = (MainActivity) getActivity();
-        if (mainActivity != null) {
-            adapter = mainActivity.getAdapter();
-        }
-        initRecyclerView();
 
         return view;
     }
-
 
     @Override
     public void onResume() {
@@ -56,15 +45,6 @@ public class KidsFragment extends Fragment {
 
     private void findViews(View view) {
 
-        DayCare_kids_RV_kidsList = view.findViewById(R.id.DayCare_kids_RV_kidsList);
-    }
-
-    private void initRecyclerView() {
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
-        linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
-        DayCare_kids_RV_kidsList.setLayoutManager(linearLayoutManager);
-        DayCare_kids_RV_kidsList.setAdapter(adapter);
-        Log.d("PresenceFragment", "RecyclerView initialized with adapter.");
     }
 
 

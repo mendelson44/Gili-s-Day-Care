@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.gilis_day_care.R;
 import com.example.gilis_day_care.model.Kid;
+import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.textview.MaterialTextView;
 
 import java.util.ArrayList;
@@ -29,10 +30,6 @@ public class KidAdapter extends RecyclerView.Adapter<KidAdapter.KidViewHolder> {
 
     }
 
-    public void setKidList(ArrayList<Kid> kidList) {
-        this.allKidsList = kidList;
-        notifyDataSetChanged();
-    }
 
     @NonNull
     @Override
@@ -65,8 +62,15 @@ public class KidAdapter extends RecyclerView.Adapter<KidAdapter.KidViewHolder> {
         if(kid.getDays().contains(5))
             holder.DayCare_kidData_CV_day5.setCardBackgroundColor(ContextCompat.getColor(context, R.color.buttonDaysColorChecked));
 
-        if(kid.isGirl())
+        if(kid.isGirl()) {
             holder.DayCare_kidData_LAY.setBackgroundColor(ContextCompat.getColor(context, R.color.kidGirl));
+            holder.DayCare_kidData_IMG_logo.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.girl));
+        }
+        if(!kid.isGirl()) {
+            holder.DayCare_kidData_LAY.setBackgroundColor(ContextCompat.getColor(context, R.color.kidBoy));
+            holder.DayCare_kidData_IMG_logo.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.kid));
+        }
+
 
 
 
@@ -101,6 +105,7 @@ public class KidAdapter extends RecyclerView.Adapter<KidAdapter.KidViewHolder> {
         private CardView DayCare_kidData_CV_day4;
         private CardView DayCare_kidData_CV_day5;
         private RelativeLayout DayCare_kidData_LAY;
+        private ShapeableImageView DayCare_kidData_IMG_logo;
 
         public KidViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -120,6 +125,7 @@ public class KidAdapter extends RecyclerView.Adapter<KidAdapter.KidViewHolder> {
             DayCare_kidData_CV_day3 = itemView.findViewById(R.id.DayCare_kidData_CV_day3);
             DayCare_kidData_CV_day4 = itemView.findViewById(R.id.DayCare_kidData_CV_day4);
             DayCare_kidData_CV_day5 = itemView.findViewById(R.id.DayCare_kidData_CV_day5);
+            DayCare_kidData_IMG_logo = itemView.findViewById(R.id.DayCare_kidData_IMG_logo);
         }
     }
 

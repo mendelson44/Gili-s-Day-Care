@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layoutDirection="rtl">
 
 
@@ -47,7 +47,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="6dp"
                             android:textColor="@color/black"
-                            android:textSize="22sp"
+                            android:textSize="24sp"
                             android:textStyle="bold"
                             tools:text="שם הילד" />
 
@@ -60,9 +60,10 @@
 
                         <com.google.android.material.imageview.ShapeableImageView
                             android:id="@+id/DayCare_kidData_IMG_logo"
-                            android:layout_width="82dp"
-                            android:layout_height="82dp"
-                            android:src="@drawable/daycare_logo" />
+                            android:layout_width="92dp"
+                            android:layout_height="92dp"
+                            android:layout_alignParentEnd="true"
+                            android:src="@drawable/kid" />
 
                     </RelativeLayout>
 
@@ -109,7 +110,7 @@
                                             android:id="@+id/DayCare_kidData_IMG_class"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
-                                            app:startIconTint="@color/black"
+                                            android:tint="@color/black"
                                             app:srcCompat="@drawable/daycare_schoolbus" />
 
                                     </RelativeLayout>
@@ -152,6 +153,7 @@
                                             android:id="@+id/DayCare_kidData_IMG_address"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
+                                            android:tint="@color/black"
                                             app:srcCompat="@drawable/daycare_address" />
 
                                     </RelativeLayout>
@@ -200,6 +202,7 @@
                                             android:id="@+id/DayCare_kidData_IMG_parent1"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
+                                            android:tint="@color/black"
                                             app:srcCompat="@drawable/daycare_parent" />
 
                                     </RelativeLayout>
@@ -240,6 +243,7 @@
                                             android:id="@+id/DayCare_kidData_IMG_parent2"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
+                                            android:tint="@color/black"
                                             app:srcCompat="@drawable/daycare_parent" />
 
                                     </RelativeLayout>
@@ -332,13 +336,14 @@
                                         android:layout_height="match_parent"
                                         android:layout_weight="1">
 
-                                        <androidx.cardview.widget.CardView
+                                        <com.google.android.material.card.MaterialCardView
                                             android:id="@+id/DayCare_kidData_CV_day1"
                                             android:layout_width="40dp"
                                             android:layout_height="40dp"
                                             app:cardCornerRadius="6dp"
                                             app:cardElevation="6dp"
                                             android:elevation="6dp"
+                                            app:strokeColor="@color/dayCardColor"
                                             app:cardBackgroundColor="@color/buttonDaysColorUnchecked"
                                             android:layout_gravity="center">
 
@@ -356,7 +361,7 @@
                                                 android:textColor="@color/white"
                                                 android:gravity="center" />
 
-                                        </androidx.cardview.widget.CardView>
+                                        </com.google.android.material.card.MaterialCardView>
 
                                     </RelativeLayout>
 
@@ -365,13 +370,14 @@
                                         android:layout_height="match_parent"
                                         android:layout_weight="1">
 
-                                        <androidx.cardview.widget.CardView
+                                        <com.google.android.material.card.MaterialCardView
                                             android:id="@+id/DayCare_kidData_CV_day2"
                                             android:layout_width="40dp"
                                             android:layout_height="40dp"
                                             app:cardCornerRadius="6dp"
                                             app:cardElevation="6dp"
                                             android:elevation="6dp"
+                                            app:strokeColor="@color/dayCardColor"
                                             app:cardBackgroundColor="@color/buttonDaysColorUnchecked"
                                             android:layout_gravity="center">
 
@@ -389,7 +395,7 @@
                                                 android:textColor="@color/white"
                                                 android:gravity="center" />
 
-                                        </androidx.cardview.widget.CardView>
+                                        </com.google.android.material.card.MaterialCardView>
 
                                     </RelativeLayout>
 
@@ -398,13 +404,14 @@
                                         android:layout_height="match_parent"
                                         android:layout_weight="1">
 
-                                        <androidx.cardview.widget.CardView
+                                        <com.google.android.material.card.MaterialCardView
                                             android:id="@+id/DayCare_kidData_CV_day3"
                                             android:layout_width="40dp"
                                             android:layout_height="40dp"
                                             app:cardCornerRadius="6dp"
                                             app:cardElevation="6dp"
                                             android:elevation="6dp"
+                                            app:strokeColor="@color/dayCardColor"
                                             app:cardBackgroundColor="@color/buttonDaysColorUnchecked"
                                             android:layout_gravity="center">
 
@@ -422,7 +429,7 @@
                                                 android:textColor="@color/white"
                                                 android:gravity="center" />
 
-                                        </androidx.cardview.widget.CardView>
+                                        </com.google.android.material.card.MaterialCardView>
 
                                     </RelativeLayout>
 
@@ -434,13 +441,14 @@
                                         android:layout_height="match_parent"
                                         android:layout_weight="1">
 
-                                        <androidx.cardview.widget.CardView
+                                        <com.google.android.material.card.MaterialCardView
                                             android:id="@+id/DayCare_kidData_CV_day4"
                                             android:layout_width="40dp"
                                             android:layout_height="40dp"
                                             app:cardCornerRadius="6dp"
                                             app:cardElevation="6dp"
                                             android:elevation="6dp"
+                                            app:strokeColor="@color/dayCardColor"
                                             app:cardBackgroundColor="@color/buttonDaysColorUnchecked"
                                             android:layout_gravity="center">
 
@@ -458,7 +466,7 @@
                                                 android:textColor="@color/white"
                                                 android:gravity="center" />
 
-                                        </androidx.cardview.widget.CardView>
+                                        </com.google.android.material.card.MaterialCardView>
 
                                     </RelativeLayout>
 
@@ -468,13 +476,14 @@
                                         android:layout_height="match_parent"
                                         android:layout_weight="1">
 
-                                        <androidx.cardview.widget.CardView
+                                        <com.google.android.material.card.MaterialCardView
                                             android:id="@+id/DayCare_kidData_CV_day5"
                                             android:layout_width="40dp"
                                             android:layout_height="40dp"
                                             app:cardCornerRadius="6dp"
                                             app:cardElevation="6dp"
                                             android:elevation="6dp"
+                                            app:strokeColor="@color/dayCardColor"
                                             app:cardBackgroundColor="@color/buttonDaysColorUnchecked"
                                             android:layout_gravity="center">
 
@@ -492,7 +501,7 @@
                                                 android:textColor="@color/white"
                                                 android:gravity="center" />
 
-                                        </androidx.cardview.widget.CardView>
+                                        </com.google.android.material.card.MaterialCardView>
 
                                     </RelativeLayout>
 
@@ -508,19 +517,20 @@
                                 android:layout_height="0dp"
                                 android:layout_weight="0.8">
 
-                                <androidx.cardview.widget.CardView
+                                <com.google.android.material.card.MaterialCardView
                                     android:layout_width="match_parent"
                                     android:layout_height="62dp"
-                                    app:cardCornerRadius="14dp"
-                                    app:cardElevation="4dp"
-                                    android:elevation="4dp"
-                                    android:layout_margin="4dp"
-                                    app:cardBackgroundColor="@color/cardButtonAlert"
+                                    app:cardCornerRadius="2dp"
+                                    app:cardElevation="1dp"
+                                    android:elevation="1dp"
+                                    android:layout_margin="2dp"
+                                    app:cardBackgroundColor="@android:color/transparent"
                                     android:layout_gravity="center">
 
                                     <com.google.android.material.imageview.ShapeableImageView
                                         android:layout_width="56dp"
                                         android:layout_height="20dp"
+                                        android:layout_marginStart="4dp"
                                         app:srcCompat="@drawable/alr" />
 
 
@@ -542,7 +552,7 @@
                                         android:layout_gravity="end"
                                         app:srcCompat="@drawable/daycare_alert" />
 
-                                </androidx.cardview.widget.CardView>
+                                </com.google.android.material.card.MaterialCardView>
                             </RelativeLayout>
                         </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -578,7 +588,7 @@
                                             android:id="@+id/DayCare_kidData_IMG_birthYear"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
-                                            app:startIconTint="@color/black"
+                                            android:tint="@color/black"
                                             app:srcCompat="@drawable/daycare_cake_birthday" />
 
 
@@ -621,6 +631,7 @@
                                             android:id="@+id/DayCare_kidData_IMG_email"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
+                                            android:tint="@color/black"
                                             app:srcCompat="@drawable/daycare_email" />
 
                                     </RelativeLayout>
@@ -651,10 +662,10 @@
                                 <androidx.cardview.widget.CardView
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    app:cardCornerRadius="6dp"
-                                    app:cardElevation="4dp"
-                                    android:elevation="4dp"
-                                    app:cardBackgroundColor="@color/cardButtonSport"
+                                    app:cardCornerRadius="2dp"
+                                    app:cardElevation="1dp"
+                                    android:elevation="1dp"
+                                    app:cardBackgroundColor="@android:color/transparent"
                                     android:layout_gravity="center">
 
 
@@ -682,11 +693,7 @@
 
                         </androidx.appcompat.widget.LinearLayoutCompat>
 
-
                     </RelativeLayout>
-
-
-
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
             </RelativeLayout>

@@ -2,11 +2,18 @@ package com.example.gilis_day_care.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
+import android.view.View;
 import android.view.Window;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.LinearLayoutCompat;
+import androidx.cardview.widget.CardView;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -49,9 +56,12 @@ public class MainActivity extends AppCompatActivity {
     private EventAdapter adapter;
     private RecyclerView DayCare_notificationCard_RV_EventsList;
     private ArrayList<Event> eventsList;
+    private RecyclerView DayCare_main_kids_RV;
+    private LinearLayoutCompat DayCare_main_kidsRV_LAY;
+    private CardView DayCare_main_kidsRV_CARD;
+    private final Object lock = new Object();
 
-    private KidAdapter adapterKid;
-    private RecyclerView DayCare_kids_RV_kidsList;
+    private Handler handler = new Handler(Looper.getMainLooper());
 
 
     @Override
@@ -70,12 +80,11 @@ public class MainActivity extends AppCompatActivity {
             public void onSuccess(ArrayList<Kid> loadedKidsList) {
                 // Assign the loaded data to the MainActivity's kidsList field
                 MainActivity.this.kidsList = loadedKidsList;
-                initKidsRecyclerView();
+                MainActivity.this.loadKidsRecycleView(loadedKidsList);
                 Log.d("MainActivity", "kids list." + MainActivity.this.kidsList);
                 UpdateWorkList(dayOfWeek);
                 Log.d("MainActivity", "work day kids list." + MainActivity.this.workDayList);
 
-                // Initialize RecyclerView with the kidsList here if needed
             }
 
             @Override
@@ -89,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
             public void onSuccess(ArrayList<Event> loadedEventList) {
                 // Assign the loaded data to the MainActivity's eventList field
                 MainActivity.this.eventsList = loadedEventList;
-                initRecyclerView();
+                MainActivity.this.initRecyclerView();
                 Log.d("MainActivity", "events list." + MainActivity.this.eventsList);
             }
 
@@ -115,22 +124,32 @@ public class MainActivity extends AppCompatActivity {
             if (item.getItemId() == R.id.home) {
                 selectedFragment = new HomeFragment(workDayList);
                 DayCare_main_LBL_title.setText("דף הבית");
+                //DayCare_main_kidsRV_CARD.setVisibility(View.GONE);
+                DayCare_main_kidsRV_LAY.setVisibility(View.INVISIBLE);
                 toLeft = false;
             }
             else if (item.getItemId() == R.id.kids) {
-                selectedFragment = new KidsFragment(kidsList);
+                selectedFragment = new KidsFragment();
                 DayCare_main_LBL_title.setText("רשימת ילדים");
-                toLeft = true;
+                DayCare_main_kidsRV_CARD.setVisibility(View.VISIBLE);
+                DayCare_main_kidsRV_LAY.setVisibility(View.VISIBLE);
+                if(currentFragment instanceof HomeFragment)
+                    toLeft = true;
+                else
+                    toLeft = false;
             }
             else if (item.getItemId() == R.id.management) {
                 selectedFragment = new ManagementFragment();
                 DayCare_main_LBL_title.setText("הנהלה");
+                //DayCare_main_kidsRV_CARD.setVisibility(View.GONE);
+                DayCare_main_kidsRV_LAY.setVisibility(View.INVISIBLE);
                 toLeft = true;
             }
 
             if (selectedFragment != null) {
-                replaceFragment(selectedFragment, true,toLeft);
+                replaceFragment(selectedFragment, currentFragment, true, toLeft);
             }
+
             return true;
         });
 
@@ -146,7 +165,9 @@ public class MainActivity extends AppCompatActivity {
         DayCare_main_BTN_addEvent = findViewById(R.id.DayCare_main_BTN_addEvent);
         DayCare_main_LBL_dayOfWeek = findViewById(R.id.DayCare_main_LBL_dayOfWeek);
         DayCare_notificationCard_RV_EventsList = findViewById(R.id.DayCare_notificationCard_RV_EventsList);
-        DayCare_kids_RV_kidsList = findViewById(R.id.DayCare_kids_RV_kidsList);
+        DayCare_main_kids_RV = findViewById(R.id.DayCare_main_kids_RV);
+        DayCare_main_kidsRV_LAY = findViewById(R.id.DayCare_main_kidsRV_LAY);
+        DayCare_main_kidsRV_CARD = findViewById(R.id.DayCare_main_kidsRV_CARD);
     }
 
     @Override
@@ -155,22 +176,66 @@ public class MainActivity extends AppCompatActivity {
         FullScreenManager.getInstance().fullScreen(getWindow());
     }
 
-    private void replaceFragment(Fragment fragment, boolean addToBackStack, boolean toLeft) {
+    private void replaceFragment(Fragment fragment,Fragment currentFragment, boolean addToBackStack, boolean toLeft) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        Animation animation = AnimationUtils.loadAnimation(this, R.anim.scale_and_fade);
 
-        // Set custom animations
-        if (toLeft) {
-            fragmentTransaction.setCustomAnimations(
-                    R.anim.slide_in_left,  // Enter animation
-                    R.anim.slide_out_right  // Exit animation
-            );
-        } else {
-            fragmentTransaction.setCustomAnimations(
-                    R.anim.slide_in_right,  // Enter animation
-                    R.anim.slide_out_left  // Exit animation
-            );
+        if (fragment instanceof KidsFragment && currentFragment instanceof KidsFragment) {
+            animation = AnimationUtils.loadAnimation(this, R.anim.scale_and_fade);
+        } else {  // Set custom animations
+
+            if (toLeft) {
+                fragmentTransaction.setCustomAnimations(
+                        R.anim.slide_in_left,  // Enter animation
+                        R.anim.slide_out_right  // Exit animation
+                );
+                if (fragment instanceof KidsFragment)
+                    animation = AnimationUtils.loadAnimation(this, R.anim.slide_in_left_lay);
+
+                else if (currentFragment instanceof KidsFragment)
+                    animation = AnimationUtils.loadAnimation(this, R.anim.slide_out_right_lay);
+
+            } else {
+                fragmentTransaction.setCustomAnimations(
+                        R.anim.slide_in_right,  // Enter animation
+                        R.anim.slide_out_left  // Exit animation
+                );
+                if (fragment instanceof KidsFragment)
+                    animation = AnimationUtils.loadAnimation(this, R.anim.slide_in_right_lay);
+
+                else if (currentFragment instanceof KidsFragment)
+                    animation = AnimationUtils.loadAnimation(this, R.anim.slide_out_left_lay);
+            }
+
         }
+
+        if (fragment instanceof KidsFragment || currentFragment instanceof KidsFragment) {
+
+            DayCare_main_kidsRV_LAY.startAnimation(animation);
+
+            // Set an AnimationListener to check when the animation ends
+            animation.setAnimationListener(new Animation.AnimationListener() {
+                @Override
+                public void onAnimationStart(Animation animation) {
+                    // This is called when the animation starts
+                }
+
+                @Override
+                public void onAnimationEnd(Animation animation) {
+
+                    // Perform the action after the animation ends
+                    if (currentFragment instanceof KidsFragment && !(fragment instanceof KidsFragment))
+                        DayCare_main_kidsRV_CARD.setVisibility(View.GONE);
+                }
+
+                @Override
+                public void onAnimationRepeat(Animation animation) {
+                    // This is called if the animation repeats
+                }
+            });
+        }
+
 
         fragmentTransaction.replace(R.id.Main_frame_layout, fragment);
         if (addToBackStack) {
@@ -178,7 +243,6 @@ public class MainActivity extends AppCompatActivity {
         }
         fragmentTransaction.commit();
     }
-
 
     private void addKidActivity(){
 
@@ -247,8 +311,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void initRecyclerView() {
-        adapter = new EventAdapter(this.getApplicationContext(), eventsList);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.getApplicationContext());
+        adapter = new EventAdapter(this, eventsList);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
         DayCare_notificationCard_RV_EventsList.setLayoutManager(linearLayoutManager);
         DayCare_notificationCard_RV_EventsList.setAdapter(adapter);
@@ -256,15 +320,19 @@ public class MainActivity extends AppCompatActivity {
         Log.d("mainActivity", "RecyclerView EVENTS initialized with adapter.");
     }
 
-    private void initKidsRecyclerView() {
-        adapterKid = new KidAdapter(this, kidsList);
+    private void loadKidsRecycleView(ArrayList<Kid> kidsList) {
+
+        // Initialize the RecyclerView
+        KidAdapter adapterKid = new KidAdapter(this, kidsList);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
-        Log.d("PresenceFragment", "RecyclerView initialized with adapter.");
+        DayCare_main_kids_RV.setLayoutManager(linearLayoutManager);
+        DayCare_main_kids_RV.setAdapter(adapterKid);
+
+        Log.d("mainActivity", "RecyclerView Kids initialized with adapter.");
     }
 
-    public KidAdapter getAdapter() {
-        return adapterKid;
-    }
+
+
 }
 

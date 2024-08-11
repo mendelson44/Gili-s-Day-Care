@@ -8,15 +8,16 @@
     <color name="orange">#FFDD00</color>
     <color name="birthDayColor">#FFDD00</color>
     <color name="purple">#813BFF</color>
-    <color name="buttonDaysColorUnchecked">#D9FFCC</color>
-    <color name="buttonDaysColorChecked">#5DED2C</color>
+    <color name="buttonDaysColorUnchecked">#FFFEF2</color>
+    <color name="buttonDaysColorChecked">#327A34</color>
     <color name="cardButtonAlert">#F1FF63</color>
     <color name="cardButtonSport">#FFA989</color>
-    <color name="kidBoy">#8BCBFF</color>
-    <color name="kidGirl">#F1B3FB</color>
+    <color name="kidBoy">#A2B0FF</color>
+    <color name="kidGirl">#CDFFC4</color>
     <color name="kidBoyChecked">#0037FF</color>
     <color name="kidGirlChecked">#FF00BF</color>
     <color name="darkWhite">#FFF9C7</color>
     <color name="darkBGfood">#52DAA0</color>
+    <color name="dayCardColor">#631800</color>
 
 </resources>

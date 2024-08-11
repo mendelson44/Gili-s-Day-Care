@@ -69,7 +69,8 @@
             <com.google.android.material.button.MaterialButtonToggleGroup
                 android:id="@+id/DayCare_home_TBG_newDayWork"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                app:singleSelection="true">
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/DayCare_home_BTN_presence"

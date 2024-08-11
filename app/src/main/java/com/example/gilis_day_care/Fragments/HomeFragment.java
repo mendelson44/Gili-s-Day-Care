@@ -95,7 +95,6 @@ public class HomeFragment extends Fragment {
         initHomeFragmentUI();
         initRecyclerView();  // Initialize RecyclerView
         generateFoodList();
-
         // Simulate progress
         simulateProgress();
 
@@ -112,6 +111,7 @@ public class HomeFragment extends Fragment {
 
                 if(DayCare_home_BTN_presence.isChecked()) {
                     DayCare_presence_LAY.setVisibility(View.VISIBLE);
+                    DayCare_foodTable.setVisibility(View.INVISIBLE);
                 }
                 else {
                     DayCare_presence_LAY.setVisibility(View.INVISIBLE);
@@ -136,6 +136,7 @@ public class HomeFragment extends Fragment {
 
                 if(DayCare_home_BTN_food.isChecked()) {
                     DayCare_foodTable.setVisibility(View.VISIBLE);
+                    DayCare_presence_LAY.setVisibility(View.INVISIBLE);
                 }
                 else {
                     DayCare_foodTable.setVisibility(View.INVISIBLE);
