@@ -1,6 +1,5 @@
 package com.example.gilis_day_care.Activities;
 
-import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,9 +13,15 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.gilis_day_care.Fragments.HomeFragment;
-import com.example.gilis_day_care.Fragments.Kid;
+import com.example.gilis_day_care.adapters.EventAdapter;
+import com.example.gilis_day_care.adapters.KidAdapter;
+import com.example.gilis_day_care.adapters.PresenceKidAdapter;
+import com.example.gilis_day_care.model.Event;
+import com.example.gilis_day_care.model.Kid;
 import com.example.gilis_day_care.Fragments.KidsFragment;
 import com.example.gilis_day_care.Fragments.ManagementFragment;
 import com.example.gilis_day_care.databinding.ActivityMainBinding;
@@ -35,9 +40,18 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<Kid> kidsList = new ArrayList<>();
     private ArrayList<Kid> workDayList = new ArrayList<>();
     private FloatingActionButton DayCare_main_BTN_addKid;
+    private FloatingActionButton DayCare_main_BTN_addEvent;
     private Manager manager;
     private MaterialTextView DayCare_main_LBL_dayOfWeek;
+    private MaterialTextView DayCare_main_LBL_title;
     private int dayOfWeek;
+
+    private EventAdapter adapter;
+    private RecyclerView DayCare_notificationCard_RV_EventsList;
+    private ArrayList<Event> eventsList;
+
+    private KidAdapter adapterKid;
+    private RecyclerView DayCare_kids_RV_kidsList;
 
 
     @Override
@@ -56,12 +70,27 @@ public class MainActivity extends AppCompatActivity {
             public void onSuccess(ArrayList<Kid> loadedKidsList) {
                 // Assign the loaded data to the MainActivity's kidsList field
                 MainActivity.this.kidsList = loadedKidsList;
+                initKidsRecyclerView();
                 Log.d("MainActivity", "kids list." + MainActivity.this.kidsList);
                 UpdateWorkList(dayOfWeek);
                 Log.d("MainActivity", "work day kids list." + MainActivity.this.workDayList);
 
-
                 // Initialize RecyclerView with the kidsList here if needed
+            }
+
+            @Override
+            public void onFailure(Exception exception) {
+                // Handle error if needed
+            }
+        });
+
+        manager.loadEventsListFireBase(this, new Manager.EventsListCallback() {
+            @Override
+            public void onSuccess(ArrayList<Event> loadedEventList) {
+                // Assign the loaded data to the MainActivity's eventList field
+                MainActivity.this.eventsList = loadedEventList;
+                initRecyclerView();
+                Log.d("MainActivity", "events list." + MainActivity.this.eventsList);
             }
 
             @Override
@@ -85,14 +114,17 @@ public class MainActivity extends AppCompatActivity {
 
             if (item.getItemId() == R.id.home) {
                 selectedFragment = new HomeFragment(workDayList);
+                DayCare_main_LBL_title.setText("דף הבית");
                 toLeft = false;
             }
             else if (item.getItemId() == R.id.kids) {
                 selectedFragment = new KidsFragment(kidsList);
+                DayCare_main_LBL_title.setText("רשימת ילדים");
                 toLeft = true;
             }
             else if (item.getItemId() == R.id.management) {
                 selectedFragment = new ManagementFragment();
+                DayCare_main_LBL_title.setText("הנהלה");
                 toLeft = true;
             }
 
@@ -104,12 +136,17 @@ public class MainActivity extends AppCompatActivity {
 
 
         DayCare_main_BTN_addKid.setOnClickListener(view -> addKidActivity());
+        DayCare_main_BTN_addEvent.setOnClickListener(view -> addEventActivity());
     }
 
     private void findViews() {
 
+        DayCare_main_LBL_title = findViewById(R.id.DayCare_main_LBL_title);
         DayCare_main_BTN_addKid = findViewById(R.id.DayCare_main_BTN_addKid);
+        DayCare_main_BTN_addEvent = findViewById(R.id.DayCare_main_BTN_addEvent);
         DayCare_main_LBL_dayOfWeek = findViewById(R.id.DayCare_main_LBL_dayOfWeek);
+        DayCare_notificationCard_RV_EventsList = findViewById(R.id.DayCare_notificationCard_RV_EventsList);
+        DayCare_kids_RV_kidsList = findViewById(R.id.DayCare_kids_RV_kidsList);
     }
 
     @Override
@@ -146,6 +183,13 @@ public class MainActivity extends AppCompatActivity {
     private void addKidActivity(){
 
         Intent intent = new Intent(this, AddKid.class);
+        startActivity(intent);
+        finish();
+    }
+
+    private void addEventActivity(){
+
+        Intent intent = new Intent(this, AddEvent.class);
         startActivity(intent);
         finish();
     }
@@ -202,5 +246,25 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    private void initRecyclerView() {
+        adapter = new EventAdapter(this.getApplicationContext(), eventsList);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.getApplicationContext());
+        linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
+        DayCare_notificationCard_RV_EventsList.setLayoutManager(linearLayoutManager);
+        DayCare_notificationCard_RV_EventsList.setAdapter(adapter);
+
+        Log.d("mainActivity", "RecyclerView EVENTS initialized with adapter.");
+    }
+
+    private void initKidsRecyclerView() {
+        adapterKid = new KidAdapter(this, kidsList);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
+        Log.d("PresenceFragment", "RecyclerView initialized with adapter.");
+    }
+
+    public KidAdapter getAdapter() {
+        return adapterKid;
+    }
 }
 

@@ -18,7 +18,6 @@ import java.util.Locale;
 
 public class ManagementFragment extends Fragment {
 
-    private MaterialTextView DayCare_home_MTV_date;
 
 
     public static ManagementFragment newInstance(String param1, String param2) {
@@ -33,7 +32,6 @@ public class ManagementFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_management, container, false);
         findViews(view);
-        //initHomeFragmentUI();
 
 
         return view;
@@ -42,33 +40,14 @@ public class ManagementFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        initCurrentUser();
-        initHomeFragmentUI();
 
     }
 
-    private void initCurrentUser() {
-    }
 
     private void findViews(View view) {
 
-        DayCare_home_MTV_date = view.findViewById(R.id.DayCare_home_MTV_date);
     }
 
 
-
-    private void initHomeFragmentUI() {
-        initDate();
-    }
-
-
-
-
-    private void initDate() {
-        Date currentDate = new Date();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMMM yyyy", Locale.ENGLISH);
-        String formattedDate = dateFormat.format(currentDate);
-        DayCare_home_MTV_date.setText(formattedDate);
-    }
 
 }

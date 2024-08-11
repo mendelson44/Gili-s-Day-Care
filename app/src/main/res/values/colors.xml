@@ -14,7 +14,9 @@
     <color name="cardButtonSport">#FFA989</color>
     <color name="kidBoy">#8BCBFF</color>
     <color name="kidGirl">#F1B3FB</color>
+    <color name="kidBoyChecked">#0037FF</color>
+    <color name="kidGirlChecked">#FF00BF</color>
     <color name="darkWhite">#FFF9C7</color>
-
+    <color name="darkBGfood">#52DAA0</color>
 
 </resources>

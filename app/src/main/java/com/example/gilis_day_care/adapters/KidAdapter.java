@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -11,7 +12,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.gilis_day_care.R;
-import com.example.gilis_day_care.Fragments.Kid;
+import com.example.gilis_day_care.model.Kid;
 import com.google.android.material.textview.MaterialTextView;
 
 import java.util.ArrayList;
@@ -26,6 +27,11 @@ public class KidAdapter extends RecyclerView.Adapter<KidAdapter.KidViewHolder> {
         this.context = context;
         this.allKidsList = allKidsList;
 
+    }
+
+    public void setKidList(ArrayList<Kid> kidList) {
+        this.allKidsList = kidList;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -59,6 +65,9 @@ public class KidAdapter extends RecyclerView.Adapter<KidAdapter.KidViewHolder> {
         if(kid.getDays().contains(5))
             holder.DayCare_kidData_CV_day5.setCardBackgroundColor(ContextCompat.getColor(context, R.color.buttonDaysColorChecked));
 
+        if(kid.isGirl())
+            holder.DayCare_kidData_LAY.setBackgroundColor(ContextCompat.getColor(context, R.color.kidGirl));
+
 
 
 
@@ -91,10 +100,12 @@ public class KidAdapter extends RecyclerView.Adapter<KidAdapter.KidViewHolder> {
         private CardView DayCare_kidData_CV_day3;
         private CardView DayCare_kidData_CV_day4;
         private CardView DayCare_kidData_CV_day5;
+        private RelativeLayout DayCare_kidData_LAY;
 
         public KidViewHolder(@NonNull View itemView) {
             super(itemView);
 
+            DayCare_kidData_LAY = itemView.findViewById(R.id.DayCare_kidData_LAY);
             DayCare_kidData_LBL_name = itemView.findViewById(R.id.DayCare_kidData_LBL_name);
             DayCare_kidData_LBL_class = itemView.findViewById(R.id.DayCare_kidData_LBL_class);
             DayCare_kidData_LBL_birthYear = itemView.findViewById(R.id.DayCare_kidData_LBL_birthYear);
@@ -109,7 +120,6 @@ public class KidAdapter extends RecyclerView.Adapter<KidAdapter.KidViewHolder> {
             DayCare_kidData_CV_day3 = itemView.findViewById(R.id.DayCare_kidData_CV_day3);
             DayCare_kidData_CV_day4 = itemView.findViewById(R.id.DayCare_kidData_CV_day4);
             DayCare_kidData_CV_day5 = itemView.findViewById(R.id.DayCare_kidData_CV_day5);
-
         }
     }
 

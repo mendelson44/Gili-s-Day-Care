@@ -1,9 +1,8 @@
 package com.example.gilis_day_care.Interface;
 
-import com.example.gilis_day_care.Fragments.Kid;
+import com.example.gilis_day_care.model.Kid;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public interface KidListCallBack {
 

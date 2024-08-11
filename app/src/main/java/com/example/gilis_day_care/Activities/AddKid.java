@@ -2,6 +2,7 @@ package com.example.gilis_day_care.Activities;
 
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -10,7 +11,7 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.gilis_day_care.Fragments.Kid;
+import com.example.gilis_day_care.model.Kid;
 import com.example.gilis_day_care.R;
 import com.example.gilis_day_care.Utilities.MyFireBase;
 import com.google.android.material.button.MaterialButton;
@@ -20,12 +21,9 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.android.material.textview.MaterialTextView;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 
 public class AddKid extends AppCompatActivity {
@@ -59,7 +57,11 @@ public class AddKid extends AppCompatActivity {
     private MyFireBase database;
     private MaterialButtonToggleGroup DayCare_kidData_TBG_daysGroup;
     private FloatingActionButton DayCare_addKid_BTN_btnSelectDate;
+    private FloatingActionButton DayCare_addKid_BTN_exit;
     private MaterialTextView DayCare_addKid_LBL_txtSelectedDate;
+
+    private MaterialButton DayCare_addKid_BTN_boy;
+    private MaterialButton DayCare_addKid_BTN_girl;
 
 
 
@@ -88,6 +90,8 @@ public class AddKid extends AppCompatActivity {
 
         DayCare_addKid_BTN_btnSelectDate.setOnClickListener(v -> showDatePickerDialog());
 
+        DayCare_addKid_BTN_exit.setOnClickListener(v -> exitToMainActivity());
+
         DayCare_addKid_BTN_add.setOnClickListener(v -> {
 
             if (validateFields()) {
@@ -104,14 +108,15 @@ public class AddKid extends AppCompatActivity {
                 String sos = DayCare_addKid_INP_SOS.getText().toString();
                 String allergies = DayCare_addKid_INP_allergies.getText().toString();
                 List<Integer> days = getDaysArray(DayCare_kidData_TBG_daysGroup.getCheckedButtonIds());
+                boolean isGirl = DayCare_addKid_BTN_girl.isChecked();
 
                 Log.d("addKid", "create kid days array: " + days);
 
-                Kid kid = new Kid(name,kidClass,birthYear,email,address,parent1,parent2,phone1,phone2,sos,allergies,days);
+                Kid kid = new Kid(name,kidClass,birthYear,email,address,parent1,parent2,phone1,phone2,sos,allergies,days,isGirl);
 
                 database.saveKid(kid);
 
-                Toast.makeText(this, "Successful kid creation!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Successful kid creation : " + kid.toString(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -186,7 +191,11 @@ public class AddKid extends AppCompatActivity {
 
         DayCare_addKid_BTN_add = findViewById(R.id.DayCare_addKid_BTN_add);
         DayCare_addKid_BTN_btnSelectDate = findViewById(R.id.DayCare_addKid_BTN_btnSelectDate);
+        DayCare_addKid_BTN_exit = findViewById(R.id.DayCare_addKid_BTN_exit);
         DayCare_addKid_LBL_txtSelectedDate = findViewById(R.id.DayCare_addKid_LBL_txtSelectedDate);
+
+        DayCare_addKid_BTN_boy = findViewById(R.id.DayCare_addKid_BTN_boy);
+        DayCare_addKid_BTN_girl = findViewById(R.id.DayCare_addKid_BTN_girl);
     }
 
     private boolean validateFields() {
@@ -291,6 +300,13 @@ public class AddKid extends AppCompatActivity {
                 },
                 year, month, day);
         datePickerDialog.show();
+    }
+
+    private void exitToMainActivity(){
+
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 
 }

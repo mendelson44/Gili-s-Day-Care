@@ -71,11 +71,49 @@ android:layoutDirection="rtl">
                     android:layout_height="match_parent"
                     android:layout_weight="0.5">
 
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/DayCare_home_SIV_logo"
+                    <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/daycare_logo" />
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="6">
+
+                            <com.google.android.material.imageview.ShapeableImageView
+                                android:id="@+id/DayCare_home_SIV_logo"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/daycare_logo" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1">
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/DayCare_main_LBL_dayOfWeek"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppinsbold"
+                                android:text="יום ראשון"
+                                android:textColor="@color/orange"
+                                android:shadowColor="@color/black"
+                                android:layout_marginStart="4dp"
+                                android:shadowDx="4"
+                                android:shadowDy="4"
+                                android:shadowRadius="4"
+                                android:textSize="16sp"
+                                android:textStyle="bold"/>
+
+                        </RelativeLayout>
+
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
                 </RelativeLayout>
 
 
@@ -93,20 +131,33 @@ android:layoutDirection="rtl">
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:layout_weight="0.8">
+                            android:layout_weight="0.6">
 
                             <com.google.android.material.floatingactionbutton.FloatingActionButton
                                 android:id="@+id/DayCare_main_BTN_addKid"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 app:backgroundTint="#E28BFBEB"
+                                android:layout_margin="4dp"
                                 style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton.Icon"
                                 app:srcCompat="@drawable/daycare_home_kidsadd"
                                 app:tint="@null"
                                 android:contentDescription="Add Kid" />
 
+                            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                                android:id="@+id/DayCare_main_BTN_addEvent"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:backgroundTint="#E28BFBEB"
+                                android:layout_margin="4dp"
+                                android:layout_toLeftOf="@id/DayCare_main_BTN_addKid"
+                                style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton.Icon"
+                                app:srcCompat="@drawable/daycare_home_eventadd"
+                                app:tint="@null"
+                                android:contentDescription="Add Kid" />
+
                             <com.google.android.material.imageview.ShapeableImageView
-                                android:id="@+id/DayCare_home_SIV_signOut"
+                                android:id="@+id/DayCare_main_SIV_signOut"
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
                                 android:layout_alignParentEnd="true"
@@ -120,38 +171,49 @@ android:layoutDirection="rtl">
                             android:layout_weight="1">
 
                             <androidx.cardview.widget.CardView
-                                android:id="@+id/DayCare_home_CV_notificationCard"
+                                android:id="@+id/DayCare_main_CV_notificationCard"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:elevation="4dp"
-                                app:cardCornerRadius="4dp"
-                                app:cardBackgroundColor="@color/darkWhite"
-                                app:cardElevation="4dp"
-                                android:layout_margin="4dp"/>
+                                android:elevation="2dp"
+                                app:cardCornerRadius="2dp"
+                                style="@style/Widget.Material3.Button.ElevatedButton"
+                                app:cardBackgroundColor="@android:color/transparent"
+                                app:cardElevation="2dp"
+                                android:layout_margin="4dp" >
 
-                        </RelativeLayout>
+
+                                <androidx.appcompat.widget.LinearLayoutCompat
+                                    android:id="@+id/DayCare_notificationCard_LAY"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:visibility="visible"
+                                    android:orientation="horizontal">
 
 
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="0.5">
+                                    <RelativeLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1">
 
-                            <com.google.android.material.textview.MaterialTextView
-                                android:id="@+id/DayCare_main_LBL_dayOfWeek"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentEnd="true"
-                                android:fontFamily="@font/poppinsbold"
-                                android:text="יום ראשון"
-                                android:textColor="@color/orange"
-                                android:shadowColor="@color/black"
-                                android:shadowDx="4"
-                                android:shadowDy="4"
-                                android:shadowRadius="4"
-                                android:paddingEnd="12dp"
-                                android:textSize="16sp"
-                                android:textStyle="bold"/>
+                                        <androidx.recyclerview.widget.RecyclerView
+                                            android:id="@+id/DayCare_notificationCard_RV_EventsList"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginEnd="4dp"
+                                            android:layout_marginStart="4dp"
+                                            tools:listitem="@layout/rv_event" />
+
+                                    </RelativeLayout>
+
+
+
+                                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                            </androidx.cardview.widget.CardView>
+
+
+
+
 
                         </RelativeLayout>
 

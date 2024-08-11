@@ -44,7 +44,7 @@
                         android:shadowDx="4"
                         android:shadowDy="4"
                         android:shadowRadius="4"
-                        android:paddingEnd="12dp"
+                        android:layout_marginStart="4dp"
                         android:textSize="16sp"
                         android:textStyle="bold"/>
 
@@ -161,17 +161,6 @@
                             android:progressDrawable="@drawable/progress_bar_circle"
                             android:progress="0"/>
 
-                        <androidx.appcompat.widget.SwitchCompat
-                            android:id="@+id/DayCare_home_SWB_presence"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:textOn="אישור"
-                            android:layout_marginStart="4dp"
-                            android:theme="@style/GreenSwitch"
-                            android:thumb="@drawable/thumb"
-                            app:track="@drawable/track" />
-
 
                     </RelativeLayout>
 
@@ -227,10 +216,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="-56dp"
-                android:elevation="32dp"
-                app:cardBackgroundColor="@android:color/white"
-                app:cardCornerRadius="56dp"
-                android:backgroundTint="#A8F4D1">
+                android:elevation="22dp"
+                app:cardBackgroundColor="@android:color/transparent"
+                app:cardCornerRadius="4dp">
 
 
                 <androidx.appcompat.widget.LinearLayoutCompat
@@ -245,8 +233,8 @@
                     <RelativeLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="0.3"
-                        android:background="@drawable/daycare_title_background">
+                        android:layout_weight="0.1"
+                        android:background="@drawable/daycare_background_wood">
 
                     </RelativeLayout>
 
@@ -266,8 +254,8 @@
                     <RelativeLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="0.3"
-                        android:background="@drawable/daycare_title_background">
+                        android:layout_weight="0.1"
+                        android:background="@drawable/daycare_background_wood">
                     </RelativeLayout>
 
 
@@ -298,7 +286,7 @@
                                 android:id="@+id/DayCare_home_BTN_back"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                app:backgroundTint="#A8F4D1"
+                                app:backgroundTint="@color/darkBGfood"
                                 app:maxImageSize="42dp"
                                 style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton.Icon"
                                 app:srcCompat="@drawable/daycare_right"
@@ -316,7 +304,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/poppinsbold"
-                                android:text="מספר נגלה"
+                                android:text="לחץ שמאל"
                                 android:textColor="@color/black"
                                 android:gravity="center"
                                 android:shadowColor="@color/white"
@@ -336,7 +324,7 @@
                                 android:id="@+id/DayCare_home_BTN_forward"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                app:backgroundTint="#A8F4D1"
+                                app:backgroundTint="@color/darkBGfood"
                                 app:maxImageSize="42dp"
                                 android:layout_alignParentEnd="true"
                                 style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton.Icon"
@@ -353,30 +341,37 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="center"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
                             android:text="שם" />
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="center"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
                             android:text="אלרגיות" />
                     </TableRow>
                     <TableRow android:background="#F0F7F7" android:padding="5dp">
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:textColor="@color/black"
                             android:layout_weight="0.2"
                             android:text="1" />
                         <TextView
                             android:id="@+id/DayCare_foodTable_LBL_name1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:textColor="@color/black"
                             android:layout_weight="1"
                             android:text="שם ילד" />
                         <TextView
                             android:id="@+id/DayCare_foodTable_LBL_ALR1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:textColor="@color/black"
                             android:layout_weight="1"
                             android:text="אלרגיות" />
                     </TableRow>
@@ -384,18 +379,21 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:textColor="@color/black"
                             android:layout_weight="0.2"
                             android:text="2" />
                         <TextView
                             android:id="@+id/DayCare_foodTable_LBL_name2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:textColor="@color/black"
                             android:layout_weight="1"
                             android:text="שם הילד" />
                         <TextView
                             android:id="@+id/DayCare_foodTable_LBL_ALR2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:textColor="@color/black"
                             android:layout_weight="1"
                             android:text="אלרגיות" />
 
@@ -405,18 +403,21 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:textColor="@color/black"
                             android:layout_weight="0.2"
                             android:text="3" />
                         <TextView
                             android:id="@+id/DayCare_foodTable_LBL_name3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:textColor="@color/black"
                             android:layout_weight="1"
                             android:text="שם הילד" />
                         <TextView
                             android:id="@+id/DayCare_foodTable_LBL_ALR3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:textColor="@color/black"
                             android:layout_weight="1"
                             android:text="אלרגיות" />
 
@@ -426,18 +427,21 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:textColor="@color/black"
                             android:layout_weight="0.2"
                             android:text="4" />
                         <TextView
                             android:id="@+id/DayCare_foodTable_LBL_name4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:textColor="@color/black"
                             android:layout_weight="1"
                             android:text="שם הילד" />
                         <TextView
                             android:id="@+id/DayCare_foodTable_LBL_ALR4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:textColor="@color/black"
                             android:layout_weight="1"
                             android:text="אלרגיות" />
 
@@ -447,18 +451,21 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:textColor="@color/black"
                             android:layout_weight="0.2"
                             android:text="5" />
                         <TextView
                             android:id="@+id/DayCare_foodTable_LBL_name5"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:textColor="@color/black"
                             android:layout_weight="1"
                             android:text="שם הילד" />
                         <TextView
                             android:id="@+id/DayCare_foodTable_LBL_ALR5"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:textColor="@color/black"
                             android:layout_weight="1"
                             android:text="אלרגיות" />
 
@@ -468,18 +475,21 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:textColor="@color/black"
                             android:layout_weight="0.2"
                             android:text="6" />
                         <TextView
                             android:id="@+id/DayCare_foodTable_LBL_name6"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:textColor="@color/black"
                             android:layout_weight="1"
                             android:text="שם הילד" />
                         <TextView
                             android:id="@+id/DayCare_foodTable_LBL_ALR6"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:textColor="@color/black"
                             android:layout_weight="1"
                             android:text="אלרגיות" />
 

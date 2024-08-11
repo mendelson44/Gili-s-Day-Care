@@ -18,8 +18,21 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.15"
+            android:layout_weight="0.14"
             android:background="@drawable/daycare_background_title">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/DayCare_addKid_BTN_exit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:backgroundTint="@android:color/transparent"
+                app:maxImageSize="42dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                style="@style/Widget.MaterialComponents.Button"
+                app:srcCompat="@drawable/daycare_left_arrow"
+                app:tint="@null"
+                android:contentDescription="Add Kid" />
 
 
             <com.google.android.material.textview.MaterialTextView
@@ -66,29 +79,9 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.1"
+            android:layout_weight="0.05"
     >
 
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-
-
-                <RelativeLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1">
-
-                    <androidx.appcompat.widget.LinearLayoutCompat
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
-
-                    </androidx.appcompat.widget.LinearLayoutCompat>
-                </RelativeLayout>
-            </androidx.appcompat.widget.LinearLayoutCompat>
         </RelativeLayout>
 
 
@@ -136,6 +129,46 @@
                                     android:textStyle="bold"
                                     android:textColor="@color/black"
                                     android:gravity="center"/>
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="1">
+
+                                <com.google.android.material.button.MaterialButtonToggleGroup
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <com.google.android.material.button.MaterialButton
+                                        android:id="@+id/DayCare_addKid_BTN_boy"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="בן"
+                                        android:textColor="@color/black"
+                                        android:gravity="center"
+                                        android:fontFamily="@font/poppinsbold"
+                                        style="@style/Widget.Material3.Button.OutlinedButton"
+                                        app:backgroundTint="@color/button_color_boy_selector"
+                                        android:checkable="true"
+                                        android:checked="false"/>
+
+                                    <com.google.android.material.button.MaterialButton
+                                        android:id="@+id/DayCare_addKid_BTN_girl"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="בת"
+                                        android:textColor="@color/black"
+                                        android:gravity="center"
+                                        android:fontFamily="@font/poppinsbold"
+                                        style="@style/Widget.Material3.Button.OutlinedButton"
+                                        app:backgroundTint="@color/button_color_girl_selector"
+                                        android:checkable="true"
+                                        android:checked="false"/>
+
+                                </com.google.android.material.button.MaterialButtonToggleGroup>
                             </RelativeLayout>
 
                             <RelativeLayout
@@ -571,99 +604,86 @@
                                 android:layout_height="0dp"
                                 android:layout_weight="1">
 
-                                <androidx.appcompat.widget.LinearLayoutCompat
+                                <com.google.android.material.button.MaterialButtonToggleGroup
+                                    android:id="@+id/DayCare_kidData_TBG_daysGroup"
                                     android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="horizontal">
+                                    android:layout_height="wrap_content">
 
-                                    <RelativeLayout
+                                    <com.google.android.material.button.MaterialButton
+                                        android:id="@+id/DayCare_kidData_BTN_day1"
                                         android:layout_width="0dp"
-                                        android:layout_height="match_parent"
-                                        android:layout_weight="1">
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="א"
+                                        android:textColor="@color/black"
+                                        android:gravity="center"
+                                        android:fontFamily="@font/poppinsbold"
+                                        style="@style/Widget.Material3.Button.OutlinedButton"
+                                        app:checkedIcon="@drawable/daycare_checkbox"
+                                        app:backgroundTint="@color/button_color_selector"
+                                        android:checkable="true"
+                                        android:checked="false"/>
 
-                                        <com.google.android.material.button.MaterialButtonToggleGroup
-                                            android:id="@+id/DayCare_kidData_TBG_daysGroup"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content">
+                                    <com.google.android.material.button.MaterialButton
+                                        android:id="@+id/DayCare_kidData_BTN_day2"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="ב"
+                                        android:textColor="@color/black"
+                                        android:gravity="center"
+                                        android:fontFamily="@font/poppinsbold"
+                                        style="@style/Widget.Material3.Button.OutlinedButton"
+                                        app:checkedIcon="@drawable/daycare_checkbox"
+                                        app:backgroundTint="@color/button_color_selector"
+                                        android:checkable="true"
+                                        android:checked="false"/>
 
-                                            <com.google.android.material.button.MaterialButton
-                                                android:id="@+id/DayCare_kidData_BTN_day1"
-                                                android:layout_width="0dp"
-                                                android:layout_height="wrap_content"
-                                                android:layout_weight="1"
-                                                android:text="א"
-                                                android:textColor="@color/black"
-                                                android:gravity="center"
-                                                android:fontFamily="@font/poppinsbold"
-                                                style="@style/Widget.Material3.Button.OutlinedButton"
-                                                app:checkedIcon="@drawable/daycare_checkbox"
-                                                app:backgroundTint="@color/button_color_selector"
-                                                android:checkable="true"
-                                                android:checked="false"/>
+                                    <com.google.android.material.button.MaterialButton
+                                        android:id="@+id/DayCare_kidData_BTN_day3"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="ג"
+                                        android:textColor="@color/black"
+                                        android:gravity="center"
+                                        android:fontFamily="@font/poppinsbold"
+                                        style="@style/Widget.Material3.Button.OutlinedButton"
+                                        app:checkedIcon="@drawable/daycare_checkbox"
+                                        app:backgroundTint="@color/button_color_selector"
+                                        android:checkable="true"
+                                        android:checked="false"/>
 
-                                            <com.google.android.material.button.MaterialButton
-                                                android:id="@+id/DayCare_kidData_BTN_day2"
-                                                android:layout_width="0dp"
-                                                android:layout_height="wrap_content"
-                                                android:layout_weight="1"
-                                                android:text="ב"
-                                                android:textColor="@color/black"
-                                                android:gravity="center"
-                                                android:fontFamily="@font/poppinsbold"
-                                                style="@style/Widget.Material3.Button.OutlinedButton"
-                                                app:checkedIcon="@drawable/daycare_checkbox"
-                                                app:backgroundTint="@color/button_color_selector"
-                                                android:checkable="true"
-                                                android:checked="false"/>
+                                    <com.google.android.material.button.MaterialButton
+                                        android:id="@+id/DayCare_kidData_BTN_day4"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="ד"
+                                        android:textColor="@color/black"
+                                        android:gravity="center"
+                                        android:fontFamily="@font/poppinsbold"
+                                        style="@style/Widget.Material3.Button.OutlinedButton"
+                                        app:checkedIcon="@drawable/daycare_checkbox"
+                                        app:backgroundTint="@color/button_color_selector"
+                                        android:checkable="true"
+                                        android:checked="false"/>
 
-                                            <com.google.android.material.button.MaterialButton
-                                                android:id="@+id/DayCare_kidData_BTN_day3"
-                                                android:layout_width="0dp"
-                                                android:layout_height="wrap_content"
-                                                android:layout_weight="1"
-                                                android:text="ג"
-                                                android:textColor="@color/black"
-                                                android:gravity="center"
-                                                android:fontFamily="@font/poppinsbold"
-                                                style="@style/Widget.Material3.Button.OutlinedButton"
-                                                app:checkedIcon="@drawable/daycare_checkbox"
-                                                app:backgroundTint="@color/button_color_selector"
-                                                android:checkable="true"
-                                                android:checked="false"/>
-
-                                            <com.google.android.material.button.MaterialButton
-                                                android:id="@+id/DayCare_kidData_BTN_day4"
-                                                android:layout_width="0dp"
-                                                android:layout_height="wrap_content"
-                                                android:layout_weight="1"
-                                                android:text="ד"
-                                                android:textColor="@color/black"
-                                                android:gravity="center"
-                                                android:fontFamily="@font/poppinsbold"
-                                                style="@style/Widget.Material3.Button.OutlinedButton"
-                                                app:checkedIcon="@drawable/daycare_checkbox"
-                                                app:backgroundTint="@color/button_color_selector"
-                                                android:checkable="true"
-                                                android:checked="false"/>
-
-                                            <com.google.android.material.button.MaterialButton
-                                                android:id="@+id/DayCare_kidData_BTN_day5"
-                                                android:layout_width="0dp"
-                                                android:layout_height="wrap_content"
-                                                android:layout_weight="1"
-                                                android:text="ה"
-                                                android:textColor="@color/black"
-                                                android:gravity="center"
-                                                android:fontFamily="@font/poppinsbold"
-                                                style="@style/Widget.Material3.Button.OutlinedButton"
-                                                app:checkedIcon="@drawable/daycare_checkbox"
-                                                app:backgroundTint="@color/button_color_selector"
-                                                android:checkable="true"
-                                                android:checked="false"/>
-                                        </com.google.android.material.button.MaterialButtonToggleGroup>
-
-                                    </RelativeLayout>
-                                </androidx.appcompat.widget.LinearLayoutCompat>
+                                    <com.google.android.material.button.MaterialButton
+                                        android:id="@+id/DayCare_kidData_BTN_day5"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="ה"
+                                        android:textColor="@color/black"
+                                        android:gravity="center"
+                                        android:fontFamily="@font/poppinsbold"
+                                        style="@style/Widget.Material3.Button.OutlinedButton"
+                                        app:checkedIcon="@drawable/daycare_checkbox"
+                                        app:backgroundTint="@color/button_color_selector"
+                                        android:checkable="true"
+                                        android:checked="false"/>
+                                </com.google.android.material.button.MaterialButtonToggleGroup>
                             </RelativeLayout>
 
                             <RelativeLayout
@@ -680,6 +700,14 @@
                                     android:textColor="@color/orange"
                                     app:backgroundTint="@color/button_addkid_color_selector"
                                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="1">
+
 
                             </RelativeLayout>
                         </androidx.appcompat.widget.LinearLayoutCompat>

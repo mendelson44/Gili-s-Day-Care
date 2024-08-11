@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Fragments.HomeFragment"
-    android:background="@drawable/daycare_main_background">
+    android:background="@drawable/daycare_main_background"
+    android:layoutDirection="rtl">
 
 
     <androidx.appcompat.widget.LinearLayoutCompat
@@ -14,181 +15,196 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.15"
-            android:background="@drawable/daycare_title_background">
-
-<!--            <com.google.android.material.textfield.TextInputLayout-->
-<!--                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
-<!--                android:id="@+id/textInputLayout"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginTop="32dp"-->
-<!--                android:layout_marginStart="32dp"-->
-<!--                android:layout_marginEnd="32dp"-->
-<!--                android:hint="Number"-->
-<!--                app:helperText="Required"-->
-<!--                app:counterEnabled="true"-->
-<!--                app:counterMaxLength="20"-->
-<!--                app:endIconMode="custom"-->
-<!--                app:endIconDrawable="@drawable/ic_check_mark"-->
-<!--                app:helperTextTextColor="@color/red"-->
-<!--                app:startIconDrawable="@drawable/ic_phone"-->
-<!--                app:prefixText="+1"-->
-<!--                app:prefixTextColor="@color/purple_500"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent"/>-->
-
-
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/DayCare_management_LBL_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:fontFamily="@font/poppinsbold"
-                android:text="הנהלה"
-                android:textColor="@color/white"
-                android:shadowColor="@color/black"
-                android:shadowDx="4"
-                android:shadowDy="4"
-                android:shadowRadius="4"
-                android:textSize="16sp"
-                android:textStyle="bold"/>
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/DayCare_management_MTV_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppinsbold"
-                android:layout_margin="12dp"
-                android:text="01/08/2024"
-                android:textColor="@color/white"
-                android:shadowColor="@color/black"
-                android:shadowDx="2"
-                android:shadowDy="4"
-                android:shadowRadius="4"
-                android:textSize="8sp"
-                android:textStyle="bold"/>
-
-        </RelativeLayout>
-
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.5">
+            android:layout_weight="0.1">
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:id="@+id/DayCare_management_SIV_logo"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.6"
-                    android:src="@drawable/daycare_logo" />
 
                 <RelativeLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1">
 
-                    <androidx.appcompat.widget.LinearLayoutCompat
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/DayCare_management_LBL_title"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="0.2">
-
-                            <com.google.android.material.imageview.ShapeableImageView
-                                android:id="@+id/DayCare_management_SIV_signOut"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:layout_alignParentEnd="true"
-                                android:src="@drawable/logout" />
-
-                        </RelativeLayout>
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="1">
-
-                            <androidx.cardview.widget.CardView
-                                android:id="@+id/DayCare_management_CV_notificationCard"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginStart="6dp"
-                                android:layout_marginTop="6dp"
-                                android:layout_marginEnd="6dp"
-                                android:layout_marginBottom="82dp"
-                                android:elevation="@dimen/data_elevation"
-                                app:cardCornerRadius="@dimen/poster_corner_radius"
-                                app:cardBackgroundColor="#E20C7364"
-                                app:cardElevation="2dp"/>
-
-                            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                                android:id="@+id/fab"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentBottom="true"
-                                android:layout_margin="5dp"
-                                app:backgroundTint="#E28BFBEB"
-                                style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton.Icon"
-                                app:srcCompat="@drawable/daycare_home_kidsadd"
-                                app:tint="@null"
-                                android:contentDescription="fab" />
-
-                            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                                android:id="@+id/fab1"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentBottom="true"
-                                android:layout_margin="5dp"
-                                android:layout_toEndOf="@id/fab"
-                                app:backgroundTint="#E28BFBEB"
-                                style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton.Icon"
-                                app:srcCompat="@drawable/daycare_home_kidsadd"
-                                app:tint="@null"
-                                android:contentDescription="fab"/>
-
-                            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                                android:id="@+id/fab2"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentBottom="true"
-                                android:layout_margin="5dp"
-                                android:layout_toEndOf="@id/fab1"
-                                app:backgroundTint="#E28BFBEB"
-                                style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton.Icon"
-                                app:srcCompat="@drawable/daycare_home_kidsadd"
-                                app:tint="@null"
-                                android:contentDescription="fab"/>
-
-
-                        </RelativeLayout>
-
-
-                    </androidx.appcompat.widget.LinearLayoutCompat>
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:fontFamily="@font/poppinsbold"
+                        android:text="הנהלה"
+                        android:layout_marginStart="4dp"
+                        android:textColor="@color/white"
+                        android:shadowColor="@color/black"
+                        android:shadowDx="4"
+                        android:shadowDy="4"
+                        android:shadowRadius="4"
+                        android:textSize="16sp"
+                        android:textStyle="bold"/>
 
 
                 </RelativeLayout>
-
-
             </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
 
 
         </RelativeLayout>
 
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.15">
+
+
+
+            <com.google.android.material.button.MaterialButtonToggleGroup
+                android:id="@+id/DayCare_management_TBG_newDayWork"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/DayCare_management_BTN_event"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="אירועים"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:fontFamily="@font/poppinsbold"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    app:checkedIcon="@drawable/daycare_checkbox"
+                    app:backgroundTint="@color/button_color_selector"
+                    android:checkable="true"
+                    android:checked="false"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/DayCare_management_BTN_activity"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="פעילויות"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:fontFamily="@font/poppinsbold"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    app:checkedIcon="@drawable/daycare_checkbox"
+                    app:backgroundTint="@color/button_color_selector"
+                    android:checkable="true"
+                    android:checked="false"/>
+
+            </com.google.android.material.button.MaterialButtonToggleGroup>
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.4">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/DayCare_management_CARD_ManagerData"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="@android:color/transparent">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.9">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="מעקב אירועים"
+                            android:textSize="10sp"
+                            android:textStyle="bold"
+                            android:layout_marginStart="8dp"
+                            android:textColor="@color/black"
+                            android:layout_marginTop="20dp" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/DayCare_management_progressBar_LBL_countEvents"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0/0"
+                            android:textStyle="bold"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginEnd="42dp"
+                            android:textSize="16dp"/>
+
+                        <ProgressBar
+                            android:id="@+id/DayCare_management_progressBar_event"
+                            android:layout_width="112dp"
+                            android:layout_height="112dp"
+                            android:layout_alignParentEnd="true"
+                            android:indeterminateOnly="false"
+                            tools:progress="1"
+                            android:progressDrawable="@drawable/progress_bar_circle"
+                            android:progress="0"/>
+
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="מעקב פעילויות"
+                            android:textSize="10sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                           android:layout_marginStart="12dp"
+                            android:layout_marginEnd="12dp"
+                            android:layout_marginTop="20dp" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/DayCare_management_progressBar_LBL_countActivities"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0/0"
+                            android:textStyle="bold"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginEnd="42dp"
+                            android:textSize="16dp"/>
+
+                        <ProgressBar
+                            android:id="@+id/DayCare_management_progressBar_activity"
+                            android:layout_width="112dp"
+                            android:layout_height="112dp"
+                            android:layout_alignParentEnd="true"
+                            android:indeterminateOnly="false"
+                            tools:progress="1"
+                            android:progressDrawable="@drawable/progress_bar_circle"
+                            android:progress="0"/>
+
+                    </RelativeLayout>
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </androidx.cardview.widget.CardView>
+        </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -196,18 +212,294 @@
             android:layout_weight="1">
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/DayCare_home_CV_background"
+                android:id="@+id/DayCare_management_CV_background"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="-56dp"
                 android:elevation="32dp"
-                app:cardBackgroundColor="@android:color/white"
-                app:cardCornerRadius="56dp"
-                android:backgroundTint="#A8F4D1"/>
+                android:backgroundTint="@color/white"
+                app:cardCornerRadius="56dp">
+
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/DayCare_presence_LAY"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="invisible"
+                    android:orientation="horizontal">
 
 
 
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.1"
+                        android:background="@drawable/daycare_background_wood">
 
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/DayCare_presence_RV_kidsPresenceList"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            tools:listitem="@layout/rv_presence_kid" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.1"
+                        android:background="@drawable/daycare_background_wood">
+                    </RelativeLayout>
+
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                <TableLayout
+                    android:id="@+id/DayCare_foodTable"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="invisible"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:layoutDirection="rtl">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+
+                            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                                android:id="@+id/DayCare_home_BTN_back"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:backgroundTint="@color/darkBGfood"
+                                app:maxImageSize="42dp"
+                                style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton.Icon"
+                                app:srcCompat="@drawable/daycare_right"
+                                app:tint="@null"
+                                android:contentDescription="Add Kid" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/DayCare_foodTable_LBL_groupNumber"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppinsbold"
+                                android:text="לחץ שמאל"
+                                android:textColor="@color/black"
+                                android:gravity="center"
+                                android:shadowColor="@color/white"
+                                android:shadowDx="4"
+                                android:shadowDy="4"
+                                android:shadowRadius="4"
+                                android:textSize="16sp"
+                                android:textStyle="bold"/>
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+
+                            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                                android:id="@+id/DayCare_home_BTN_forward"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:backgroundTint="@color/darkBGfood"
+                                app:maxImageSize="42dp"
+                                android:layout_alignParentEnd="true"
+                                style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton.Icon"
+                                app:srcCompat="@drawable/daycare_left"
+                                app:tint="@null"
+                                android:contentDescription="Add Kid" />
+
+                        </RelativeLayout>
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <TableRow android:background="#51B435" android:padding="10dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+                            android:text="שם" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+                            android:text="אלרגיות" />
+                    </TableRow>
+                    <TableRow android:background="#F0F7F7" android:padding="5dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:layout_weight="0.2"
+                            android:text="1" />
+                        <TextView
+                            android:id="@+id/DayCare_foodTable_LBL_name1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:layout_weight="1"
+                            android:text="שם ילד" />
+                        <TextView
+                            android:id="@+id/DayCare_foodTable_LBL_ALR1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:layout_weight="1"
+                            android:text="אלרגיות" />
+                    </TableRow>
+                    <TableRow android:background="#F0F7F7" android:padding="5dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:layout_weight="0.2"
+                            android:text="2" />
+                        <TextView
+                            android:id="@+id/DayCare_foodTable_LBL_name2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:layout_weight="1"
+                            android:text="שם הילד" />
+                        <TextView
+                            android:id="@+id/DayCare_foodTable_LBL_ALR2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:layout_weight="1"
+                            android:text="אלרגיות" />
+
+                    </TableRow>
+
+                    <TableRow android:background="#F0F7F7" android:padding="5dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:layout_weight="0.2"
+                            android:text="3" />
+                        <TextView
+                            android:id="@+id/DayCare_foodTable_LBL_name3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:layout_weight="1"
+                            android:text="שם הילד" />
+                        <TextView
+                            android:id="@+id/DayCare_foodTable_LBL_ALR3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:layout_weight="1"
+                            android:text="אלרגיות" />
+
+                    </TableRow>
+
+                    <TableRow android:background="#F0F7F7" android:padding="5dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:layout_weight="0.2"
+                            android:text="4" />
+                        <TextView
+                            android:id="@+id/DayCare_foodTable_LBL_name4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:layout_weight="1"
+                            android:text="שם הילד" />
+                        <TextView
+                            android:id="@+id/DayCare_foodTable_LBL_ALR4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:layout_weight="1"
+                            android:text="אלרגיות" />
+
+                    </TableRow>
+
+                    <TableRow android:background="#F0F7F7" android:padding="5dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:layout_weight="0.2"
+                            android:text="5" />
+                        <TextView
+                            android:id="@+id/DayCare_foodTable_LBL_name5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:layout_weight="1"
+                            android:text="שם הילד" />
+                        <TextView
+                            android:id="@+id/DayCare_foodTable_LBL_ALR5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:layout_weight="1"
+                            android:text="אלרגיות" />
+
+                    </TableRow>
+
+                    <TableRow android:background="#F0F7F7" android:padding="5dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:layout_weight="0.2"
+                            android:text="6" />
+                        <TextView
+                            android:id="@+id/DayCare_foodTable_LBL_name6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:layout_weight="1"
+                            android:text="שם הילד" />
+                        <TextView
+                            android:id="@+id/DayCare_foodTable_LBL_ALR6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:layout_weight="1"
+                            android:text="אלרגיות" />
+
+                    </TableRow>
+
+                </TableLayout>
+
+
+
+            </androidx.cardview.widget.CardView>
 
         </RelativeLayout>
 

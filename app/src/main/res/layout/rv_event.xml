@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layoutDirection="rtl">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/DayCare_rvEvent_main_CARD_data"
+        android:layout_width="282dp"
+        android:layout_height="64dp"
+        android:layout_centerHorizontal="true"
+        app:cardCornerRadius="4dp"
+        android:orientation="horizontal"
+        app:cardElevation="4dp"
+        android:layout_marginTop="6dp"
+        app:cardBackgroundColor="#B65664">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.14">
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:id="@+id/DayCare_rvEvent_IMG_notification"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:strokeColor="@color/black"
+                            android:layout_marginStart="8dp"
+                            android:layout_centerInParent="true"
+                            app:srcCompat="@drawable/daycare_notification" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:id="@+id/DayCare_rvEvent_LAY_TITLE"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RelativeLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1">
+
+                                <com.google.android.material.textview.MaterialTextView
+                                    android:id="@+id/DayCare_rvEvent_LBL_name"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/black"
+                                    android:textSize="10sp"
+                                    android:textStyle="bold"
+                                    tools:text="שם הילד" />
+
+                            </RelativeLayout>
+
+
+                            <RelativeLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.6">
+
+                                <com.google.android.material.textview.MaterialTextView
+                                    android:id="@+id/DayCare_rvEvent_LBL_time"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:textColor="@color/black"
+                                    android:textSize="10sp"
+                                    android:textStyle="bold"
+                                    tools:text="12:34" />
+
+                            </RelativeLayout>
+
+
+                            <RelativeLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.6">
+
+                                <com.google.android.material.textview.MaterialTextView
+                                    android:id="@+id/DayCare_rvEvent_LBL_date"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/black"
+                                    android:textSize="10sp"
+                                    android:textStyle="bold"
+                                    tools:text="08/08/2024" />
+
+                            </RelativeLayout>
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/DayCare_rvEvent_CARD_data"
+                            android:layout_width="282dp"
+                            android:layout_height="112dp"
+                            android:layout_below="@id/DayCare_rvEvent_LAY_TITLE"
+                            app:cardCornerRadius="4dp"
+                            android:orientation="horizontal"
+                            app:cardElevation="4dp"
+                            android:layout_margin="4dp"
+                            app:cardBackgroundColor="#7E0012">
+
+                            <com.google.android.material.imageview.ShapeableImageView
+                                android:id="@+id/DayCare_rvEvent_IMG_text"
+                                android:layout_width="18dp"
+                                android:layout_height="18dp"
+                                app:strokeColor="@color/black"
+                                app:srcCompat="@drawable/daycare_text" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/DayCare_rvEvent_LBL_txt"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:textColor="@color/black"
+                                android:layout_marginStart="22dp"
+                                android:maxLines="3"
+                                android:minLines="1"
+                                android:textSize="10sp"
+                                android:textStyle="bold"
+                                tools:text="טקסט" />
+
+
+                        </androidx.cardview.widget.CardView>
+
+
+
+
+
+                    </RelativeLayout>
+
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </RelativeLayout>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

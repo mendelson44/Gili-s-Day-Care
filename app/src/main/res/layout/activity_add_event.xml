@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Activities.AddEvent"
+    android:background="@drawable/daycare_main_background"
+    android:layoutDirection="rtl">
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.14"
+            android:background="@drawable/daycare_background_title">
+
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/DayCare_addEvent_BTN_exit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:backgroundTint="@android:color/transparent"
+                app:maxImageSize="42dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                style="@style/Widget.MaterialComponents.Button"
+                app:srcCompat="@drawable/daycare_left_arrow"
+                app:tint="@null"
+                android:contentDescription="Add Kid" />
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/DayCare_addEvent_LBL_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/poppinsbold"
+                android:text="הוספת אירוע"
+                android:textColor="@color/white"
+                android:shadowColor="@color/black"
+                android:shadowDx="4"
+                android:shadowDy="4"
+                android:shadowRadius="4"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/DayCare_addEvent_MTV_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppinsbold"
+                android:layout_margin="12dp"
+                android:text="01/08/2024"
+                android:textColor="@color/white"
+                android:shadowColor="@color/black"
+                android:shadowDx="2"
+                android:shadowDy="4"
+                android:shadowRadius="4"
+                android:textSize="8sp"
+                android:textStyle="bold"/>
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/DayCare_addEvent_SIV_logo"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:scaleType="fitStart"
+                android:layout_alignParentBottom="true"
+                android:src="@drawable/daycare_logo" />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.05"
+    >
+
+        </RelativeLayout>
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/DayCare_addEvent_CV_background"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:elevation="32dp"
+                app:cardBackgroundColor="@android:color/white"
+                app:cardCornerRadius="56dp"
+                android:backgroundTint="#FFFFFF" >
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="15dp"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="1">
+
+                                <com.google.android.material.textview.MaterialTextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerHorizontal="true"
+                                    android:text="מילוי פרטים"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/black"
+                                    android:gravity="center"/>
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="1">
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/DayCare_addEvent_LAY_name"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="שם הילד"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                    app:startIconDrawable="@drawable/daycare_person"
+                                    app:endIconMode="clear_text"
+                                    app:startIconTint="@color/black"
+                                    app:endIconTint="@color/red"
+                                    app:boxStrokeColor="@color/purple"
+                                    app:hintTextColor="@color/purple">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/DayCare_addEvent_INP_name"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:inputType="textPersonName"
+                                        android:textColor="@color/black"
+                                        android:textStyle="bold" />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="1">
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/DayCare_addEvent_LAY_text"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="פרטים"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                    app:startIconDrawable="@drawable/daycare_text"
+                                    app:endIconMode="clear_text"
+                                    app:startIconTint="@color/black"
+                                    app:endIconTint="@color/red"
+                                    app:boxStrokeColor="@color/purple"
+                                    app:hintTextColor="@color/purple">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/DayCare_addEvent_INP_text"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:inputType="textPersonName"
+                                        android:textColor="@color/black"
+                                        android:textStyle="bold" />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="1">
+
+                                <com.google.android.material.textview.MaterialTextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerHorizontal="true"
+                                    android:text="תאריך ושעה של האירוע"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/black"
+                                    android:gravity="center"/>
+                            </RelativeLayout>
+
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="1">
+
+                                <androidx.appcompat.widget.LinearLayoutCompat
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <RelativeLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1">
+
+                                        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                                            android:id="@+id/DayCare_addEvent_BTN_btnSelectTime"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_centerVertical="true"
+                                            app:maxImageSize="64dp"
+                                            android:layout_margin="4dp"
+                                            android:contentDescription="Button Select Time"
+                                            app:srcCompat="@drawable/daycare_clock"
+                                            app:tint="@null"
+                                            app:backgroundTint="@color/white"
+                                            app:fabCustomSize="72dp"/>
+
+                                        <com.google.android.material.textview.MaterialTextView
+                                            android:id="@+id/DayCare_addEvent_LBL_txtSelectedTime"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:text="בחר זמן"
+                                            android:textStyle="bold"
+                                            android:fontFamily="@font/poppinsbold"
+                                            android:layout_alignBottom="@id/DayCare_addEvent_BTN_btnSelectTime"
+                                            android:layout_toLeftOf="@+id/DayCare_addEvent_BTN_btnSelectTime" />
+                                    </RelativeLayout>
+
+                                    <RelativeLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1">
+
+                                        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                                            android:id="@+id/DayCare_addEvent_BTN_btnSelectDate"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_centerVertical="true"
+                                            android:layout_alignParentEnd="true"
+                                            app:maxImageSize="64dp"
+                                            android:layout_margin="4dp"
+                                            android:contentDescription="Button Select Date"
+                                            app:srcCompat="@drawable/daycare_calander"
+                                            app:tint="@null"
+                                            app:backgroundTint="@color/white"
+                                            app:fabCustomSize="72dp"/>
+
+                                        <com.google.android.material.textview.MaterialTextView
+                                            android:id="@+id/DayCare_addEvent_LBL_txtSelectedDate"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:text="בחר תאריך"
+                                            android:textStyle="bold"
+                                            android:gravity="end"
+                                            android:fontFamily="@font/poppinsbold"
+                                            android:layout_alignBottom="@id/DayCare_addEvent_BTN_btnSelectDate"
+                                            android:layout_toRightOf="@+id/DayCare_addEvent_BTN_btnSelectDate" />
+
+                                    </RelativeLayout>
+                                </androidx.appcompat.widget.LinearLayoutCompat>
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="1">
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/DayCare_addEvent_BTN_add"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerHorizontal="true"
+                                    android:text="הוספה"
+                                    android:textColor="@color/darkBGfood"
+                                    app:backgroundTint="@color/button_addkid_color_selector"
+                                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="1">
+
+
+                            </RelativeLayout>
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+                    </RelativeLayout>
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </androidx.cardview.widget.CardView>
+        </ScrollView>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</RelativeLayout>

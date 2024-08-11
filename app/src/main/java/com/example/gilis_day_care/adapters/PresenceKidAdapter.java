@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.gilis_day_care.Fragments.Kid;
+import com.example.gilis_day_care.model.Kid;
 import com.example.gilis_day_care.Interface.KidCallBack;
 import com.example.gilis_day_care.R;
 import com.google.android.material.imageview.ShapeableImageView;
