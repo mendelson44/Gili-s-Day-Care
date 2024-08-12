@@ -1,5 +1,7 @@
 package com.example.gilis_day_care.Fragments;
 
+import android.content.Context;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 
 import androidx.appcompat.widget.LinearLayoutCompat;
@@ -11,11 +13,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
+import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TableLayout;
 import android.widget.TextView;
@@ -33,13 +37,13 @@ import com.example.gilis_day_care.model.Manager;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.button.MaterialButtonToggleGroup;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.textview.MaterialTextView;
 
 
 public class HomeFragment extends Fragment {
 
     private CardView DayCare_home_CV_background;
-    private MaterialButtonToggleGroup DayCare_home_TBG_newDayWork;
     private MaterialButton DayCare_home_BTN_presence;
     private MaterialButton DayCare_home_BTN_food;
     private LinearLayoutCompat DayCare_presence_LAY;
@@ -64,6 +68,13 @@ public class HomeFragment extends Fragment {
     private TextView DayCare_foodTable_LBL_name6;
     private TextView DayCare_foodTable_LBL_ALR6;
 
+    private ShapeableImageView DayCare_foodTable_IMG_check1;
+    private ShapeableImageView DayCare_foodTable_IMG_check2;
+    private ShapeableImageView DayCare_foodTable_IMG_check3;
+    private ShapeableImageView DayCare_foodTable_IMG_check4;
+    private ShapeableImageView DayCare_foodTable_IMG_check5;
+    private ShapeableImageView DayCare_foodTable_IMG_check6;
+
     private FloatingActionButton DayCare_home_BTN_back;
     private FloatingActionButton DayCare_home_BTN_forward;
 
@@ -71,20 +82,37 @@ public class HomeFragment extends Fragment {
     private PresenceKidAdapter adapter;
     private RecyclerView DayCare_presence_RV_kidsPresenceList;
     private ArrayList<Kid> kidsList;
-    private ArrayList<Kid> presentList;
     private Map<Integer,ArrayList<Kid>> foodTableList;
-    private ArrayList<Kid> workFinalList;
     private Manager manager;
-    private int countFoodGroups = 0;
+    private int countFoodGroups;
+    private SparseArray<ShapeableImageView> ShapeableImageViewMap;
+
+
+    private static volatile HomeFragment instance;
+
+
+    public static HomeFragment init(ArrayList<Kid> kidsList){
+        if (instance == null){
+            synchronized (HomeFragment.class){
+                if (instance == null){
+                    instance = new HomeFragment(kidsList);
+                }
+            }
+        }
+        return getInstance();
+    }
+
+    public static HomeFragment getInstance() {
+        return instance;
+    }
 
 
     public HomeFragment (ArrayList<Kid> kidsList) {
        this.kidsList = kidsList;
        this.manager = new Manager();
-       this.presentList = new ArrayList<>();
        this.foodTableList = new HashMap<>();
-       this.workFinalList = new ArrayList<>();
-
+       this.countFoodGroups = 0;
+       generateFoodList();
     }
 
     @Override
@@ -92,12 +120,7 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         findViews(view);
-        initHomeFragmentUI();
         initRecyclerView();  // Initialize RecyclerView
-        generateFoodList();
-        // Simulate progress
-        simulateProgress();
-
 
         // Set up click listener for slide button to presence layout
         DayCare_home_BTN_presence.setOnClickListener(new View.OnClickListener() {
@@ -120,6 +143,9 @@ public class HomeFragment extends Fragment {
                 animation = AnimationUtils.loadAnimation(v.getContext()
                         , R.anim.scale_and_fade);
                 DayCare_home_CV_background.startAnimation(animation);
+
+
+                UpdatePresentList();
             }
 
         });
@@ -142,11 +168,17 @@ public class HomeFragment extends Fragment {
                     DayCare_foodTable.setVisibility(View.INVISIBLE);
                 }
 
-
-
                 animation = AnimationUtils.loadAnimation(v.getContext()
                         , R.anim.scale_and_fade);
                 DayCare_home_CV_background.startAnimation(animation);
+
+
+                if (countFoodGroups == 0) {
+                    countFoodGroups++;
+                    updateFoodTable_UI(foodTableList.get(countFoodGroups));
+                }
+                else
+                    updateFoodTable_UI(foodTableList.get(countFoodGroups));
             }
 
         });
@@ -178,27 +210,73 @@ public class HomeFragment extends Fragment {
             }
 
         });
-
+        DayCare_foodTable_IMG_check1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (0 < foodTableList.get(countFoodGroups).size()) {
+                    if (foodTableList.get(countFoodGroups).get(0).getState() != 0)
+                        UpdateFoodTable_kidCheck_UI(0);
+                }
+            }
+        });
+        DayCare_foodTable_IMG_check2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (1 < foodTableList.get(countFoodGroups).size()) {
+                    if (foodTableList.get(countFoodGroups).get(1).getState() != 0)
+                        UpdateFoodTable_kidCheck_UI(1);
+                }
+            }
+        });
+        DayCare_foodTable_IMG_check3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (2 < foodTableList.get(countFoodGroups).size()) {
+                    if (foodTableList.get(countFoodGroups).get(2).getState() != 0)
+                        UpdateFoodTable_kidCheck_UI(2);
+                }
+            }
+        });
+        DayCare_foodTable_IMG_check4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (3 < foodTableList.get(countFoodGroups).size()) {
+                    if (foodTableList.get(countFoodGroups).get(3).getState() != 0)
+                        UpdateFoodTable_kidCheck_UI(3);
+                }
+            }
+        });
+        DayCare_foodTable_IMG_check5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (4 < foodTableList.get(countFoodGroups).size()) {
+                    if (foodTableList.get(countFoodGroups).get(4).getState() != 0)
+                        UpdateFoodTable_kidCheck_UI(4);
+                }
+            }
+        });
+        DayCare_foodTable_IMG_check6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (5 < foodTableList.get(countFoodGroups).size()) {
+                    if (foodTableList.get(countFoodGroups).get(5).getState() != 0)
+                        UpdateFoodTable_kidCheck_UI(5);
+                }
+            }
+        });
         return view;
     }
-
 
     @Override
     public void onResume() {
         super.onResume();
-        initCurrentUser();
-        initHomeFragmentUI();
 
     }
 
-
-    private void initCurrentUser() {
-    }
 
     private void findViews(View view) {
 
         DayCare_home_CV_background = view.findViewById(R.id.DayCare_home_CV_background);
-        DayCare_home_TBG_newDayWork = view.findViewById(R.id.DayCare_home_TBG_newDayWork);
         DayCare_home_BTN_presence = view.findViewById(R.id.DayCare_home_BTN_presence);
         DayCare_home_BTN_food = view.findViewById(R.id.DayCare_home_BTN_food);
         DayCare_presence_RV_kidsPresenceList = view.findViewById(R.id.DayCare_presence_RV_kidsPresenceList);
@@ -213,25 +291,37 @@ public class HomeFragment extends Fragment {
         DayCare_foodTable_LBL_groupNumber = view.findViewById(R.id.DayCare_foodTable_LBL_groupNumber);
         DayCare_foodTable_LBL_name1 = view.findViewById(R.id.DayCare_foodTable_LBL_name1);
         DayCare_foodTable_LBL_ALR1 = view.findViewById(R.id.DayCare_foodTable_LBL_ALR1);
+        DayCare_foodTable_IMG_check1 = view.findViewById(R.id.DayCare_foodTable_IMG_check1);
         DayCare_foodTable_LBL_name2 = view.findViewById(R.id.DayCare_foodTable_LBL_name2);
         DayCare_foodTable_LBL_ALR2 = view.findViewById(R.id.DayCare_foodTable_LBL_ALR2);
+        DayCare_foodTable_IMG_check2 = view.findViewById(R.id.DayCare_foodTable_IMG_check2);
         DayCare_foodTable_LBL_name3 = view.findViewById(R.id.DayCare_foodTable_LBL_name3);
         DayCare_foodTable_LBL_ALR3 = view.findViewById(R.id.DayCare_foodTable_LBL_ALR3);
+        DayCare_foodTable_IMG_check3 = view.findViewById(R.id.DayCare_foodTable_IMG_check3);
         DayCare_foodTable_LBL_name4 = view.findViewById(R.id.DayCare_foodTable_LBL_name4);
         DayCare_foodTable_LBL_ALR4 = view.findViewById(R.id.DayCare_foodTable_LBL_ALR4);
+        DayCare_foodTable_IMG_check4 = view.findViewById(R.id.DayCare_foodTable_IMG_check4);
         DayCare_foodTable_LBL_name5 = view.findViewById(R.id.DayCare_foodTable_LBL_name5);
         DayCare_foodTable_LBL_ALR5 = view.findViewById(R.id.DayCare_foodTable_LBL_ALR5);
+        DayCare_foodTable_IMG_check5 = view.findViewById(R.id.DayCare_foodTable_IMG_check5);
         DayCare_foodTable_LBL_name6 = view.findViewById(R.id.DayCare_foodTable_LBL_name6);
         DayCare_foodTable_LBL_ALR6 = view.findViewById(R.id.DayCare_foodTable_LBL_ALR6);
+        DayCare_foodTable_IMG_check6 = view.findViewById(R.id.DayCare_foodTable_IMG_check6);
 
         DayCare_home_BTN_back = view.findViewById(R.id.DayCare_home_BTN_back);
         DayCare_home_BTN_forward = view.findViewById(R.id.DayCare_home_BTN_forward);
 
+
+        ShapeableImageViewMap = new SparseArray<>();
+        ShapeableImageViewMap.put(0, DayCare_foodTable_IMG_check1);
+        ShapeableImageViewMap.put(1, DayCare_foodTable_IMG_check2);
+        ShapeableImageViewMap.put(2, DayCare_foodTable_IMG_check3);
+        ShapeableImageViewMap.put(3, DayCare_foodTable_IMG_check4);
+        ShapeableImageViewMap.put(4, DayCare_foodTable_IMG_check5);
+        ShapeableImageViewMap.put(5, DayCare_foodTable_IMG_check6);
+
     }
 
-    private void initHomeFragmentUI() {
-
-    }
 
     private void initRecyclerView() {
         adapter = new PresenceKidAdapter(getActivity().getApplicationContext(), kidsList);
@@ -240,7 +330,7 @@ public class HomeFragment extends Fragment {
         DayCare_presence_RV_kidsPresenceList.setLayoutManager(linearLayoutManager);
         DayCare_presence_RV_kidsPresenceList.setAdapter(adapter);
         adapter.setKidCallback((kid, position) -> {
-            kid.setPresent(!kid.isPresent());
+            kid.setState(kid.getState() == 0 ? 1 : 0);
             UpdatePresentList();
             adapter.notifyItemChanged(position);
             makeSound();
@@ -249,16 +339,23 @@ public class HomeFragment extends Fragment {
     }
 
     private void UpdatePresentList() {
-        for (Kid kid: kidsList) {
-            if (kid.isPresent() && !(presentList.contains(kid)))
-                presentList.add(kid);
-            else if (!kid.isPresent() && presentList.contains(kid))
-                presentList.remove(kid);
+
+        int count  = getCountOfKidsInByState(1);
+        int kidsInState2  = getCountOfKidsInByState(2);
+        int finalCount = count + kidsInState2;
+        DayCare_home_progressBar_presence.setProgress((finalCount*100)/kidsList.size());
+        DayCare_home_progressBar_LBL_countPresentKids.setText(finalCount + "/" + kidsList.size());
+        Log.d("Presence progress", "Update Present List count : " + finalCount);
+    }
+
+    private int getCountOfKidsInByState(int state) {
+        int count = 0 ;
+        for (Kid kid:kidsList) {
+            if (kid.getState() == state)
+                count++;
 
         }
-        DayCare_home_progressBar_presence.setProgress(((presentList.size()*100)/kidsList.size()));
-        DayCare_home_progressBar_LBL_countPresentKids.setText(String.valueOf(presentList.size()) + "/" + String.valueOf(kidsList.size()));
-        Log.d("Presence progress", "Update Present List" + presentList);
+        return count;
     }
 
     private void generateFoodList() {
@@ -290,10 +387,27 @@ public class HomeFragment extends Fragment {
 
     private void updateFoodTable_UI(ArrayList<Kid> foodList) {
 
-        DayCare_home_progressBar_food.setProgress((((countFoodGroups*6)*100)/kidsList.size()));
-        DayCare_home_progressBar_LBL_countFinishedFood.setText(String.valueOf((countFoodGroups*6) + "/" + String.valueOf(kidsList.size())));
+        int kidsInState2  = getCountOfKidsInByState(2);
+        int kidsInState1  = getCountOfKidsInByState(1);
+        int allKidsAfterState1 = (kidsInState1 + kidsInState2);
+        int progress = 0;
+        if(allKidsAfterState1 != 0)
+            progress = kidsInState2 * 100 / allKidsAfterState1;
+        DayCare_home_progressBar_food.setProgress(progress);
+        DayCare_home_progressBar_LBL_countFinishedFood.setText(kidsInState2 + "/" + allKidsAfterState1);
         DayCare_foodTable_LBL_groupNumber.setText(" קבוצה " + "-" + countFoodGroups);
-        Log.d("food progress", "Update food List" + workFinalList);
+
+        for (int i = 0; i < foodList.size(); i++) {
+            if (foodList.get(i).getState() == 2)
+                ShapeableImageViewMap.get(i).setImageResource(R.drawable.daycare_green_check);
+            else if (foodList.get(i).getState() == 1)
+                ShapeableImageViewMap.get(i).setImageResource(R.drawable.daycare_empty_check);
+            else
+                ShapeableImageViewMap.get(i).setImageResource(R.drawable.daycare_checkbox);
+        }
+        for (int i = foodList.size(); i < 6; i++) {
+            ShapeableImageViewMap.get(i).setImageResource(R.drawable.daycare_checkbox);
+        }
 
         DayCare_foodTable_LBL_name1.setText("----");
         DayCare_foodTable_LBL_ALR1.setText("----");
@@ -339,29 +453,45 @@ public class HomeFragment extends Fragment {
     private void makeSound() {
     }
 
-    private void simulateProgress() {
+    private void UpdateFoodTable_kidCheck_UI(int row) {
 
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
+        if (foodTableList != null && !foodTableList.isEmpty()) {
 
-                    // Update UI
-                    getActivity().runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-
-                            // Update the percentage text
-
-                        }
-                    });
-
-                    try {
-                        Thread.sleep(1000); // Simulate time delay
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
+            if (foodTableList.get(countFoodGroups).get(row) != null) {
+                Kid kid = foodTableList.get(countFoodGroups).get(row);
+                Log.d("Food progress", "checked on kid :" + kid.toString());
+                ShapeableImageView checkImageView = ShapeableImageViewMap.get(row);
+                if (checkImageView != null) {
+                    if (kid.getState() == 2) {
+                        checkImageView.setImageResource(R.drawable.daycare_empty_check);
+                        kid.setState(1);
+                    } else {
+                        checkImageView.setImageResource(R.drawable.daycare_green_check);
+                        kid.setState(2);
                     }
                 }
-        }).start();
+            } else {
+                Log.e("Food progress", "check mark on a null kid");
+            }
+        } else {
+            Log.e("Food progress", "Invalid foodTableList");
+        }
+
+        // Update progress
+        if (kidsList != null && !kidsList.isEmpty()) {
+            int kidsInState2  = getCountOfKidsInByState(2);
+            int kidsInState1  = getCountOfKidsInByState(1);
+            int allKidsAfterState1 = (kidsInState1 + kidsInState2);
+            int progress = 0;
+            if(allKidsAfterState1 != 0)
+                progress = kidsInState2 * 100 / allKidsAfterState1;
+            DayCare_home_progressBar_food.setProgress(progress);
+            DayCare_home_progressBar_LBL_countFinishedFood.setText(kidsInState2 + "/" + allKidsAfterState1);
+        } else {
+            Log.e("Food progress", "kidsList is null or empty");
+        }
     }
+
+
 
 }

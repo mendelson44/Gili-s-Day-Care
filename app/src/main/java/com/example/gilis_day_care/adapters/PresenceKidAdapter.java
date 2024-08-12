@@ -39,10 +39,11 @@ public class PresenceKidAdapter extends RecyclerView.Adapter<PresenceKidAdapter.
     @Override
     public void onBindViewHolder(@NonNull KidViewHolder holder, int position) {
             Kid kid = getItem(position);
-        if (kid.isPresent())
-            holder.DayCare_rvPresence_IMG_check.setImageResource(R.drawable.daycare_green_check);
-        else
+        if (kid.getState() == 0)
             holder.DayCare_rvPresence_IMG_check.setImageResource(R.drawable.daycare_empty_check);
+
+        else
+            holder.DayCare_rvPresence_IMG_check.setImageResource(R.drawable.daycare_green_check);
 
 
         holder.DayCare_rvPresence_LBL_name.setText(kid.getName());

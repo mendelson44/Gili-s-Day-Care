@@ -215,8 +215,7 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/DayCare_home_CV_background"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="-56dp"
+                android:layout_height="wrap_content"
                 android:elevation="22dp"
                 app:cardBackgroundColor="@android:color/transparent"
                 app:cardCornerRadius="4dp">
@@ -225,16 +224,15 @@
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:id="@+id/DayCare_presence_LAY"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:visibility="invisible"
                     android:orientation="horizontal">
-
-
 
                     <RelativeLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="0.1"
+                        android:layout_marginTop="5dp"
                         android:background="@drawable/daycare_background_wood">
 
                     </RelativeLayout>
@@ -256,6 +254,7 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="0.1"
+                        android:layout_marginTop="5dp"
                         android:background="@drawable/daycare_background_wood">
                     </RelativeLayout>
 
@@ -266,16 +265,16 @@
                 <TableLayout
                     android:id="@+id/DayCare_foodTable"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:visibility="invisible"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="5dp"
                     android:paddingLeft="5dp"
                     android:paddingRight="5dp"
                     android:layoutDirection="rtl">
 
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="52dp"
                         android:orientation="horizontal">
 
                         <RelativeLayout
@@ -336,12 +335,18 @@
                         </RelativeLayout>
                     </androidx.appcompat.widget.LinearLayoutCompat>
 
-                    <TableRow android:background="#51B435" android:padding="10dp">
+                    <TableRow android:background="#51B435" android:padding="6dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.15"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:gravity="center"
+
                             android:textColor="@color/black"
                             android:textStyle="bold"
                             android:text="שם" />
@@ -349,12 +354,21 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:gravity="center"
                             android:textColor="@color/black"
                             android:textStyle="bold"
                             android:text="אלרגיות" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.05"
+                            android:textSize="10sp"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+                            android:text="סימון שאכל" />
                     </TableRow>
-                    <TableRow android:background="#F0F7F7" android:padding="5dp">
+                    <TableRow
+                        android:background="#F0F7F7"
+                        android:padding="3dp">
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -367,7 +381,7 @@
                             android:layout_height="wrap_content"
                             android:textColor="@color/black"
                             android:layout_weight="1"
-                            android:text="שם ילד" />
+                            android:text="שם הילד" />
                         <TextView
                             android:id="@+id/DayCare_foodTable_LBL_ALR1"
                             android:layout_width="wrap_content"
@@ -375,8 +389,17 @@
                             android:textColor="@color/black"
                             android:layout_weight="1"
                             android:text="אלרגיות" />
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:id="@+id/DayCare_foodTable_IMG_check1"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_weight="0.1"
+                            app:strokeColor="@color/black"
+                            app:srcCompat="@drawable/daycare_empty_check"/>
+
                     </TableRow>
-                    <TableRow android:background="#F0F7F7" android:padding="5dp">
+                    <TableRow android:background="#F0F7F7" android:padding="3dp">
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -397,10 +420,17 @@
                             android:textColor="@color/black"
                             android:layout_weight="1"
                             android:text="אלרגיות" />
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:id="@+id/DayCare_foodTable_IMG_check2"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_weight="0.1"
+                            app:strokeColor="@color/black"
+                            app:srcCompat="@drawable/daycare_empty_check" />
 
                     </TableRow>
 
-                    <TableRow android:background="#F0F7F7" android:padding="5dp">
+                    <TableRow android:background="#F0F7F7" android:padding="3dp">
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -421,10 +451,17 @@
                             android:textColor="@color/black"
                             android:layout_weight="1"
                             android:text="אלרגיות" />
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:id="@+id/DayCare_foodTable_IMG_check3"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_weight="0.1"
+                            app:strokeColor="@color/black"
+                            app:srcCompat="@drawable/daycare_empty_check"/>
 
                     </TableRow>
 
-                    <TableRow android:background="#F0F7F7" android:padding="5dp">
+                    <TableRow android:background="#F0F7F7" android:padding="3dp">
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -445,10 +482,17 @@
                             android:textColor="@color/black"
                             android:layout_weight="1"
                             android:text="אלרגיות" />
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:id="@+id/DayCare_foodTable_IMG_check4"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_weight="0.1"
+                            app:strokeColor="@color/black"
+                            app:srcCompat="@drawable/daycare_empty_check" />
 
                     </TableRow>
 
-                    <TableRow android:background="#F0F7F7" android:padding="5dp">
+                    <TableRow android:background="#F0F7F7" android:padding="3dp">
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -469,10 +513,17 @@
                             android:textColor="@color/black"
                             android:layout_weight="1"
                             android:text="אלרגיות" />
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:id="@+id/DayCare_foodTable_IMG_check5"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_weight="0.1"
+                            app:strokeColor="@color/black"
+                            app:srcCompat="@drawable/daycare_empty_check"/>
 
                     </TableRow>
 
-                    <TableRow android:background="#F0F7F7" android:padding="5dp">
+                    <TableRow android:background="#F0F7F7" android:padding="3dp">
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -493,12 +544,17 @@
                             android:textColor="@color/black"
                             android:layout_weight="1"
                             android:text="אלרגיות" />
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:id="@+id/DayCare_foodTable_IMG_check6"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_weight="0.1"
+                            app:strokeColor="@color/black"
+                            app:srcCompat="@drawable/daycare_empty_check"/>
 
                     </TableRow>
 
                 </TableLayout>
-
-
 
             </androidx.cardview.widget.CardView>
 

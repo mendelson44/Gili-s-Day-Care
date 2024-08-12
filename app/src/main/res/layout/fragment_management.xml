@@ -212,54 +212,33 @@
             android:layout_weight="1">
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/DayCare_event_CV"
+                android:layout_width="312dp"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
+                android:elevation="22dp"
+                app:cardBackgroundColor="@android:color/transparent"
+                app:cardCornerRadius="4dp">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/DayCare_event_RV"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    tools:listitem="@layout/rv_event" />
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
                 android:id="@+id/DayCare_management_CV_background"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="-56dp"
                 android:elevation="32dp"
+                android:visibility="visible"
                 android:backgroundTint="@color/white"
                 app:cardCornerRadius="56dp">
 
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:id="@+id/DayCare_presence_LAY"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:visibility="invisible"
-                    android:orientation="horizontal">
-
-
-
-                    <RelativeLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.1"
-                        android:background="@drawable/daycare_background_wood">
-
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1">
-
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/DayCare_presence_RV_kidsPresenceList"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            tools:listitem="@layout/rv_presence_kid" />
-
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.1"
-                        android:background="@drawable/daycare_background_wood">
-                    </RelativeLayout>
-
-
-                </androidx.appcompat.widget.LinearLayoutCompat>
 
 
                 <TableLayout

@@ -18,7 +18,7 @@ public class Kid {
     private String sos;
     private String allergies;
     private List<Integer> days;
-    private boolean present;
+    private int state;
     private boolean girl;
 
 
@@ -37,7 +37,7 @@ public class Kid {
         this.sos = sos;
         this.allergies = allergies;
         this.days = days;
-        this.present = false;
+        this.state = 0;
         this.girl = isGirl;
     }
 
@@ -146,17 +146,19 @@ public class Kid {
         return days;
     }
 
-    public boolean isPresent() {
-        return present;
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
     }
 
     public void setDays(List<Integer> days) {
         this.days = days;
     }
 
-    public void setPresent(boolean present) {
-        this.present = present;
-    }
+
 
     public boolean isGirl() {
         return girl;
@@ -181,9 +183,8 @@ public class Kid {
                 ", sos='" + sos + '\'' +
                 ", allergies='" + allergies + '\'' +
                 ", days=" + days +
-                ", present=" + present +
+                ", state=" + state +
                 ", girl=" + girl +
                 '}';
     }
-
 }

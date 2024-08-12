@@ -1,5 +1,8 @@
 package com.example.gilis_day_care.Activities;
 
+import android.animation.Animator;
+import android.animation.AnimatorInflater;
+import android.animation.AnimatorListenerAdapter;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -9,6 +12,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.RelativeLayout;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,6 +38,7 @@ import com.example.gilis_day_care.Fragments.ManagementFragment;
 import com.example.gilis_day_care.databinding.ActivityMainBinding;
 import com.example.gilis_day_care.R;
 import com.example.gilis_day_care.model.Manager;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textview.MaterialTextView;
 
@@ -44,6 +49,9 @@ import java.util.Calendar;
 public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
+
+    private MaterialButton DayCare_main_BTN_START;
+    private RelativeLayout DayCare_main_LAY;
     private ArrayList<Kid> kidsList = new ArrayList<>();
     private ArrayList<Kid> workDayList = new ArrayList<>();
     private FloatingActionButton DayCare_main_BTN_addKid;
@@ -60,8 +68,6 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayoutCompat DayCare_main_kidsRV_LAY;
     private CardView DayCare_main_kidsRV_CARD;
     private final Object lock = new Object();
-
-    private Handler handler = new Handler(Looper.getMainLooper());
 
 
     @Override
@@ -80,10 +86,11 @@ public class MainActivity extends AppCompatActivity {
             public void onSuccess(ArrayList<Kid> loadedKidsList) {
                 // Assign the loaded data to the MainActivity's kidsList field
                 MainActivity.this.kidsList = loadedKidsList;
-                MainActivity.this.loadKidsRecycleView(loadedKidsList);
+                MainActivity.this.initKidsRecycleView(loadedKidsList);
                 Log.d("MainActivity", "kids list." + MainActivity.this.kidsList);
                 UpdateWorkList(dayOfWeek);
                 Log.d("MainActivity", "work day kids list." + MainActivity.this.workDayList);
+                HomeFragment.init(workDayList);
 
             }
 
@@ -122,9 +129,8 @@ public class MainActivity extends AppCompatActivity {
             Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.Main_frame_layout);
 
             if (item.getItemId() == R.id.home) {
-                selectedFragment = new HomeFragment(workDayList);
+                selectedFragment = HomeFragment.getInstance();
                 DayCare_main_LBL_title.setText("דף הבית");
-                //DayCare_main_kidsRV_CARD.setVisibility(View.GONE);
                 DayCare_main_kidsRV_LAY.setVisibility(View.INVISIBLE);
                 toLeft = false;
             }
@@ -139,9 +145,8 @@ public class MainActivity extends AppCompatActivity {
                     toLeft = false;
             }
             else if (item.getItemId() == R.id.management) {
-                selectedFragment = new ManagementFragment();
+                selectedFragment = new ManagementFragment(eventsList);
                 DayCare_main_LBL_title.setText("הנהלה");
-                //DayCare_main_kidsRV_CARD.setVisibility(View.GONE);
                 DayCare_main_kidsRV_LAY.setVisibility(View.INVISIBLE);
                 toLeft = true;
             }
@@ -154,12 +159,22 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+        DayCare_main_BTN_START.setOnClickListener(view -> startWorkDay());
         DayCare_main_BTN_addKid.setOnClickListener(view -> addKidActivity());
         DayCare_main_BTN_addEvent.setOnClickListener(view -> addEventActivity());
     }
 
+    private void startWorkDay() {
+
+        DayCare_main_LAY.setVisibility(View.VISIBLE);
+        DayCare_main_BTN_START.setVisibility(View.GONE);
+        replaceFragment(HomeFragment.getInstance(), new KidsFragment(), true, true);
+    }
+
     private void findViews() {
 
+        DayCare_main_LAY = findViewById(R.id.DayCare_main_LAY);
+        DayCare_main_BTN_START = findViewById(R.id.DayCare_main_BTN_START);
         DayCare_main_LBL_title = findViewById(R.id.DayCare_main_LBL_title);
         DayCare_main_BTN_addKid = findViewById(R.id.DayCare_main_BTN_addKid);
         DayCare_main_BTN_addEvent = findViewById(R.id.DayCare_main_BTN_addEvent);
@@ -311,16 +326,61 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void initRecyclerView() {
-        adapter = new EventAdapter(this, eventsList);
+
+        adapter = new EventAdapter(this, eventsList, position -> {
+            // Trigger swipe animation on item click
+            RecyclerView.ViewHolder viewHolder = DayCare_notificationCard_RV_EventsList.findViewHolderForAdapterPosition(position);
+            if (viewHolder != null) {
+                View view = viewHolder.itemView;
+                Animator animator;
+                if(view.getTranslationX() == 0) {
+                    animator = AnimatorInflater.loadAnimator(this, R.animator.slide_left);
+                    view.findViewById(R.id.DayCare_rvEvent_IMG_delete).setVisibility(View.VISIBLE);
+                }
+
+                else {
+                    animator = AnimatorInflater.loadAnimator(this, R.animator.slide_right);
+                    view.findViewById(R.id.DayCare_rvEvent_IMG_delete).setVisibility(View.INVISIBLE);
+                }
+                animator.setTarget(view);  // Set the target view for the animation
+                animator.start();  // Start the animation
+
+            }
+        });
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
         DayCare_notificationCard_RV_EventsList.setLayoutManager(linearLayoutManager);
         DayCare_notificationCard_RV_EventsList.setAdapter(adapter);
+        adapter.setEventDeleteCallBack((event, position) -> {
+            // Get the ViewHolder for the given position
+            RecyclerView.ViewHolder viewHolder = DayCare_notificationCard_RV_EventsList.findViewHolderForAdapterPosition(position);
+
+            if (viewHolder != null) {
+                View view = viewHolder.itemView;
+
+                // Load and set the animation
+                Animator animator = AnimatorInflater.loadAnimator(this, R.animator.slide_right_delete);
+                animator.setTarget(view);
+                animator.start();
+
+                // Add a listener to remove the item after the animation ends
+                animator.addListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        // Remove the item from the adapter's data source
+                        adapter.removeItem(position);
+                    }
+                });
+            } else {
+                // Handle the case where the ViewHolder is null
+                adapter.removeItem(position);
+            }
+        });
 
         Log.d("mainActivity", "RecyclerView EVENTS initialized with adapter.");
     }
 
-    private void loadKidsRecycleView(ArrayList<Kid> kidsList) {
+    private void initKidsRecycleView(ArrayList<Kid> kidsList) {
 
         // Initialize the RecyclerView
         KidAdapter adapterKid = new KidAdapter(this, kidsList);

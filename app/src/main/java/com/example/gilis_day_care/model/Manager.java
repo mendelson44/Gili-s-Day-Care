@@ -11,17 +11,28 @@ import com.example.gilis_day_care.Interface.KidListCallBack;
 import com.example.gilis_day_care.Utilities.MyFireBase;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Manager {
 
-    private ArrayList<Kid> kidsList = new ArrayList<>();
-    private ArrayList<Event> eventsList = new ArrayList<>();
-    private ArrayList<Kid> presentList = new ArrayList<>();
-    private ArrayList<Kid> workDayList = new ArrayList<>();
+    private ArrayList<Kid> kidsList;
+    private ArrayList<Event> eventsList;
+    private ArrayList<Kid> presentList;
+    private Map<Integer,ArrayList<Kid>> foodTableList;
+    private ArrayList<Kid> workFinalList;
     private MyFireBase database;
 
+
+
     public Manager() {
+
         this.database = new MyFireBase();
+        this.kidsList = new ArrayList<>();
+        this.eventsList = new ArrayList<>();
+        this.presentList = new ArrayList<>();
+        this.workFinalList = new ArrayList<>();
+        this.foodTableList = new HashMap<>();
     }
 
     public ArrayList<Kid> getKidsList() {

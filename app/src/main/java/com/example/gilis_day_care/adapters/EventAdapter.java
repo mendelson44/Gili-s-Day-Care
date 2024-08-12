@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.gilis_day_care.Interface.EventDeleteCallBack;
 import com.example.gilis_day_care.Interface.KidCallBack;
 import com.example.gilis_day_care.R;
 import com.example.gilis_day_care.model.Event;
@@ -17,15 +18,33 @@ import com.google.android.material.textview.MaterialTextView;
 
 import java.util.ArrayList;
 
+
+
 public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHolder> {
 
     private Context context;
     private ArrayList<Event> eventList;
+    private EventDeleteCallBack eventDeleteCallBack;
+    private final OnItemClickListener listener;
+
+    public void removeItem(int position) {
+        if (position >= 0 && position < eventList.size()) {
+            eventList.remove(position);
+            notifyItemRemoved(position);
+            notifyItemRangeChanged(position, eventList.size()); // Update positions of remaining items
+        }
+    }
 
 
-    public EventAdapter(Context context, ArrayList<Event> eventList) {
+
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+    }
+
+    public EventAdapter(Context context, ArrayList<Event> eventList, OnItemClickListener listener) {
         this.context = context;
         this.eventList = eventList;
+        this.listener = listener;
 
     }
 
@@ -45,6 +64,10 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
         holder.DayCare_rvEvent_LBL_time.setText(event.getTime());
         holder.DayCare_rvEvent_LBL_date.setText(event.getDate());
 
+        holder.DayCare_rvEvent_IMG_delete.setImageResource(R.drawable.daycare_delete);
+
+        holder.itemView.setOnClickListener(v -> listener.onItemClick(position));
+
     }
 
     @Override
@@ -58,6 +81,10 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
         return eventList.get(position);
     }
 
+    public void setEventDeleteCallBack(EventDeleteCallBack eventDeleteCallBack) {
+        this.eventDeleteCallBack = eventDeleteCallBack;
+    }
+
 
     public class EventViewHolder extends RecyclerView.ViewHolder {
 
@@ -65,6 +92,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
         private MaterialTextView DayCare_rvEvent_LBL_txt;
         private MaterialTextView DayCare_rvEvent_LBL_time;
         private MaterialTextView DayCare_rvEvent_LBL_date;
+        private ShapeableImageView DayCare_rvEvent_IMG_delete;
 
 
         public EventViewHolder(@NonNull View itemView) {
@@ -74,6 +102,12 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
             DayCare_rvEvent_LBL_txt = itemView.findViewById(R.id.DayCare_rvEvent_LBL_txt);
             DayCare_rvEvent_LBL_time = itemView.findViewById(R.id.DayCare_rvEvent_LBL_time);
             DayCare_rvEvent_LBL_date = itemView.findViewById(R.id.DayCare_rvEvent_LBL_date);
+            DayCare_rvEvent_IMG_delete = itemView.findViewById(R.id.DayCare_rvEvent_IMG_delete);
+
+            DayCare_rvEvent_IMG_delete.setOnClickListener(v -> {
+                if (eventDeleteCallBack != null)
+                    eventDeleteCallBack.eventDeleteButtonClicked(getItem(getAdapterPosition()), getAdapterPosition());
+            });
 
 
         }

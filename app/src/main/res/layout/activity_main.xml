@@ -57,9 +57,11 @@ android:layoutDirection="rtl">
 
 
         <RelativeLayout
+            android:id="@+id/DayCare_main_LAY"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.4">
+            android:layout_weight="0.4"
+            android:visibility="visible">
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
@@ -69,7 +71,7 @@ android:layoutDirection="rtl">
                 <RelativeLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.5">
+                    android:layout_weight="0.3">
 
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="match_parent"
@@ -82,7 +84,7 @@ android:layoutDirection="rtl">
                             android:layout_weight="6">
 
                             <com.google.android.material.imageview.ShapeableImageView
-                                android:id="@+id/DayCare_home_SIV_logo"
+                                android:id="@+id/DayCare_MAIN_IMG_logo"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:src="@drawable/daycare_logo" />
@@ -204,31 +206,28 @@ android:layoutDirection="rtl">
                                             tools:listitem="@layout/rv_event" />
 
                                     </RelativeLayout>
-
-
-
                                 </androidx.appcompat.widget.LinearLayoutCompat>
-
                             </androidx.cardview.widget.CardView>
-
                         </RelativeLayout>
-
-
                     </androidx.appcompat.widget.LinearLayoutCompat>
-
-
                 </RelativeLayout>
-
-
             </androidx.appcompat.widget.LinearLayoutCompat>
-
-
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/DayCare_main_BTN_START"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="START"
+                android:textColor="@color/darkBGfood"
+                app:backgroundTint="@color/black"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
 
             <FrameLayout
                 android:id="@+id/Main_frame_layout"
@@ -239,7 +238,6 @@ android:layoutDirection="rtl">
                     android:id="@+id/DayCare_main_kidsRV_CARD"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="-56dp"
                     android:elevation="22dp"
                     app:cardBackgroundColor="@android:color/transparent"
                     android:visibility="invisible"
@@ -248,7 +246,7 @@ android:layoutDirection="rtl">
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:id="@+id/DayCare_main_kidsRV_LAY"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
                         <RelativeLayout
@@ -260,6 +258,7 @@ android:layoutDirection="rtl">
                                 android:id="@+id/DayCare_main_kids_RV"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
                                 tools:listitem="@layout/kid_card" />
 
                         </RelativeLayout>

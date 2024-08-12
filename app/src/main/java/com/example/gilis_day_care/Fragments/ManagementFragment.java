@@ -1,30 +1,42 @@
 package com.example.gilis_day_care.Fragments;
 
+import android.animation.Animator;
+import android.animation.AnimatorInflater;
+import android.animation.AnimatorListenerAdapter;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.gilis_day_care.R;
-import com.google.android.material.textview.MaterialTextView;
+import com.example.gilis_day_care.adapters.EventAdapter;
+import com.example.gilis_day_care.adapters.PresenceKidAdapter;
+import com.example.gilis_day_care.model.Event;
+import com.google.android.material.button.MaterialButton;
 
-import java.text.SimpleDateFormat;
-import java.time.DayOfWeek;
-import java.util.Date;
-import java.util.Locale;
+import java.util.ArrayList;
 
 
 public class ManagementFragment extends Fragment {
 
+    private CardView DayCare_management_CV_background;
+    private MaterialButton DayCare_management_BTN_event;
+    private MaterialButton DayCare_management_BTN_activity;
+    private RecyclerView DayCare_event_RV;
+    private ArrayList<Event> eventsList;
+    private EventAdapter adapter;
 
 
-    public static ManagementFragment newInstance(String param1, String param2) {
-        ManagementFragment fragment = new ManagementFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
+    public ManagementFragment (ArrayList<Event> eventsList) {
+       this.eventsList = eventsList;
     }
 
     @Override
@@ -32,7 +44,53 @@ public class ManagementFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_management, container, false);
         findViews(view);
+        initRecyclerView();  // Initialize RecyclerView
 
+        DayCare_management_BTN_event.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Animator animator;
+
+                if(DayCare_management_BTN_event.isChecked()) {
+                    // For slide down
+                    animator = AnimatorInflater.loadAnimator(v.getContext(), R.animator.slide_down);
+                    animator.setTarget(DayCare_management_CV_background);  // Set the target view for the animation
+                    animator.start();  // Start the animation
+                }
+                else {
+                    // For slide down
+                    animator = AnimatorInflater.loadAnimator(v.getContext(), R.animator.slide_up);
+                    animator.setTarget(DayCare_management_CV_background);  // Set the target view for the animation
+                    animator.start();  // Start the animation
+                }
+
+            }
+
+        });
+
+        // Set up click listener for slide button food layout
+        DayCare_management_BTN_activity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Animator animator;
+
+                if(DayCare_management_BTN_activity.isChecked()) {
+                    // For slide down
+                    animator = AnimatorInflater.loadAnimator(v.getContext(), R.animator.slide_down);
+                    animator.setTarget(DayCare_management_CV_background);  // Set the target view for the animation
+                    animator.start();  // Start the animation
+                }
+                else {
+                    // For slide down
+                    animator = AnimatorInflater.loadAnimator(v.getContext(), R.animator.slide_up);
+                    animator.setTarget(DayCare_management_CV_background);  // Set the target view for the animation
+                    animator.start();  // Start the animation
+                }
+            }
+
+        });
 
         return view;
     }
@@ -43,9 +101,68 @@ public class ManagementFragment extends Fragment {
 
     }
 
-
     private void findViews(View view) {
 
+        DayCare_management_CV_background = view.findViewById(R.id.DayCare_management_CV_background);
+        DayCare_management_BTN_event = view.findViewById(R.id.DayCare_management_BTN_event);
+        DayCare_management_BTN_activity = view.findViewById(R.id.DayCare_management_BTN_activity);
+        DayCare_event_RV = view.findViewById(R.id.DayCare_event_RV);
+
+    }
+
+    private void initRecyclerView() {
+
+        adapter = new EventAdapter(getActivity().getApplicationContext(), eventsList, position -> {
+            // Trigger swipe animation on item click
+            RecyclerView.ViewHolder viewHolder = DayCare_event_RV.findViewHolderForAdapterPosition(position);
+            if (viewHolder != null) {
+                View view = viewHolder.itemView;
+                Animator animator;
+                if(view.getTranslationX() == 0) {
+                    animator = AnimatorInflater.loadAnimator(this.getContext(), R.animator.slide_left);
+                    view.findViewById(R.id.DayCare_rvEvent_IMG_delete).setVisibility(View.VISIBLE);
+                }
+
+                else {
+                    animator = AnimatorInflater.loadAnimator(this.getContext(), R.animator.slide_right);
+                    view.findViewById(R.id.DayCare_rvEvent_IMG_delete).setVisibility(View.INVISIBLE);
+                }
+                animator.setTarget(view);  // Set the target view for the animation
+                animator.start();  // Start the animation
+
+            }
+        });
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
+        linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
+        DayCare_event_RV.setLayoutManager(linearLayoutManager);
+        DayCare_event_RV.setAdapter(adapter);
+        adapter.setEventDeleteCallBack((event, position) -> {
+            // Get the ViewHolder for the given position
+            RecyclerView.ViewHolder viewHolder = DayCare_event_RV.findViewHolderForAdapterPosition(position);
+
+            if (viewHolder != null) {
+                View view = viewHolder.itemView;
+
+                // Load and set the animation
+                Animator animator = AnimatorInflater.loadAnimator(this.getContext(), R.animator.slide_right_delete);
+                animator.setTarget(view);
+                animator.start();
+
+                // Add a listener to remove the item after the animation ends
+                animator.addListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        // Remove the item from the adapter's data source
+                        adapter.removeItem(position);
+                    }
+                });
+            } else {
+                // Handle the case where the ViewHolder is null
+                adapter.removeItem(position);
+            }
+        });
+
+        Log.d("ManagementFragment", "RecyclerView initialized with adapter.");
     }
 
 
