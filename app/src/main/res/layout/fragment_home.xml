@@ -147,6 +147,7 @@
                             android:layout_height="wrap_content"
                             android:text="0/0"
                             android:textStyle="bold"
+                            android:textColor="@color/black"
                             android:layout_centerVertical="true"
                             android:layout_alignParentEnd="true"
                             android:layout_marginEnd="42dp"
@@ -187,6 +188,7 @@
                             android:layout_height="wrap_content"
                             android:text="0/0"
                             android:textStyle="bold"
+                            android:textColor="@color/black"
                             android:layout_centerVertical="true"
                             android:layout_alignParentEnd="true"
                             android:layout_marginEnd="42dp"
@@ -226,16 +228,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:visibility="invisible"
-                    android:orientation="horizontal">
-
-                    <RelativeLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.1"
-                        android:layout_marginTop="5dp"
-                        android:background="@drawable/daycare_background_wood">
-
-                    </RelativeLayout>
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginTop="4dp">
 
                     <RelativeLayout
                         android:layout_width="0dp"
@@ -250,17 +245,7 @@
 
                     </RelativeLayout>
 
-                    <RelativeLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.1"
-                        android:layout_marginTop="5dp"
-                        android:background="@drawable/daycare_background_wood">
-                    </RelativeLayout>
-
-
                 </androidx.appcompat.widget.LinearLayoutCompat>
-
 
                 <TableLayout
                     android:id="@+id/DayCare_foodTable"

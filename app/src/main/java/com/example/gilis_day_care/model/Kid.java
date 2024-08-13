@@ -1,11 +1,13 @@
 package com.example.gilis_day_care.model;
 
-import java.util.List;
+import java.util.ArrayList;
 import java.util.Objects;
+import java.util.UUID;
 
 public class Kid {
 
 
+    private String id;  // Unique identifier
     private String name;
     private String className;
     private String birthYear;
@@ -17,14 +19,15 @@ public class Kid {
     private String phone2;
     private String sos;
     private String allergies;
-    private List<Integer> days;
+    private ArrayList<String> days;
     private int state;
     private boolean girl;
 
 
     public Kid() {}
 
-    public Kid(String name, String className, String birthYear, String email, String address, String parent1, String parent2, String phone1, String phone2, String sos, String allergies,List<Integer> days,boolean isGirl) {
+    public Kid(String name, String className, String birthYear, String email, String address, String parent1, String parent2, String phone1, String phone2, String sos, String allergies,ArrayList<String> days,boolean isGirl) {
+        this.id = UUID.randomUUID().toString();  // Generate a unique ID when creating a new Event
         this.name = name;
         this.className = className;
         this.birthYear = birthYear;
@@ -41,17 +44,26 @@ public class Kid {
         this.girl = isGirl;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Kid)) return false;
         Kid kid = (Kid) o;
-        return Objects.equals(getName(), kid.getName());
+        return Objects.equals(getId(), kid.getId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getName());
+        return Objects.hash(getId());
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -142,10 +154,6 @@ public class Kid {
         this.allergies = allergies;
     }
 
-    public List<Integer> getDays() {
-        return days;
-    }
-
     public int getState() {
         return state;
     }
@@ -154,11 +162,13 @@ public class Kid {
         this.state = state;
     }
 
-    public void setDays(List<Integer> days) {
-        this.days = days;
+    public ArrayList<String> getDays() {
+        return days;
     }
 
-
+    public void setDays(ArrayList<String> days) {
+        this.days = days;
+    }
 
     public boolean isGirl() {
         return girl;
@@ -171,7 +181,8 @@ public class Kid {
     @Override
     public String toString() {
         return "Kid{" +
-                "name='" + name + '\'' +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
                 ", className='" + className + '\'' +
                 ", birthYear='" + birthYear + '\'' +
                 ", email='" + email + '\'' +

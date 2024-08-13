@@ -11,7 +11,10 @@ import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.gilis_day_care.Interface.EventDeleteCallBack;
+import com.example.gilis_day_care.Interface.KidDeleteCallBack;
 import com.example.gilis_day_care.R;
+import com.example.gilis_day_care.model.Event;
 import com.example.gilis_day_care.model.Kid;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.textview.MaterialTextView;
@@ -22,12 +25,27 @@ public class KidAdapter extends RecyclerView.Adapter<KidAdapter.KidViewHolder> {
 
     private Context context;
     private ArrayList<Kid> allKidsList;
+    private KidDeleteCallBack kidDeleteCallBack;
+    private final OnItemClickListener listener;
 
 
-    public KidAdapter(Context context, ArrayList<Kid> allKidsList) {
+
+    public void removeItem(int position) {
+        if (position >= 0 && position < allKidsList.size()) {
+            allKidsList.remove(position);
+            notifyItemRemoved(position);
+            notifyItemRangeChanged(position, allKidsList.size()); // Update positions of remaining items
+        }
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+    }
+
+    public KidAdapter(Context context, ArrayList<Kid> allKidsList, OnItemClickListener listener) {
         this.context = context;
         this.allKidsList = allKidsList;
-
+        this.listener = listener;
     }
 
 
@@ -51,16 +69,32 @@ public class KidAdapter extends RecyclerView.Adapter<KidAdapter.KidViewHolder> {
             holder.DayCare_kidData_LBL_allergies.setText(kid.getAllergies());
             holder.DayCare_kidData_LBL_SOS.setText(kid.getSos());
 
-        if(kid.getDays().contains(1))
-            holder.DayCare_kidData_CV_day1.setCardBackgroundColor(ContextCompat.getColor(context, R.color.buttonDaysColorChecked));
-        if(kid.getDays().contains(2))
-            holder.DayCare_kidData_CV_day2.setCardBackgroundColor(ContextCompat.getColor(context, R.color.buttonDaysColorChecked));
-        if(kid.getDays().contains(3))
-            holder.DayCare_kidData_CV_day3.setCardBackgroundColor(ContextCompat.getColor(context, R.color.buttonDaysColorChecked));
-        if(kid.getDays().contains(4))
-            holder.DayCare_kidData_CV_day4.setCardBackgroundColor(ContextCompat.getColor(context, R.color.buttonDaysColorChecked));
-        if(kid.getDays().contains(5))
-            holder.DayCare_kidData_CV_day5.setCardBackgroundColor(ContextCompat.getColor(context, R.color.buttonDaysColorChecked));
+        for (String day : kid.getDays()) {
+            // Split the day string by the delimiter
+            String[] parts = day.split("#");
+
+            // Check if the first part of the split contains the day value
+            if (parts.length > 0) {
+                String firstPart = parts[0];
+
+                if (firstPart.contains("1")) {
+                    holder.DayCare_kidData_CV_day1.setCardBackgroundColor(ContextCompat.getColor(context, R.color.buttonDaysColorChecked));
+                }
+                if (firstPart.contains("2")) {
+                    holder.DayCare_kidData_CV_day2.setCardBackgroundColor(ContextCompat.getColor(context, R.color.buttonDaysColorChecked));
+                }
+                if (firstPart.contains("3")) {
+                    holder.DayCare_kidData_CV_day3.setCardBackgroundColor(ContextCompat.getColor(context, R.color.buttonDaysColorChecked));
+                }
+                if (firstPart.contains("4")) {
+                    holder.DayCare_kidData_CV_day4.setCardBackgroundColor(ContextCompat.getColor(context, R.color.buttonDaysColorChecked));
+                }
+                if (firstPart.contains("5")) {
+                    holder.DayCare_kidData_CV_day5.setCardBackgroundColor(ContextCompat.getColor(context, R.color.buttonDaysColorChecked));
+                }
+            }
+
+        }
 
         if(kid.isGirl()) {
             holder.DayCare_kidData_LAY.setBackgroundColor(ContextCompat.getColor(context, R.color.kidGirl));
@@ -72,8 +106,9 @@ public class KidAdapter extends RecyclerView.Adapter<KidAdapter.KidViewHolder> {
         }
 
 
+        holder.DayCare_kidData_IMG_delete.setImageResource(R.drawable.daycare_delete);
 
-
+        holder.itemView.setOnClickListener(v -> listener.onItemClick(position));
 
     }
 
@@ -86,6 +121,24 @@ public class KidAdapter extends RecyclerView.Adapter<KidAdapter.KidViewHolder> {
     private Kid getItem(int position) {
 
         return allKidsList.get(position);
+    }
+
+    public int getItemPosition(Kid kid) {
+        if (kid == null) {
+            return -1;
+        }
+
+        for (int i = 0; i < allKidsList.size(); i++) {
+            if (kid.equals(allKidsList.get(i))) {
+                return i;
+            }
+        }
+
+        return -1; // Return -1 if the item was not found
+    }
+
+    public void setKidDeleteCallBack(KidDeleteCallBack kidDeleteCallBack) {
+        this.kidDeleteCallBack = kidDeleteCallBack;
     }
 
     public class KidViewHolder extends RecyclerView.ViewHolder {
@@ -106,6 +159,7 @@ public class KidAdapter extends RecyclerView.Adapter<KidAdapter.KidViewHolder> {
         private CardView DayCare_kidData_CV_day5;
         private RelativeLayout DayCare_kidData_LAY;
         private ShapeableImageView DayCare_kidData_IMG_logo;
+        private ShapeableImageView DayCare_kidData_IMG_delete;
 
         public KidViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -126,6 +180,12 @@ public class KidAdapter extends RecyclerView.Adapter<KidAdapter.KidViewHolder> {
             DayCare_kidData_CV_day4 = itemView.findViewById(R.id.DayCare_kidData_CV_day4);
             DayCare_kidData_CV_day5 = itemView.findViewById(R.id.DayCare_kidData_CV_day5);
             DayCare_kidData_IMG_logo = itemView.findViewById(R.id.DayCare_kidData_IMG_logo);
+            DayCare_kidData_IMG_delete = itemView.findViewById(R.id.DayCare_kidData_IMG_delete);
+
+            DayCare_kidData_IMG_delete.setOnClickListener(v -> {
+                if (kidDeleteCallBack != null)
+                    kidDeleteCallBack.kidDeleteButtonClicked(getItem(getAdapterPosition()), getAdapterPosition());
+            });
         }
     }
 

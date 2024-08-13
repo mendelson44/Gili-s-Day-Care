@@ -18,9 +18,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.gilis_day_care.R;
+import com.example.gilis_day_care.Utilities.MyFireBase;
 import com.example.gilis_day_care.adapters.EventAdapter;
 import com.example.gilis_day_care.adapters.PresenceKidAdapter;
 import com.example.gilis_day_care.model.Event;
+import com.example.gilis_day_care.model.Kid;
+import com.example.gilis_day_care.model.Manager;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textview.MaterialTextView;
 
@@ -40,10 +43,13 @@ public class ManagementFragment extends Fragment {
     private ProgressBar DayCare_management_progressBar_event;
     private MaterialTextView DayCare_management_progressBar_LBL_countActivities;
     private ProgressBar DayCare_management_progressBar_activity;
-
+    private OnItemRemovedCallback onItemRemovedCallback;
+    private MyFireBase fireBase;
 
     public ManagementFragment (ArrayList<Event> eventsList) {
-       this.eventsList = eventsList;
+
+        this.eventsList = eventsList;
+        fireBase = new MyFireBase();
     }
 
     @Override
@@ -166,6 +172,11 @@ public class ManagementFragment extends Fragment {
                     @Override
                     public void onAnimationEnd(Animator animation) {
                         // Remove the item from the adapter's data source
+                        Log.d("ManagementFragment", "event remove" + event.toString() + " , position : " +  position );
+                        if (onItemRemovedCallback != null) {
+                            onItemRemovedCallback.onItemRemoved(eventsList.get(position));
+                        }
+                        fireBase.deleteEvent(eventsList.get(position).getId());
                         adapter.removeItem(position);
                         UpdateEventList();
                     }
@@ -186,4 +197,14 @@ public class ManagementFragment extends Fragment {
         Log.d("Event progress", "Update event List progress : ");
     }
 
+    public void setOnItemRemovedCallback(OnItemRemovedCallback callback) {
+        this.onItemRemovedCallback = callback;
+    }
+
+    public interface OnItemRemovedCallback {
+        void onItemRemoved(Event event);
+    }
+
 }
+
+

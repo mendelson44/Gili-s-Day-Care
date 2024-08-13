@@ -28,14 +28,25 @@ public class MyFireBase {
 
     public void saveKid (Kid kid) {
         Log.d("kid", "save kid: " + kid.toString());
-        database.getReference("Kids").child(kid.getPhone1()).setValue(kid);
+        database.getReference("Kids").child(kid.getId()).setValue(kid);
 
     }
 
     public void saveEvent (Event event) {
         Log.d("saveEvent-FireBase", "save event: " + event.toString());
-        database.getReference("Events").child(event.getTime()).setValue(event);
+        database.getReference("Events").child(event.getId()).setValue(event);
 
+    }
+
+    public void deleteEvent (String eventId) {
+
+        Log.d("delete-Event-FireBase", "delete event: " + eventId);
+        database.getReference("Events").child(eventId).removeValue();
+    }
+    public void deleteKid (String kidId) {
+
+        Log.d("delete-Kid-FireBase", "delete kid: " + kidId);
+        database.getReference("Kids").child(kidId).removeValue();
     }
 
 

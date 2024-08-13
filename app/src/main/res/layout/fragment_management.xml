@@ -48,14 +48,8 @@
                         android:textSize="16sp"
                         android:textStyle="bold"/>
 
-
                 </RelativeLayout>
             </androidx.appcompat.widget.LinearLayoutCompat>
-
-
-
-
-
         </RelativeLayout>
 
 
@@ -69,7 +63,8 @@
             <com.google.android.material.button.MaterialButtonToggleGroup
                 android:id="@+id/DayCare_management_TBG_newDayWork"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                app:singleSelection="true">
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/DayCare_management_BTN_event"
@@ -215,18 +210,18 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/DayCare_event_CV"
-                android:layout_width="312dp"
-                android:layout_height="wrap_content"
+                android:layout_width="310dp"
+                android:layout_height="match_parent"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="5dp"
-                android:elevation="22dp"
+                android:layout_marginTop="9dp"
+                android:elevation="18dp"
                 app:cardBackgroundColor="@android:color/transparent"
-                app:cardCornerRadius="4dp">
+                app:cardCornerRadius="2dp">
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/DayCare_event_RV"
                     android:layout_width="match_parent"
-                    android:layout_height="250dp"
+                    android:layout_height="222dp"
                     android:layout_marginTop="4dp"
                     tools:listitem="@layout/rv_event" />
             </androidx.cardview.widget.CardView>

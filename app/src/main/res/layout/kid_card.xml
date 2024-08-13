@@ -7,12 +7,10 @@
     android:layout_height="wrap_content"
     android:layoutDirection="rtl">
 
-
-
     <androidx.cardview.widget.CardView
         android:id="@+id/DayCare_kidData_CARD_data"
         android:layout_width="wrap_content"
-        android:layout_height="188dp"
+        android:layout_height="228dp"
         android:layout_margin="6dp"
         android:elevation="@dimen/data_elevation"
         app:cardCornerRadius="12dp"
@@ -21,20 +19,35 @@
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
             <RelativeLayout
                 android:id="@+id/DayCare_kidData_LAY"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="0.9"
+                android:layout_weight="0.28"
                 android:background="@color/kidBoy">
 
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2">
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:id="@+id/DayCare_kidData_IMG_delete"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:srcCompat="@drawable/daycare_delete"
+                            android:visibility="invisible"/>
+
+
+                    </RelativeLayout>
 
                     <RelativeLayout
                         android:layout_width="0dp"
@@ -50,6 +63,41 @@
                             android:textSize="24sp"
                             android:textStyle="bold"
                             tools:text="שם הילד" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.35">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/DayCare_kidData_LBL_birthYear"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            tools:text="2024-01-01"
+                            android:textSize="11sp"
+                            android:textColor="@color/black"
+                            android:layout_marginTop="32dp"
+                            android:gravity="end"
+                            android:layout_marginEnd="2dp"
+                            android:textStyle="bold"/>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.08">
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:id="@+id/DayCare_kidData_IMG_birthYear"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:tint="@color/black"
+                            android:layout_marginTop="26dp"
+                            app:srcCompat="@drawable/daycare_cake_birthday" />
+
 
                     </RelativeLayout>
 
@@ -104,7 +152,8 @@
                                     <RelativeLayout
                                         android:layout_width="0dp"
                                         android:layout_height="match_parent"
-                                        android:layout_weight="0.2">
+                                        android:layout_weight="0.13"
+                                        android:layout_marginStart="5dp">
 
                                         <com.google.android.material.imageview.ShapeableImageView
                                             android:id="@+id/DayCare_kidData_IMG_class"
@@ -118,6 +167,23 @@
                                     <RelativeLayout
                                         android:layout_width="0dp"
                                         android:layout_height="match_parent"
+                                        android:layout_weight="0.4">
+
+                                        <com.google.android.material.textview.MaterialTextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:text="כיתה :"
+                                            android:layout_centerVertical="true"
+                                            android:textColor="#4C3950"
+                                            android:textSize="8sp"
+                                            android:layout_marginStart="4dp"
+                                            android:textStyle="bold"/>
+
+                                    </RelativeLayout>
+
+                                    <RelativeLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
                                         android:layout_weight="1">
 
                                         <com.google.android.material.textview.MaterialTextView
@@ -125,10 +191,11 @@
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
                                             tools:text="כיתה"
+                                            android:textSize="11sp"
+                                            android:layout_centerVertical="true"
                                             android:textColor="@color/black"
                                             android:layout_marginStart="4dp"
                                             android:textStyle="bold"/>
-
                                     </RelativeLayout>
                                 </androidx.appcompat.widget.LinearLayoutCompat>
                             </RelativeLayout>
@@ -147,7 +214,8 @@
                                     <RelativeLayout
                                         android:layout_width="0dp"
                                         android:layout_height="match_parent"
-                                        android:layout_weight="0.2">
+                                        android:layout_weight="0.10"
+                                        android:layout_marginStart="4dp">
 
                                         <com.google.android.material.imageview.ShapeableImageView
                                             android:id="@+id/DayCare_kidData_IMG_address"
@@ -163,13 +231,14 @@
                                         android:layout_height="match_parent"
                                         android:layout_weight="1">
 
-                                        <com.google.android.material.textview.MaterialTextView
-                                            android:id="@+id/DayCare_kidData_LBL_address"
+                                        <TextView
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
                                             android:layout_marginStart="4dp"
-                                            android:textColor="@color/black"
-                                            tools:text="כתובת"
+                                            android:textSize="8sp"
+                                            android:layout_centerVertical="true"
+                                            android:textColor="#4C3950"
+                                            android:text="כתובת :"
                                             android:textStyle="bold"/>
 
 
@@ -186,6 +255,23 @@
                             <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:layout_marginStart="4dp">
+
+                                <com.google.android.material.textview.MaterialTextView
+                                    android:id="@+id/DayCare_kidData_LBL_address"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="11sp"
+                                    android:textColor="@color/black"
+                                    tools:text="כתובת"
+                                    android:textStyle="bold"/>
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
                                 android:layout_weight="1">
 
                                 <androidx.appcompat.widget.LinearLayoutCompat
@@ -196,7 +282,8 @@
                                     <RelativeLayout
                                         android:layout_width="0dp"
                                         android:layout_height="match_parent"
-                                        android:layout_weight="0.2">
+                                        android:layout_weight="0.10"
+                                        android:layout_marginStart="4dp">
 
                                         <com.google.android.material.imageview.ShapeableImageView
                                             android:id="@+id/DayCare_kidData_IMG_parent1"
@@ -212,17 +299,36 @@
                                         android:layout_height="match_parent"
                                         android:layout_weight="1">
                                         <com.google.android.material.textview.MaterialTextView
-                                            android:id="@+id/DayCare_kidData_LBL_parent1"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
                                             android:layout_marginStart="4dp"
-                                            android:textColor="@color/black"
-                                            tools:text="פרטים הורה 1 "
+                                            android:layout_centerVertical="true"
+                                            android:textSize="8sp"
+                                            android:textColor="#4C3950"
+                                            android:text="פרטים הורה 1 :"
                                             android:textStyle="bold"/>
 
                                     </RelativeLayout>
                                 </androidx.appcompat.widget.LinearLayoutCompat>
                             </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:layout_marginStart="4dp">
+
+                                <com.google.android.material.textview.MaterialTextView
+                                    android:id="@+id/DayCare_kidData_LBL_parent1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="11sp"
+                                    android:textColor="@color/black"
+                                    tools:text="פרטים הורה 1 "
+                                    android:textStyle="bold"/>
+
+                            </RelativeLayout>
+
 
                             <RelativeLayout
                                 android:layout_width="match_parent"
@@ -237,7 +343,8 @@
                                     <RelativeLayout
                                         android:layout_width="0dp"
                                         android:layout_height="match_parent"
-                                        android:layout_weight="0.2">
+                                        android:layout_weight="0.10"
+                                        android:layout_marginStart="4dp">
 
                                         <com.google.android.material.imageview.ShapeableImageView
                                             android:id="@+id/DayCare_kidData_IMG_parent2"
@@ -252,19 +359,35 @@
                                         android:layout_width="0dp"
                                         android:layout_height="match_parent"
                                         android:layout_weight="1">
-
                                         <com.google.android.material.textview.MaterialTextView
-                                            android:id="@+id/DayCare_kidData_LBL_parent2"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
                                             android:layout_marginStart="4dp"
-                                            android:textColor="@color/black"
-                                            tools:text="פרטים הורה 2 "
+                                            android:layout_centerVertical="true"
+                                            android:textSize="8sp"
+                                            android:textColor="#4C3950"
+                                            android:text="פרטים הורה 2 :"
                                             android:textStyle="bold"/>
 
                                     </RelativeLayout>
-
                                 </androidx.appcompat.widget.LinearLayoutCompat>
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:layout_marginStart="4dp">
+
+                                <com.google.android.material.textview.MaterialTextView
+                                    android:id="@+id/DayCare_kidData_LBL_parent2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="11sp"
+                                    android:textColor="@color/black"
+                                    tools:text="פרטים הורה 2 "
+                                    android:textStyle="bold"/>
+
                             </RelativeLayout>
 
                             <RelativeLayout
@@ -280,7 +403,9 @@
                                     <RelativeLayout
                                         android:layout_width="0dp"
                                         android:layout_height="match_parent"
-                                        android:layout_weight="0.2">
+                                        android:layout_weight="0.10"
+                                        android:layout_marginStart="4dp">
+
                                         <com.google.android.material.imageview.ShapeableImageView
                                             android:id="@+id/DayCare_kidData_IMG_SOS"
                                             android:layout_width="24dp"
@@ -295,21 +420,48 @@
                                         android:layout_weight="1">
 
                                         <com.google.android.material.textview.MaterialTextView
-                                            android:id="@+id/DayCare_kidData_LBL_SOS"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
                                             android:layout_marginStart="4dp"
-                                            android:textColor="@color/black"
-                                            tools:text="SOS"
+                                            android:layout_centerVertical="true"
+                                            android:textSize="8sp"
+                                            android:textColor="#FF0000"
+                                            android:text="טלפון חירום :"
                                             android:textStyle="bold"/>
 
                                     </RelativeLayout>
                                 </androidx.appcompat.widget.LinearLayoutCompat>
                             </RelativeLayout>
+
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:layout_marginStart="4dp">
+
+                                <com.google.android.material.textview.MaterialTextView
+                                    android:id="@+id/DayCare_kidData_LBL_SOS"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="11sp"
+                                    android:textColor="@color/black"
+
+                                    tools:text="טלפון חירום"
+                                    android:textStyle="bold"/>
+
+                            </RelativeLayout>
                         </androidx.appcompat.widget.LinearLayoutCompat>
                     </RelativeLayout>
 
-
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.02"
+                        android:background="@drawable/daycare_background_wood"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="4dp">
+                    </RelativeLayout>
 
                     <RelativeLayout
                         android:layout_width="0dp"
@@ -324,7 +476,69 @@
                             <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
+                                android:layout_weight="0.5">
+
+                                <androidx.appcompat.widget.LinearLayoutCompat
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <RelativeLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1">
+
+                                        <com.google.android.material.textview.MaterialTextView
+                                            android:id="@+id/DayCare_kidData_LBL_email"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginEnd="4dp"
+                                            android:textColor="@color/black"
+                                            android:textSize="11dp"
+                                            tools:text="user@gmail.com"
+                                            android:textStyle="bold"/>
+
+
+                                    </RelativeLayout>
+
+                                    <RelativeLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="0.10"
+                                        android:layout_marginEnd="4dp">
+
+                                        <com.google.android.material.imageview.ShapeableImageView
+                                            android:id="@+id/DayCare_kidData_IMG_email"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:tint="@color/black"
+                                            app:srcCompat="@drawable/daycare_email" />
+
+                                    </RelativeLayout>
+                                </androidx.appcompat.widget.LinearLayoutCompat>
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
                                 android:layout_weight="1">
+
+                                <com.google.android.material.textview.MaterialTextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="#4C3950"
+                                    android:textSize="11sp"
+                                    android:text="ימי הגעה לצהרון :"
+                                    android:textStyle="bold"/>
+
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:layout_marginEnd="4dp">
 
                                 <androidx.appcompat.widget.LinearLayoutCompat
                                     android:layout_width="match_parent"
@@ -350,7 +564,7 @@
                                             <androidx.appcompat.widget.AppCompatButton
                                                 android:id="@+id/DayCare_kidData_BTN_day1"
                                                 android:layout_width="match_parent"
-                                                android:layout_height="match_parent"
+                                                android:layout_height="wrap_content"
                                                 android:text="ראשון"
                                                 android:textSize="8sp"
                                                 android:shadowDx="2"
@@ -363,6 +577,12 @@
 
                                         </com.google.android.material.card.MaterialCardView>
 
+                                    </RelativeLayout>
+
+                                    <RelativeLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="0.1">
                                     </RelativeLayout>
 
                                     <RelativeLayout
@@ -384,7 +604,7 @@
                                             <androidx.appcompat.widget.AppCompatButton
                                                 android:id="@+id/DayCare_kidData_BTN_day2"
                                                 android:layout_width="match_parent"
-                                                android:layout_height="match_parent"
+                                                android:layout_height="wrap_content"
                                                 android:text="שני"
                                                 android:textSize="8sp"
                                                 android:shadowDx="2"
@@ -397,6 +617,12 @@
 
                                         </com.google.android.material.card.MaterialCardView>
 
+                                    </RelativeLayout>
+
+                                    <RelativeLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="0.1">
                                     </RelativeLayout>
 
                                     <RelativeLayout
@@ -418,7 +644,7 @@
                                             <androidx.appcompat.widget.AppCompatButton
                                                 android:id="@+id/DayCare_kidData_BTN_day3"
                                                 android:layout_width="match_parent"
-                                                android:layout_height="match_parent"
+                                                android:layout_height="wrap_content"
                                                 android:text="שלישי"
                                                 android:textSize="8sp"
                                                 android:shadowDx="2"
@@ -433,8 +659,11 @@
 
                                     </RelativeLayout>
 
-
-
+                                    <RelativeLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="0.1">
+                                    </RelativeLayout>
 
                                     <RelativeLayout
                                         android:layout_width="0dp"
@@ -455,7 +684,7 @@
                                             <androidx.appcompat.widget.AppCompatButton
                                                 android:id="@+id/DayCare_kidData_BTN_day4"
                                                 android:layout_width="match_parent"
-                                                android:layout_height="match_parent"
+                                                android:layout_height="wrap_content"
                                                 android:text="רביעי"
                                                 android:textSize="8sp"
                                                 android:shadowDx="2"
@@ -468,6 +697,12 @@
 
                                         </com.google.android.material.card.MaterialCardView>
 
+                                    </RelativeLayout>
+
+                                    <RelativeLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="0.1">
                                     </RelativeLayout>
 
 
@@ -490,7 +725,7 @@
                                             <androidx.appcompat.widget.AppCompatButton
                                                 android:id="@+id/DayCare_kidData_BTN_day5"
                                                 android:layout_width="match_parent"
-                                                android:layout_height="match_parent"
+                                                android:layout_height="wrap_content"
                                                 android:text="חמישי"
                                                 android:textSize="8sp"
                                                 android:shadowDx="2"
@@ -505,8 +740,6 @@
 
                                     </RelativeLayout>
 
-
-
                                 </androidx.appcompat.widget.LinearLayoutCompat>
 
                             </RelativeLayout>
@@ -515,23 +748,25 @@
                             <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
-                                android:layout_weight="0.8">
+                                android:layout_weight="0.8"
+                                android:layout_marginTop="4dp">
 
-                                <com.google.android.material.card.MaterialCardView
+                                <androidx.cardview.widget.CardView
                                     android:layout_width="match_parent"
-                                    android:layout_height="62dp"
+                                    android:layout_height="42dp"
+                                    android:layout_margin="2dp"
                                     app:cardCornerRadius="2dp"
                                     app:cardElevation="1dp"
                                     android:elevation="1dp"
-                                    android:layout_margin="2dp"
-                                    app:cardBackgroundColor="@android:color/transparent"
-                                    android:layout_gravity="center">
+                                    app:cardBackgroundColor="@android:color/transparent">
 
-                                    <com.google.android.material.imageview.ShapeableImageView
-                                        android:layout_width="56dp"
-                                        android:layout_height="20dp"
+                                    <com.google.android.material.textview.MaterialTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
                                         android:layout_marginStart="4dp"
-                                        app:srcCompat="@drawable/alr" />
+                                        android:textColor="#4C3950"
+                                        android:text="אלרגיות :"
+                                        android:textStyle="bold"/>
 
 
                                     <com.google.android.material.textview.MaterialTextView
@@ -539,8 +774,8 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_gravity="center_horizontal"
-                                        android:textSize="@dimen/data_text_size"
-                                        android:layout_marginTop="22dp"
+                                        android:textSize="12sp"
+                                        android:layout_marginTop="20dp"
                                         android:textColor="@color/black"
                                         tools:text="אלרגיות"
                                         android:textStyle="bold"/>
@@ -552,106 +787,7 @@
                                         android:layout_gravity="end"
                                         app:srcCompat="@drawable/daycare_alert" />
 
-                                </com.google.android.material.card.MaterialCardView>
-                            </RelativeLayout>
-                        </androidx.appcompat.widget.LinearLayoutCompat>
-
-                    </RelativeLayout>
-
-
-                    <RelativeLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1">
-
-                        <androidx.appcompat.widget.LinearLayoutCompat
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="vertical">
-
-                            <RelativeLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
-                                android:layout_weight="0.5">
-
-                                <androidx.appcompat.widget.LinearLayoutCompat
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="horizontal">
-
-                                    <RelativeLayout
-                                        android:layout_width="0dp"
-                                        android:layout_height="match_parent"
-                                        android:layout_weight="0.2">
-
-                                        <com.google.android.material.imageview.ShapeableImageView
-                                            android:id="@+id/DayCare_kidData_IMG_birthYear"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            android:tint="@color/black"
-                                            app:srcCompat="@drawable/daycare_cake_birthday" />
-
-
-                                    </RelativeLayout>
-
-                                    <RelativeLayout
-                                        android:layout_width="0dp"
-                                        android:layout_height="match_parent"
-                                        android:layout_weight="1">
-
-                                        <com.google.android.material.textview.MaterialTextView
-                                            android:id="@+id/DayCare_kidData_LBL_birthYear"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            tools:text="2024-01-01"
-                                            android:textColor="@color/black"
-                                            android:layout_centerVertical="true"
-                                            android:textStyle="bold"/>
-
-                                    </RelativeLayout>
-                                </androidx.appcompat.widget.LinearLayoutCompat>
-                            </RelativeLayout>
-
-                            <RelativeLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
-                                android:layout_weight="0.5">
-
-                                <androidx.appcompat.widget.LinearLayoutCompat
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="horizontal">
-
-                                    <RelativeLayout
-                                        android:layout_width="0dp"
-                                        android:layout_height="match_parent"
-                                        android:layout_weight="0.2">
-
-                                        <com.google.android.material.imageview.ShapeableImageView
-                                            android:id="@+id/DayCare_kidData_IMG_email"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            android:tint="@color/black"
-                                            app:srcCompat="@drawable/daycare_email" />
-
-                                    </RelativeLayout>
-
-                                    <RelativeLayout
-                                        android:layout_width="0dp"
-                                        android:layout_height="match_parent"
-                                        android:layout_weight="1">
-
-                                        <com.google.android.material.textview.MaterialTextView
-                                            android:id="@+id/DayCare_kidData_LBL_email"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            android:textColor="@color/black"
-                                            tools:text="user@gmail.com"
-                                            android:textStyle="bold"/>
-
-
-                                    </RelativeLayout>
-                                </androidx.appcompat.widget.LinearLayoutCompat>
+                                </androidx.cardview.widget.CardView>
                             </RelativeLayout>
 
                             <RelativeLayout
@@ -661,22 +797,21 @@
 
                                 <androidx.cardview.widget.CardView
                                     android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
+                                    android:layout_height="42dp"
+                                    android:layout_margin="2dp"
                                     app:cardCornerRadius="2dp"
                                     app:cardElevation="1dp"
                                     android:elevation="1dp"
-                                    app:cardBackgroundColor="@android:color/transparent"
-                                    android:layout_gravity="center">
+                                    app:cardBackgroundColor="@android:color/transparent">
 
 
                                     <com.google.android.material.textview.MaterialTextView
                                         android:id="@+id/DayCare_kidData_LBL_sport"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:textSize="@dimen/data_text_size"
-                                        android:textColor="@color/black"
-                                        android:layout_margin="8dp"
-                                        tools:text="חוגים"
+                                        android:layout_marginStart="4dp"
+                                        android:textColor="#4C3950"
+                                        android:text="חוגים :"
                                         android:textStyle="bold"/>
 
                                     <com.google.android.material.imageview.ShapeableImageView
@@ -694,7 +829,6 @@
                         </androidx.appcompat.widget.LinearLayoutCompat>
 
                     </RelativeLayout>
-
                 </androidx.appcompat.widget.LinearLayoutCompat>
             </RelativeLayout>
         </androidx.appcompat.widget.LinearLayoutCompat>

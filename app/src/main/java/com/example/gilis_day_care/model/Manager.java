@@ -58,7 +58,7 @@ public class Manager {
             public void onLoadFailed(Exception exception) {
                 // Handle the failure scenario
                 Toast.makeText(context, "Failed to load kids list: " + exception.getMessage(), Toast.LENGTH_SHORT).show();
-                Log.e("PresenceFragment", "Error loading kids list", exception);
+                Log.e("Manager", "Error loading kids list", exception);
                 callback.onFailure(exception);  // Notify the caller that the loading failed
             }
         });
@@ -78,13 +78,12 @@ public class Manager {
         @Override
         public void onLoadFailed(Exception exception) {
             // Handle the failure scenario
-            Toast.makeText(context, "Failed to load kids list: " + exception.getMessage(), Toast.LENGTH_SHORT).show();
-            Log.e("PresenceFragment", "Error loading kids list", exception);
+            Toast.makeText(context, "Failed to load events list: " + exception.getMessage(), Toast.LENGTH_SHORT).show();
+            Log.e("Manager", "Error loading events list", exception);
             callback.onFailure(exception);  // Notify the caller that the loading failed
         }
     });
-     }
-
+    }
 
     // Callback interface for handling the data once it's loaded
     public interface KidsListCallback {

@@ -76,9 +76,24 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
 
     }
 
+
     private Event getItem(int position) {
 
         return eventList.get(position);
+    }
+
+    public int getItemPosition(Event event) {
+        if (event == null) {
+            return -1;
+        }
+
+        for (int i = 0; i < eventList.size(); i++) {
+            if (event.equals(eventList.get(i))) {
+                return i;
+            }
+        }
+
+        return -1; // Return -1 if the item was not found
     }
 
     public void setEventDeleteCallBack(EventDeleteCallBack eventDeleteCallBack) {

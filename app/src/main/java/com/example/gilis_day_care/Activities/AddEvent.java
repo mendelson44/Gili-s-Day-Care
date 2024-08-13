@@ -26,6 +26,7 @@ import com.google.android.material.textview.MaterialTextView;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 
 public class AddEvent extends AppCompatActivity {
@@ -161,7 +162,7 @@ public class AddEvent extends AppCompatActivity {
                 this,
                 (view, year1, month1, dayOfMonth) -> {
                     // Display the selected date in the TextView
-                    String selectedDate = dayOfMonth + "/" + (month1 + 1) + "/" + year1;
+                    String selectedDate = String.format(Locale.getDefault(), "%02d/%02d/%04d", dayOfMonth, month1 + 1, year1);
                     DayCare_addEvent_LBL_txtSelectedDate.setText(selectedDate);
                 },
                 year, month, day);

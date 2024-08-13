@@ -9,14 +9,14 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/DayCare_rvEvent_main_CARD_data"
-        android:layout_width="282dp"
+        android:layout_width="292dp"
         android:layout_height="64dp"
         android:layout_centerHorizontal="true"
         app:cardCornerRadius="4dp"
         android:orientation="horizontal"
         app:cardElevation="4dp"
         android:layout_marginTop="6dp"
-        app:cardBackgroundColor="#AF9094">
+        app:cardBackgroundColor="#FFFFFF">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -36,32 +36,26 @@
                     <RelativeLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="0.14">
+                        android:layout_weight="0.25">
 
                         <com.google.android.material.imageview.ShapeableImageView
                             android:id="@+id/DayCare_rvEvent_IMG_delete"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
                             app:strokeColor="@color/black"
                             android:visibility="invisible"
-                            android:layout_marginStart="8dp"
-                            android:layout_centerInParent="true"
+                            android:layout_marginStart="4dp"
+                            android:layout_centerVertical="true"
                             app:srcCompat="@drawable/daycare_delete" />
-
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.14">
 
                         <com.google.android.material.imageview.ShapeableImageView
                             android:id="@+id/DayCare_rvEvent_IMG_notification"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
                             app:strokeColor="@color/black"
-                            android:layout_marginStart="8dp"
-                            android:layout_centerInParent="true"
+                            android:layout_marginStart="4dp"
+                            android:layout_toLeftOf="@id/DayCare_rvEvent_IMG_delete"
+                            android:layout_centerVertical="true"
                             app:srcCompat="@drawable/daycare_notification" />
 
                     </RelativeLayout>
@@ -115,7 +109,7 @@
                             <RelativeLayout
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
-                                android:layout_weight="0.6">
+                                android:layout_weight="0.7">
 
                                 <com.google.android.material.textview.MaterialTextView
                                     android:id="@+id/DayCare_rvEvent_LBL_date"
@@ -140,13 +134,14 @@
                             android:orientation="horizontal"
                             app:cardElevation="4dp"
                             android:layout_margin="4dp"
-                            app:cardBackgroundColor="#CA2C43">
+                            app:cardBackgroundColor="#DCDCDC">
 
                             <com.google.android.material.imageview.ShapeableImageView
                                 android:id="@+id/DayCare_rvEvent_IMG_text"
                                 android:layout_width="18dp"
                                 android:layout_height="18dp"
                                 app:strokeColor="@color/black"
+                                android:tint="@color/black"
                                 app:srcCompat="@drawable/daycare_text" />
 
                             <com.google.android.material.textview.MaterialTextView

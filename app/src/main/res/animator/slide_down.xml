@@ -3,7 +3,7 @@
     <objectAnimator
         android:propertyName="translationY"
         android:valueFrom="0dp"
-        android:valueTo="230dp"
+        android:valueTo="234dp"
         android:duration="1500"
         android:interpolator="@android:anim/decelerate_interpolator" />
 </set>

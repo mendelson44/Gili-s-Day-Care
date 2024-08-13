@@ -2,6 +2,7 @@ package com.example.gilis_day_care.Activities;
 
 
 import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -23,7 +24,10 @@ import com.google.android.material.textview.MaterialTextView;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 
 
 public class AddKid extends AppCompatActivity {
@@ -63,6 +67,17 @@ public class AddKid extends AppCompatActivity {
     private MaterialButton DayCare_addKid_BTN_boy;
     private MaterialButton DayCare_addKid_BTN_girl;
 
+    private FloatingActionButton DayCare_addKid_BTN_btnSelectTime_day1;
+    private FloatingActionButton DayCare_addKid_BTN_btnSelectTime_day2;
+    private FloatingActionButton DayCare_addKid_BTN_btnSelectTime_day3;
+    private FloatingActionButton DayCare_addKid_BTN_btnSelectTime_day4;
+    private FloatingActionButton DayCare_addKid_BTN_btnSelectTime_day5;
+    private MaterialTextView DayCare_addKid_LBL_txtSelectedTime_day1;
+    private MaterialTextView DayCare_addKid_LBL_txtSelectedTime_day2;
+    private MaterialTextView DayCare_addKid_LBL_txtSelectedTime_day3;
+    private MaterialTextView DayCare_addKid_LBL_txtSelectedTime_day4;
+    private MaterialTextView DayCare_addKid_LBL_txtSelectedTime_day5;
+
 
 
     @Override
@@ -89,6 +104,11 @@ public class AddKid extends AppCompatActivity {
     public void setListeners() {
 
         DayCare_addKid_BTN_btnSelectDate.setOnClickListener(v -> showDatePickerDialog());
+        DayCare_addKid_BTN_btnSelectTime_day1.setOnClickListener(v -> showTimePickerDialog(DayCare_addKid_LBL_txtSelectedTime_day1));
+        DayCare_addKid_BTN_btnSelectTime_day2.setOnClickListener(v -> showTimePickerDialog(DayCare_addKid_LBL_txtSelectedTime_day2));
+        DayCare_addKid_BTN_btnSelectTime_day3.setOnClickListener(v -> showTimePickerDialog(DayCare_addKid_LBL_txtSelectedTime_day3));
+        DayCare_addKid_BTN_btnSelectTime_day4.setOnClickListener(v -> showTimePickerDialog(DayCare_addKid_LBL_txtSelectedTime_day4));
+        DayCare_addKid_BTN_btnSelectTime_day5.setOnClickListener(v -> showTimePickerDialog(DayCare_addKid_LBL_txtSelectedTime_day5));
 
         DayCare_addKid_BTN_exit.setOnClickListener(v -> exitToMainActivity());
 
@@ -107,7 +127,7 @@ public class AddKid extends AppCompatActivity {
                 String phone2 = DayCare_addKid_INP_phone2.getText().toString();
                 String sos = DayCare_addKid_INP_SOS.getText().toString();
                 String allergies = DayCare_addKid_INP_allergies.getText().toString();
-                List<Integer> days = getDaysArray(DayCare_kidData_TBG_daysGroup.getCheckedButtonIds());
+                ArrayList<String> days = getDaysArray(DayCare_kidData_TBG_daysGroup.getCheckedButtonIds());
                 boolean isGirl = DayCare_addKid_BTN_girl.isChecked();
 
                 Log.d("addKid", "create kid days array: " + days);
@@ -121,29 +141,29 @@ public class AddKid extends AppCompatActivity {
         });
     }
 
-    private List<Integer> getDaysArray(List<Integer> array) {
-        List<Integer> daysArray = new ArrayList<>(); // Assuming we are dealing with Sunday to Thursday
+    private ArrayList<String> getDaysArray(List<Integer> array) {
+        ArrayList<String> daysArray = new ArrayList<>(); // Assuming we are dealing with Sunday to Thursday
 
         for (Integer integer : array) {
 
             if (integer.equals(R.id.DayCare_kidData_BTN_day1)) {
-                daysArray.add(1); // Sunday
+                daysArray.add("1" + "#" + DayCare_addKid_LBL_txtSelectedTime_day1.getText().toString()); // Sunday
             }
 
             if (integer.equals(R.id.DayCare_kidData_BTN_day2)) {
-                daysArray.add(2);
+                daysArray.add("2" + "#" + DayCare_addKid_LBL_txtSelectedTime_day2.getText().toString());
             }
 
             if (integer.equals(R.id.DayCare_kidData_BTN_day3)) {
-                daysArray.add(3);
+                daysArray.add("3" + "#" + DayCare_addKid_LBL_txtSelectedTime_day3.getText().toString());
             }
 
             if (integer.equals(R.id.DayCare_kidData_BTN_day4)) {
-                daysArray.add(4);
+                daysArray.add("4" + "#" + DayCare_addKid_LBL_txtSelectedTime_day4.getText().toString());
             }
 
             if (integer.equals(R.id.DayCare_kidData_BTN_day5)) {
-                daysArray.add(5);
+                daysArray.add("5" + "#" + DayCare_addKid_LBL_txtSelectedTime_day5.getText().toString());
             }
         }
         return daysArray;
@@ -196,6 +216,18 @@ public class AddKid extends AppCompatActivity {
 
         DayCare_addKid_BTN_boy = findViewById(R.id.DayCare_addKid_BTN_boy);
         DayCare_addKid_BTN_girl = findViewById(R.id.DayCare_addKid_BTN_girl);
+
+        DayCare_addKid_BTN_btnSelectTime_day1 = findViewById(R.id.DayCare_addKid_BTN_btnSelectTime_day1);
+        DayCare_addKid_BTN_btnSelectTime_day2 = findViewById(R.id.DayCare_addKid_BTN_btnSelectTime_day2);
+        DayCare_addKid_BTN_btnSelectTime_day3 = findViewById(R.id.DayCare_addKid_BTN_btnSelectTime_day3);
+        DayCare_addKid_BTN_btnSelectTime_day4 = findViewById(R.id.DayCare_addKid_BTN_btnSelectTime_day4);
+        DayCare_addKid_BTN_btnSelectTime_day5 = findViewById(R.id.DayCare_addKid_BTN_btnSelectTime_day5);
+        DayCare_addKid_LBL_txtSelectedTime_day1 = findViewById(R.id.DayCare_addKid_LBL_txtSelectedTime_day1);
+        DayCare_addKid_LBL_txtSelectedTime_day2 = findViewById(R.id.DayCare_addKid_LBL_txtSelectedTime_day2);
+        DayCare_addKid_LBL_txtSelectedTime_day3 = findViewById(R.id.DayCare_addKid_LBL_txtSelectedTime_day3);
+        DayCare_addKid_LBL_txtSelectedTime_day4 = findViewById(R.id.DayCare_addKid_LBL_txtSelectedTime_day4);
+        DayCare_addKid_LBL_txtSelectedTime_day5 = findViewById(R.id.DayCare_addKid_LBL_txtSelectedTime_day5);
+
     }
 
     private boolean validateFields() {
@@ -283,6 +315,22 @@ public class AddKid extends AppCompatActivity {
         return isValid;
     }
 
+    private void showTimePickerDialog(MaterialTextView timeView) {
+        // Get the current time as default
+        final Calendar calendar = Calendar.getInstance();
+        int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        int minute = calendar.get(Calendar.MINUTE);
+
+        // Create a TimePickerDialog
+        TimePickerDialog timePickerDialog = new TimePickerDialog(
+                this,
+                (view, hourOfDay, minute1) -> {
+                    String selectedTime = String.format(Locale.getDefault(),"%02d:%02d", hourOfDay, minute1);
+                    timeView.setText(selectedTime);
+                }, hour, minute, true);
+
+        timePickerDialog.show();
+    }
 
 
     private void showDatePickerDialog() {
@@ -295,7 +343,7 @@ public class AddKid extends AppCompatActivity {
                 this,
                 (view, year1, month1, dayOfMonth) -> {
                     // Display the selected date in the TextView
-                    String selectedDate = dayOfMonth + "/" + (month1 + 1) + "/" + year1;
+                    String selectedDate = String.format(Locale.getDefault(), "%02d/%02d/%04d", dayOfMonth, month1 + 1, year1);
                     DayCare_addKid_LBL_txtSelectedDate.setText(selectedDate);
                 },
                 year, month, day);

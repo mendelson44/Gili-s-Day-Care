@@ -292,7 +292,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_centerHorizontal="true"
                                     android:text="הוספה"
-                                    android:textColor="@color/darkBGfood"
+                                    android:textColor="@color/black"
                                     app:backgroundTint="@color/button_addkid_color_selector"
                                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
 

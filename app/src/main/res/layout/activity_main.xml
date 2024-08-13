@@ -39,7 +39,7 @@ android:layoutDirection="rtl">
                 android:textStyle="bold"/>
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/DayCare_home_MTV_date"
+                android:id="@+id/DayCare_home_LBL_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppinsbold"
@@ -55,13 +55,19 @@ android:layoutDirection="rtl">
 
         </RelativeLayout>
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.01"
+            android:background="@drawable/daycare_background_wood">
+        </RelativeLayout>
+
 
         <RelativeLayout
             android:id="@+id/DayCare_main_LAY"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.4"
-            android:visibility="visible">
+            android:layout_weight="0.4">
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
@@ -139,7 +145,7 @@ android:layoutDirection="rtl">
                                 android:id="@+id/DayCare_main_BTN_addKid"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                app:backgroundTint="#E28BFBEB"
+                                app:backgroundTint="@color/white"
                                 android:layout_margin="4dp"
                                 style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton.Icon"
                                 app:srcCompat="@drawable/daycare_home_kidsadd"
@@ -150,7 +156,7 @@ android:layoutDirection="rtl">
                                 android:id="@+id/DayCare_main_BTN_addEvent"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                app:backgroundTint="#E28BFBEB"
+                                app:backgroundTint="@color/white"
                                 android:layout_margin="4dp"
                                 android:layout_toLeftOf="@id/DayCare_main_BTN_addKid"
                                 style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton.Icon"
