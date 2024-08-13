@@ -128,7 +128,7 @@
                     <RelativeLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="0.9">
+                        android:layout_weight="0.95">
 
                         <com.google.android.material.textview.MaterialTextView
                             android:layout_width="wrap_content"
@@ -138,17 +138,18 @@
                             android:textStyle="bold"
                             android:layout_marginStart="8dp"
                             android:textColor="@color/black"
-                            android:layout_marginTop="20dp" />
+                            android:layout_marginTop="18dp" />
 
                         <com.google.android.material.textview.MaterialTextView
                             android:id="@+id/DayCare_management_progressBar_LBL_countEvents"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="0/0"
+                            android:text="0"
                             android:textStyle="bold"
+                            android:textColor="@color/black"
                             android:layout_centerVertical="true"
                             android:layout_alignParentEnd="true"
-                            android:layout_marginEnd="42dp"
+                            android:layout_marginEnd="50dp"
                             android:textSize="16dp"/>
 
                         <ProgressBar
@@ -178,17 +179,18 @@
                             android:textColor="@color/black"
                            android:layout_marginStart="12dp"
                             android:layout_marginEnd="12dp"
-                            android:layout_marginTop="20dp" />
+                            android:layout_marginTop="18dp" />
 
                         <com.google.android.material.textview.MaterialTextView
                             android:id="@+id/DayCare_management_progressBar_LBL_countActivities"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="0/0"
+                            android:text="0"
                             android:textStyle="bold"
+                            android:textColor="@color/black"
                             android:layout_centerVertical="true"
                             android:layout_alignParentEnd="true"
-                            android:layout_marginEnd="42dp"
+                            android:layout_marginEnd="50dp"
                             android:textSize="16dp"/>
 
                         <ProgressBar
@@ -225,6 +227,7 @@
                     android:id="@+id/DayCare_event_RV"
                     android:layout_width="match_parent"
                     android:layout_height="250dp"
+                    android:layout_marginTop="4dp"
                     tools:listitem="@layout/rv_event" />
             </androidx.cardview.widget.CardView>
 

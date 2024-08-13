@@ -48,6 +48,7 @@ public class HomeFragment extends Fragment {
     private MaterialButton DayCare_home_BTN_food;
     private LinearLayoutCompat DayCare_presence_LAY;
     private TableLayout DayCare_foodTable;
+    private TableLayout DayCare_KidsTable;
 
     private MaterialTextView DayCare_home_progressBar_LBL_countPresentKids;
     private ProgressBar DayCare_home_progressBar_presence;
@@ -121,6 +122,7 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         findViews(view);
         initRecyclerView();  // Initialize RecyclerView
+        UpdatePresentList();
 
         // Set up click listener for slide button to presence layout
         DayCare_home_BTN_presence.setOnClickListener(new View.OnClickListener() {
@@ -135,9 +137,11 @@ public class HomeFragment extends Fragment {
                 if(DayCare_home_BTN_presence.isChecked()) {
                     DayCare_presence_LAY.setVisibility(View.VISIBLE);
                     DayCare_foodTable.setVisibility(View.INVISIBLE);
+                    DayCare_KidsTable.setVisibility(View.GONE);
                 }
                 else {
                     DayCare_presence_LAY.setVisibility(View.INVISIBLE);
+                    DayCare_KidsTable.setVisibility(View.VISIBLE);
                 }
 
                 animation = AnimationUtils.loadAnimation(v.getContext()
@@ -163,9 +167,11 @@ public class HomeFragment extends Fragment {
                 if(DayCare_home_BTN_food.isChecked()) {
                     DayCare_foodTable.setVisibility(View.VISIBLE);
                     DayCare_presence_LAY.setVisibility(View.INVISIBLE);
+                    DayCare_KidsTable.setVisibility(View.GONE);
                 }
                 else {
                     DayCare_foodTable.setVisibility(View.INVISIBLE);
+                    DayCare_KidsTable.setVisibility(View.VISIBLE);
                 }
 
                 animation = AnimationUtils.loadAnimation(v.getContext()
@@ -319,6 +325,9 @@ public class HomeFragment extends Fragment {
         ShapeableImageViewMap.put(3, DayCare_foodTable_IMG_check4);
         ShapeableImageViewMap.put(4, DayCare_foodTable_IMG_check5);
         ShapeableImageViewMap.put(5, DayCare_foodTable_IMG_check6);
+
+
+        DayCare_KidsTable = view.findViewById(R.id.DayCare_KidsTable);
 
     }
 

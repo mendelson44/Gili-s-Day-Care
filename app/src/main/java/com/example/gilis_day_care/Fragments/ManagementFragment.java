@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ProgressBar;
 
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
@@ -21,6 +22,7 @@ import com.example.gilis_day_care.adapters.EventAdapter;
 import com.example.gilis_day_care.adapters.PresenceKidAdapter;
 import com.example.gilis_day_care.model.Event;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.textview.MaterialTextView;
 
 import java.util.ArrayList;
 
@@ -34,6 +36,11 @@ public class ManagementFragment extends Fragment {
     private ArrayList<Event> eventsList;
     private EventAdapter adapter;
 
+    private MaterialTextView DayCare_management_progressBar_LBL_countEvents;
+    private ProgressBar DayCare_management_progressBar_event;
+    private MaterialTextView DayCare_management_progressBar_LBL_countActivities;
+    private ProgressBar DayCare_management_progressBar_activity;
+
 
     public ManagementFragment (ArrayList<Event> eventsList) {
        this.eventsList = eventsList;
@@ -45,6 +52,7 @@ public class ManagementFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_management, container, false);
         findViews(view);
         initRecyclerView();  // Initialize RecyclerView
+        UpdateEventList();
 
         DayCare_management_BTN_event.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,6 +116,11 @@ public class ManagementFragment extends Fragment {
         DayCare_management_BTN_activity = view.findViewById(R.id.DayCare_management_BTN_activity);
         DayCare_event_RV = view.findViewById(R.id.DayCare_event_RV);
 
+        DayCare_management_progressBar_LBL_countEvents = view.findViewById(R.id.DayCare_management_progressBar_LBL_countEvents);
+        DayCare_management_progressBar_event = view.findViewById(R.id.DayCare_management_progressBar_event);
+        DayCare_management_progressBar_LBL_countActivities = view.findViewById(R.id.DayCare_management_progressBar_LBL_countActivities);
+        DayCare_management_progressBar_activity = view.findViewById(R.id.DayCare_management_progressBar_activity);
+
     }
 
     private void initRecyclerView() {
@@ -154,6 +167,7 @@ public class ManagementFragment extends Fragment {
                     public void onAnimationEnd(Animator animation) {
                         // Remove the item from the adapter's data source
                         adapter.removeItem(position);
+                        UpdateEventList();
                     }
                 });
             } else {
@@ -165,6 +179,11 @@ public class ManagementFragment extends Fragment {
         Log.d("ManagementFragment", "RecyclerView initialized with adapter.");
     }
 
+    private void UpdateEventList() {
 
+        DayCare_management_progressBar_event.setProgress(( 100 - eventsList.size()));
+        DayCare_management_progressBar_LBL_countEvents.setText(String.valueOf(eventsList.size()));
+        Log.d("Event progress", "Update event List progress : ");
+    }
 
 }
