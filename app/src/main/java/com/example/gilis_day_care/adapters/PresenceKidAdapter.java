@@ -21,11 +21,13 @@ public class PresenceKidAdapter extends RecyclerView.Adapter<PresenceKidAdapter.
     private Context context;
     private ArrayList<Kid> allKidsList;
     private KidCallBack kidCallBack;
+    private int currentDay;
 
 
-    public PresenceKidAdapter(Context context, ArrayList<Kid> allKidsList) {
+    public PresenceKidAdapter(Context context, ArrayList<Kid> allKidsList, int currentDay) {
         this.context = context;
         this.allKidsList = allKidsList;
+        this.currentDay = currentDay;
 
     }
 
@@ -46,6 +48,18 @@ public class PresenceKidAdapter extends RecyclerView.Adapter<PresenceKidAdapter.
             holder.DayCare_rvPresence_IMG_check.setImageResource(R.drawable.daycare_green_check);
 
 
+        for (String day : kid.getDays()) {
+            // Split the day string by the delimiter
+            String[] parts = day.split("#");
+
+            // Check if the first part of the split contains the day value
+            if (parts.length > 0) {
+                String dayNum = parts[0];
+                String time = parts[1];
+                if(dayNum.equals(String.valueOf(currentDay)))
+                    holder.DayCare_rvPresence_LBL_time.setText(time);
+            }
+        }
         holder.DayCare_rvPresence_LBL_name.setText(kid.getName());
     }
 
@@ -67,12 +81,14 @@ public class PresenceKidAdapter extends RecyclerView.Adapter<PresenceKidAdapter.
     public class KidViewHolder extends RecyclerView.ViewHolder {
 
         private MaterialTextView DayCare_rvPresence_LBL_name;
+        private MaterialTextView DayCare_rvPresence_LBL_time;
         private ShapeableImageView DayCare_rvPresence_IMG_check;
 
         public KidViewHolder(@NonNull View itemView) {
             super(itemView);
 
             DayCare_rvPresence_LBL_name = itemView.findViewById(R.id.DayCare_rvPresence_LBL_name);
+            DayCare_rvPresence_LBL_time = itemView.findViewById(R.id.DayCare_rvPresence_LBL_time);
             DayCare_rvPresence_IMG_check = itemView.findViewById(R.id.DayCare_rvPresence_IMG_check);
 
             DayCare_rvPresence_IMG_check.setOnClickListener(v -> {

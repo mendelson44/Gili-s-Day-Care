@@ -591,432 +591,199 @@
                                 android:layout_weight="1"
                                 android:textColor="@color/black"
                                 android:textStyle="bold"
-                                android:text="12:00" />
-                        </TableRow>
-                        <TableRow
-                            android:background="#F0F7F7"
-                            android:padding="3dp">
-                            <TextView
-                                android:id="@+id/DayCare_kidsTable_LBL_COL1_name1"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/black"
-                                android:layout_weight="1"
-                                android:text="שם הילד" />
-                            <TextView
-                                android:id="@+id/DayCare_kidsTable_LBL_COL1_name2"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/black"
-                                android:layout_weight="1"
-                                android:text="שם הילד" />
-                            <TextView
-                                android:id="@+id/DayCare_kidsTable_LBL_COL1_name3"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/black"
-                                android:layout_weight="1"
-                                android:text="שם הילד" />
-                            <TextView
-                                android:id="@+id/DayCare_kidsTable_LBL_COL1_name4"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/black"
-                                android:layout_weight="1"
-                                android:text="שם הילד" />
-                        </TableRow>
+                                android:text="שעה" />
 
-                        <TableRow
-                            android:background="#F0F7F7"
-                            android:padding="3dp">
-                            <TextView
-                                android:id="@+id/DayCare_kidsTable_LBL_COL2_name1"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/black"
-                                android:layout_weight="1"
-                                android:text="שם הילד" />
-                            <TextView
-                                android:id="@+id/DayCare_kidsTable_LBL_COL2_name2"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/black"
-                                android:layout_weight="1"
-                                android:text="שם הילד" />
-                            <TextView
-                                android:id="@+id/DayCare_kidsTable_LBL_COL2_name3"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/black"
-                                android:layout_weight="1"
-                                android:text="שם הילד" />
-                            <TextView
-                                android:id="@+id/DayCare_kidsTable_LBL_COL2_name4"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/black"
-                                android:layout_weight="1"
-                                android:text="שם הילד" />
-                        </TableRow>
-
-                        <TableRow
-                            android:background="#F0F7F7"
-                            android:padding="3dp">
-                            <TextView
-                                android:id="@+id/DayCare_kidsTable_LBL_COL3_name1"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/black"
-                                android:layout_weight="1"
-                                android:text="שם הילד" />
-                            <TextView
-                                android:id="@+id/DayCare_kidsTable_LBL_COL3_name2"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/black"
-                                android:layout_weight="1"
-                                android:text="שם הילד" />
-                            <TextView
-                                android:id="@+id/DayCare_kidsTable_LBL_COL3_name3"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/black"
-                                android:layout_weight="1"
-                                android:text="שם הילד" />
-                            <TextView
-                                android:id="@+id/DayCare_kidsTable_LBL_COL3_name4"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/black"
-                                android:layout_weight="1"
-                                android:text="שם הילד" />
-                        </TableRow>
-
-                        <TableRow android:background="#51B435" android:padding="6dp">
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:textColor="@color/black"
                                 android:textStyle="bold"
-                                android:text="13:00" />
-                        </TableRow>
+                                android:gravity="center"
+                                android:text="מספר ילדים" />
 
-                        <TableRow
-                            android:background="#F0F7F7"
-                            android:padding="3dp">
-                            <TextView
-                                android:id="@+id/DayCare_kidsTable_LBL_COL4_name1"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/black"
-                                android:layout_weight="1"
-                                android:text="שם הילד" />
-                            <TextView
-                                android:id="@+id/DayCare_kidsTable_LBL_COL4_name2"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/black"
-                                android:layout_weight="1"
-                                android:text="שם הילד" />
-                            <TextView
-                                android:id="@+id/DayCare_kidsTable_LBL_COL4_name3"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/black"
-                                android:layout_weight="1"
-                                android:text="שם הילד" />
-                            <TextView
-                                android:id="@+id/DayCare_kidsTable_LBL_COL4_name4"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/black"
-                                android:layout_weight="1"
-                                android:text="שם הילד" />
-                        </TableRow>
-
-                        <TableRow
-                            android:background="#F0F7F7"
-                            android:padding="3dp">
-                            <TextView
-                                android:id="@+id/DayCare_kidsTable_LBL_COL5_name1"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/black"
-                                android:layout_weight="1"
-                                android:text="שם הילד" />
-                            <TextView
-                                android:id="@+id/DayCare_kidsTable_LBL_COL5_name2"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/black"
-                                android:layout_weight="1"
-                                android:text="שם הילד" />
-                            <TextView
-                                android:id="@+id/DayCare_kidsTable_LBL_COL5_name3"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/black"
-                                android:layout_weight="1"
-                                android:text="שם הילד" />
-                            <TextView
-                                android:id="@+id/DayCare_kidsTable_LBL_COL5_name4"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/black"
-                                android:layout_weight="1"
-                                android:text="שם הילד" />
-                        </TableRow>
-
-                        <TableRow
-                            android:background="#F0F7F7"
-                            android:padding="3dp">
-                            <TextView
-                                android:id="@+id/DayCare_kidsTable_LBL_COL6_name1"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/black"
-                                android:layout_weight="1"
-                                android:text="שם הילד" />
-                            <TextView
-                                android:id="@+id/DayCare_kidsTable_LBL_COL6_name2"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/black"
-                                android:layout_weight="1"
-                                android:text="שם הילד" />
-                            <TextView
-                                android:id="@+id/DayCare_kidsTable_LBL_COL6_name3"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/black"
-                                android:layout_weight="1"
-                                android:text="שם הילד" />
-                            <TextView
-                                android:id="@+id/DayCare_kidsTable_LBL_COL6_name4"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/black"
-                                android:layout_weight="1"
-                                android:text="שם הילד" />
-                        </TableRow>
-
-                        <TableRow android:background="#51B435" android:padding="6dp">
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:textColor="@color/black"
                                 android:textStyle="bold"
-                                android:text="14:00" />
-                        </TableRow>
-                        <TableRow
-                            android:background="#F0F7F7"
-                            android:padding="3dp">
-                            <TextView
-                                android:id="@+id/DayCare_kidsTable_LBL_COL7_name1"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/black"
-                                android:layout_weight="1"
-                                android:text="שם הילד" />
-                            <TextView
-                                android:id="@+id/DayCare_kidsTable_LBL_COL7_name2"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/black"
-                                android:layout_weight="1"
-                                android:text="שם הילד" />
-                            <TextView
-                                android:id="@+id/DayCare_kidsTable_LBL_COL7_name3"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/black"
-                                android:layout_weight="1"
-                                android:text="שם הילד" />
-                            <TextView
-                                android:id="@+id/DayCare_kidsTable_LBL_COL7_name4"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/black"
-                                android:layout_weight="1"
-                                android:text="שם הילד" />
+                                android:gravity="center"
+                                android:text="רשימה" />
                         </TableRow>
 
                         <TableRow
                             android:background="#F0F7F7"
                             android:padding="3dp">
                             <TextView
-                                android:id="@+id/DayCare_kidsTable_LBL_COL8_name1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/black"
-                                android:layout_weight="1"
-                                android:text="שם הילד" />
+                                android:layout_weight="0.4"
+                                android:text="12:00 - 13:00" />
                             <TextView
-                                android:id="@+id/DayCare_kidsTable_LBL_COL8_name2"
+                                android:id="@+id/DayCare_kidsTable_LBL_countKids_row1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/black"
                                 android:layout_weight="1"
-                                android:text="שם הילד" />
-                            <TextView
-                                android:id="@+id/DayCare_kidsTable_LBL_COL8_name3"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/black"
-                                android:layout_weight="1"
-                                android:text="שם הילד" />
-                            <TextView
-                                android:id="@+id/DayCare_kidsTable_LBL_COL8_name4"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/black"
-                                android:layout_weight="1"
-                                android:text="שם הילד" />
+                                android:gravity="center"
+                                android:text="0" />
+
+                            <com.google.android.material.imageview.ShapeableImageView
+                                android:id="@+id/DayCare_kidsTable_IMG_list1"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:layout_weight="0.6"
+                                app:strokeColor="@color/black"
+                                app:srcCompat="@drawable/daycare_read_list"/>
+
                         </TableRow>
 
                         <TableRow
                             android:background="#F0F7F7"
                             android:padding="3dp">
                             <TextView
-                                android:id="@+id/DayCare_kidsTable_LBL_COL9_name1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/black"
-                                android:layout_weight="1"
-                                android:text="שם הילד" />
+                                android:layout_weight="0.4"
+                                android:text="13:00 - 14:00" />
                             <TextView
-                                android:id="@+id/DayCare_kidsTable_LBL_COL9_name2"
+                                android:id="@+id/DayCare_kidsTable_LBL_countKids_row2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/black"
                                 android:layout_weight="1"
-                                android:text="שם הילד" />
-                            <TextView
-                                android:id="@+id/DayCare_kidsTable_LBL_COL9_name3"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/black"
-                                android:layout_weight="1"
-                                android:text="שם הילד" />
-                            <TextView
-                                android:id="@+id/DayCare_kidsTable_LBL_COL9_name4"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/black"
-                                android:layout_weight="1"
-                                android:text="שם הילד" />
-                        </TableRow>
+                                android:gravity="center"
+                                android:text="0" />
 
-                        <TableRow android:background="#51B435" android:padding="6dp">
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:textColor="@color/black"
-                                android:textStyle="bold"
-                                android:text="15:00" />
+                            <com.google.android.material.imageview.ShapeableImageView
+                                android:id="@+id/DayCare_kidsTable_IMG_list2"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:layout_weight="0.6"
+                                app:strokeColor="@color/black"
+                                app:srcCompat="@drawable/daycare_read_list"/>
+
                         </TableRow>
 
                         <TableRow
                             android:background="#F0F7F7"
                             android:padding="3dp">
                             <TextView
-                                android:id="@+id/DayCare_kidsTable_LBL_COL10_name1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/black"
-                                android:layout_weight="1"
-                                android:text="שם הילד" />
+                                android:layout_weight="0.4"
+                                android:text="14:00 - 15:00" />
                             <TextView
-                                android:id="@+id/DayCare_kidsTable_LBL_COL10_name2"
+                                android:id="@+id/DayCare_kidsTable_LBL_countKids_row3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/black"
                                 android:layout_weight="1"
-                                android:text="שם הילד" />
-                            <TextView
-                                android:id="@+id/DayCare_kidsTable_LBL_COL10_name3"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/black"
-                                android:layout_weight="1"
-                                android:text="שם הילד" />
-                            <TextView
-                                android:id="@+id/DayCare_kidsTable_LBL_COL10_name4"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/black"
-                                android:layout_weight="1"
-                                android:text="שם הילד" />
+                                android:gravity="center"
+                                android:text="0" />
+
+                            <com.google.android.material.imageview.ShapeableImageView
+                                android:id="@+id/DayCare_kidsTable_IMG_list3"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:layout_weight="0.6"
+                                app:strokeColor="@color/black"
+                                app:srcCompat="@drawable/daycare_read_list"/>
+
                         </TableRow>
 
                         <TableRow
                             android:background="#F0F7F7"
                             android:padding="3dp">
                             <TextView
-                                android:id="@+id/DayCare_kidsTable_LBL_COL11_name1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/black"
-                                android:layout_weight="1"
-                                android:text="שם הילד" />
+                                android:layout_weight="0.4"
+                                android:text="15:00 - 16:00" />
                             <TextView
-                                android:id="@+id/DayCare_kidsTable_LBL_COL11_name2"
+                                android:id="@+id/DayCare_kidsTable_LBL_countKids_row4"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/black"
                                 android:layout_weight="1"
-                                android:text="שם הילד" />
-                            <TextView
-                                android:id="@+id/DayCare_kidsTable_LBL_COL11_name3"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/black"
-                                android:layout_weight="1"
-                                android:text="שם הילד" />
-                            <TextView
-                                android:id="@+id/DayCare_kidsTable_LBL_COL11_name4"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/black"
-                                android:layout_weight="1"
-                                android:text="שם הילד" />
+                                android:gravity="center"
+                                android:text="0" />
+
+                            <com.google.android.material.imageview.ShapeableImageView
+                                android:id="@+id/DayCare_kidsTable_IMG_list4"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:layout_weight="0.6"
+                                app:strokeColor="@color/black"
+                                app:srcCompat="@drawable/daycare_read_list"/>
+
                         </TableRow>
 
                         <TableRow
                             android:background="#F0F7F7"
                             android:padding="3dp">
                             <TextView
-                                android:id="@+id/DayCare_kidsTable_LBL_COL12_name1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/black"
-                                android:layout_weight="1"
-                                android:text="שם הילד" />
+                                android:layout_weight="0.4"
+                                android:text="16:00 - 17:00" />
                             <TextView
-                                android:id="@+id/DayCare_kidsTable_LBL_COL12_name2"
+                                android:id="@+id/DayCare_kidsTable_LBL_countKids_row5"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/black"
                                 android:layout_weight="1"
-                                android:text="שם הילד" />
-                            <TextView
-                                android:id="@+id/DayCare_kidsTable_LBL_COL12_name3"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/black"
-                                android:layout_weight="1"
-                                android:text="שם הילד" />
-                            <TextView
-                                android:id="@+id/DayCare_kidsTable_LBL_COL12_name4"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/black"
-                                android:layout_weight="1"
-                                android:text="שם הילד" />
+                                android:gravity="center"
+                                android:text="0" />
+
+                            <com.google.android.material.imageview.ShapeableImageView
+                                android:id="@+id/DayCare_kidsTable_IMG_list5"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:layout_weight="0.6"
+                                app:strokeColor="@color/black"
+                                app:srcCompat="@drawable/daycare_read_list"/>
+
                         </TableRow>
+
+                        <TableRow
+                            android:background="#F0F7F7"
+                            android:padding="3dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/black"
+                                android:layout_weight="0.4"
+                                android:text="17:00 - 18:00" />
+                            <TextView
+                                android:id="@+id/DayCare_kidsTable_LBL_countKids_row6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/black"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="0" />
+
+                            <com.google.android.material.imageview.ShapeableImageView
+                                android:id="@+id/DayCare_kidsTable_IMG_list6"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:layout_weight="0.6"
+                                app:strokeColor="@color/black"
+                                app:srcCompat="@drawable/daycare_read_list"/>
+
+                        </TableRow>
+
+
+
+
+
 
                     </TableLayout>
 

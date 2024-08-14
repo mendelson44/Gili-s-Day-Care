@@ -77,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayoutCompat DayCare_main_kidsRV_LAY;
     private CardView DayCare_main_kidsRV_CARD;
     private ManagementFragment managementFragment;
+    private HomeFragment homeFragment;
     private Manager manager;
     private MyFireBase fireBase;
 
@@ -103,8 +104,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("MainActivity", "kids list." + MainActivity.this.kidsList);
                 UpdateWorkList(dayOfWeek);
                 Log.d("MainActivity", "work day kids list." + MainActivity.this.workDayList);
-                HomeFragment.init(workDayList);
-
+                MainActivity.this.homeFragment = new HomeFragment(workDayList,dayOfWeek);
             }
 
             @Override
@@ -178,7 +178,7 @@ public class MainActivity extends AppCompatActivity {
             Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.Main_frame_layout);
 
             if (item.getItemId() == R.id.home) {
-                selectedFragment = HomeFragment.getInstance();
+                selectedFragment = homeFragment;
                 DayCare_main_LBL_title.setText("דף הבית");
                 DayCare_main_kidsRV_LAY.setVisibility(View.INVISIBLE);
                 toLeft = false;
@@ -221,7 +221,7 @@ public class MainActivity extends AppCompatActivity {
         else {
             DayCare_main_LAY.setVisibility(View.VISIBLE);
             DayCare_main_BTN_START.setVisibility(View.GONE);
-            replaceFragment(HomeFragment.getInstance(), new KidsFragment(), true, true);
+            replaceFragment(homeFragment, new KidsFragment(), true, true);
         }
     }
 

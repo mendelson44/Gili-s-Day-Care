@@ -1,9 +1,11 @@
 package com.example.gilis_day_care.Fragments;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.cardview.widget.CardView;
@@ -13,18 +15,23 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
+import android.util.Printer;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
 
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -55,6 +62,7 @@ public class HomeFragment extends Fragment {
     private MaterialTextView DayCare_home_progressBar_LBL_countFinishedFood;
     private ProgressBar DayCare_home_progressBar_food;
 
+    // FOOD KIDS TABLE
     private MaterialTextView DayCare_foodTable_LBL_groupNumber;
     private TextView DayCare_foodTable_LBL_name1;
     private TextView DayCare_foodTable_LBL_ALR1;
@@ -76,6 +84,24 @@ public class HomeFragment extends Fragment {
     private ShapeableImageView DayCare_foodTable_IMG_check5;
     private ShapeableImageView DayCare_foodTable_IMG_check6;
 
+    // HOUR KIDS TABLE
+    private TextView DayCare_kidsTable_LBL_countKids_row1;
+    private TextView DayCare_kidsTable_LBL_countKids_row2;
+    private TextView DayCare_kidsTable_LBL_countKids_row3;
+    private TextView DayCare_kidsTable_LBL_countKids_row4;
+    private TextView DayCare_kidsTable_LBL_countKids_row5;
+    private TextView DayCare_kidsTable_LBL_countKids_row6;
+
+    private ShapeableImageView DayCare_kidsTable_IMG_list1;
+    private ShapeableImageView DayCare_kidsTable_IMG_list2;
+    private ShapeableImageView DayCare_kidsTable_IMG_list3;
+    private ShapeableImageView DayCare_kidsTable_IMG_list4;
+    private ShapeableImageView DayCare_kidsTable_IMG_list5;
+    private ShapeableImageView DayCare_kidsTable_IMG_list6;
+
+
+
+
     private FloatingActionButton DayCare_home_BTN_back;
     private FloatingActionButton DayCare_home_BTN_forward;
 
@@ -84,36 +110,22 @@ public class HomeFragment extends Fragment {
     private RecyclerView DayCare_presence_RV_kidsPresenceList;
     private ArrayList<Kid> kidsList;
     private Map<Integer,ArrayList<Kid>> foodTableList;
+    private Map<String,ArrayList<String>> kidsTableListByHour;
     private Manager manager;
     private int countFoodGroups;
+    private int currentDay;
     private SparseArray<ShapeableImageView> ShapeableImageViewMap;
 
 
-    private static volatile HomeFragment instance;
-
-
-    public static HomeFragment init(ArrayList<Kid> kidsList){
-        if (instance == null){
-            synchronized (HomeFragment.class){
-                if (instance == null){
-                    instance = new HomeFragment(kidsList);
-                }
-            }
-        }
-        return getInstance();
-    }
-
-    public static HomeFragment getInstance() {
-        return instance;
-    }
-
-
-    public HomeFragment (ArrayList<Kid> kidsList) {
+    public HomeFragment (ArrayList<Kid> kidsList,int currentDay) {
        this.kidsList = kidsList;
        this.manager = new Manager();
        this.foodTableList = new HashMap<>();
+       this.kidsTableListByHour = new HashMap<>();
        this.countFoodGroups = 0;
+       this.currentDay = currentDay;
        generateFoodList();
+       generateKidsListByHour();
     }
 
     @Override
@@ -123,6 +135,7 @@ public class HomeFragment extends Fragment {
         findViews(view);
         initRecyclerView();  // Initialize RecyclerView
         UpdatePresentList();
+        UpdateKidsTable_UI();
 
         // Set up click listener for slide button to presence layout
         DayCare_home_BTN_presence.setOnClickListener(new View.OnClickListener() {
@@ -270,6 +283,68 @@ public class HomeFragment extends Fragment {
                 }
             }
         });
+
+        DayCare_kidsTable_IMG_list1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Get the array of kids for the time range
+                ArrayList<String> kidsNames = kidsTableListByHour.get("12:00-13:00");
+
+                // Show the dialog with the kids' names
+                showKidsDialog("12:00-13:00", kidsNames);
+            }
+        });
+
+        DayCare_kidsTable_IMG_list2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Get the array of kids for the time range
+                ArrayList<String> kidsNames = kidsTableListByHour.get("13:00-14:00");
+
+                // Show the dialog with the kids' names
+                showKidsDialog("12:00-13:00", kidsNames);
+            }
+        });
+        DayCare_kidsTable_IMG_list3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Get the array of kids for the time range
+                ArrayList<String> kidsNames = kidsTableListByHour.get("14:00-15:00");
+
+                // Show the dialog with the kids' names
+                showKidsDialog("14:00-15:00", kidsNames);
+            }
+        });
+        DayCare_kidsTable_IMG_list4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Get the array of kids for the time range
+                ArrayList<String> kidsNames = kidsTableListByHour.get("15:00-16:00");
+
+                // Show the dialog with the kids' names
+                showKidsDialog("15:00-16:00", kidsNames);
+            }
+        });
+        DayCare_kidsTable_IMG_list5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Get the array of kids for the time range
+                ArrayList<String> kidsNames = kidsTableListByHour.get("16:00-17:00");
+
+                // Show the dialog with the kids' names
+                showKidsDialog("16:00-17:00", kidsNames);
+            }
+        });
+        DayCare_kidsTable_IMG_list6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Get the array of kids for the time range
+                ArrayList<String> kidsNames = kidsTableListByHour.get("17:00-18:00");
+
+                // Show the dialog with the kids' names
+                showKidsDialog("17:00-18:00", kidsNames);
+            }
+        });
         return view;
     }
 
@@ -313,6 +388,20 @@ public class HomeFragment extends Fragment {
         DayCare_foodTable_LBL_name6 = view.findViewById(R.id.DayCare_foodTable_LBL_name6);
         DayCare_foodTable_LBL_ALR6 = view.findViewById(R.id.DayCare_foodTable_LBL_ALR6);
         DayCare_foodTable_IMG_check6 = view.findViewById(R.id.DayCare_foodTable_IMG_check6);
+        DayCare_kidsTable_LBL_countKids_row1 = view.findViewById(R.id.DayCare_kidsTable_LBL_countKids_row1);
+        DayCare_kidsTable_LBL_countKids_row2 = view.findViewById(R.id.DayCare_kidsTable_LBL_countKids_row2);
+        DayCare_kidsTable_LBL_countKids_row3 = view.findViewById(R.id.DayCare_kidsTable_LBL_countKids_row3);
+        DayCare_kidsTable_LBL_countKids_row4 = view.findViewById(R.id.DayCare_kidsTable_LBL_countKids_row4);
+        DayCare_kidsTable_LBL_countKids_row5 = view.findViewById(R.id.DayCare_kidsTable_LBL_countKids_row5);
+        DayCare_kidsTable_LBL_countKids_row6 = view.findViewById(R.id.DayCare_kidsTable_LBL_countKids_row6);
+
+        DayCare_kidsTable_IMG_list1 = view.findViewById(R.id.DayCare_kidsTable_IMG_list1);
+        DayCare_kidsTable_IMG_list2 = view.findViewById(R.id.DayCare_kidsTable_IMG_list2);
+        DayCare_kidsTable_IMG_list3 = view.findViewById(R.id.DayCare_kidsTable_IMG_list3);
+        DayCare_kidsTable_IMG_list4 = view.findViewById(R.id.DayCare_kidsTable_IMG_list4);
+        DayCare_kidsTable_IMG_list5 = view.findViewById(R.id.DayCare_kidsTable_IMG_list5);
+        DayCare_kidsTable_IMG_list6 = view.findViewById(R.id.DayCare_kidsTable_IMG_list6);
+
 
         DayCare_home_BTN_back = view.findViewById(R.id.DayCare_home_BTN_back);
         DayCare_home_BTN_forward = view.findViewById(R.id.DayCare_home_BTN_forward);
@@ -333,7 +422,7 @@ public class HomeFragment extends Fragment {
 
 
     private void initRecyclerView() {
-        adapter = new PresenceKidAdapter(getActivity().getApplicationContext(), kidsList);
+        adapter = new PresenceKidAdapter(getActivity().getApplicationContext(), kidsList, currentDay);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
         DayCare_presence_RV_kidsPresenceList.setLayoutManager(linearLayoutManager);
@@ -459,6 +548,64 @@ public class HomeFragment extends Fragment {
         }
     }
 
+    private void generateKidsListByHour() {
+
+        kidsTableListByHour.put("12:00-13:00", getArrayOfKidsInTime("12:00-13:00"));
+        kidsTableListByHour.put("13:00-14:00", getArrayOfKidsInTime("13:00-14:00"));
+        kidsTableListByHour.put("14:00-15:00", getArrayOfKidsInTime("14:00-15:00"));
+        kidsTableListByHour.put("15:00-16:00", getArrayOfKidsInTime("15:00-16:00"));
+        kidsTableListByHour.put("16:00-17:00", getArrayOfKidsInTime("16:00-17:00"));
+        kidsTableListByHour.put("17:00-18:00", getArrayOfKidsInTime("17:00-18:00"));
+    }
+    private void UpdateKidsTable_UI() {
+
+        DayCare_kidsTable_LBL_countKids_row1.setText(String.valueOf(kidsTableListByHour.get("12:00-13:00").size()));
+        DayCare_kidsTable_LBL_countKids_row2.setText(String.valueOf(kidsTableListByHour.get("13:00-14:00").size()));
+        DayCare_kidsTable_LBL_countKids_row3.setText(String.valueOf(kidsTableListByHour.get("14:00-15:00").size()));
+        DayCare_kidsTable_LBL_countKids_row4.setText(String.valueOf(kidsTableListByHour.get("15:00-16:00").size()));
+        DayCare_kidsTable_LBL_countKids_row5.setText(String.valueOf(kidsTableListByHour.get("16:00-17:00").size()));
+        DayCare_kidsTable_LBL_countKids_row6.setText(String.valueOf(kidsTableListByHour.get("17:00-18:00").size()));
+
+    }
+
+    private ArrayList<String> getArrayOfKidsInTime(String TimeRangeNum) {
+
+        ArrayList<String> arrayList = new ArrayList<>();
+        String[] rangeTime = TimeRangeNum.trim().split("-");
+        String time1 = rangeTime[0].trim();
+        String time2 = rangeTime[1].trim();
+
+        // Define a formatter for parsing time strings
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
+
+        // Convert time1 and time2 to LocalTime objects
+        LocalTime startTime = LocalTime.parse(time1, timeFormatter);
+        LocalTime endTime = LocalTime.parse(time2, timeFormatter);
+
+        for (Kid kid : kidsList) {
+            for (String dayTime : kid.getDays()) {
+                String[] parts = dayTime.split("#");
+
+                if (parts.length > 1) {
+                    String time = parts[1].trim();
+                    String day  = parts[0];
+                    if(day.equals(String.valueOf(currentDay))) {
+                        // Convert the time to a LocalTime object
+                        LocalTime kidTime = LocalTime.parse(time, timeFormatter);
+
+                        // Check if kidTime is within the range [startTime, endTime]
+                        if ((kidTime.equals(startTime) || kidTime.isAfter(startTime))
+                                && (kidTime.isBefore(endTime))) {
+                            arrayList.add(kid.getName());
+                        }
+                    }
+                }
+            }
+        }
+        Log.d("HomeFragment", "get array Of Kids In Time range : " + TimeRangeNum + "names array :" + arrayList);
+        return arrayList;
+    }
+
     private void makeSound() {
     }
 
@@ -502,5 +649,47 @@ public class HomeFragment extends Fragment {
     }
 
 
+    private void showKidsDialog(String timeRange, ArrayList<String> kidsNames) {
+        // Inflate the custom layout for the dialog
+        LayoutInflater inflater = LayoutInflater.from(getContext());
+        View dialogView = inflater.inflate(R.layout.dialog_custom, null);
+
+        // Find the TextView and ListView in the custom layout
+        TextView dialogTitle = dialogView.findViewById(R.id.dialog_title);
+        ListView dialogList = dialogView.findViewById(R.id.dialog_list);
+
+        // Set the title of the dialog
+        dialogTitle.setText("זמן אגעה לצהרון בין : " + timeRange);
+
+        // Create a default ArrayAdapter
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_list_item_1, kidsNames) {
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+                View view = super.getView(position, convertView, parent);
+                TextView textView = view.findViewById(android.R.id.text1);
+                textView.setTextColor(getResources().getColor(R.color.black)); // Set text color here
+                return view;
+            }
+        };
+
+        dialogList.setAdapter(adapter);
+
+        // Create the dialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setView(dialogView);
+
+        // Add a "Close" button to the dialog
+        builder.setPositiveButton("סגור", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        // Create and show the dialog
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
 
 }

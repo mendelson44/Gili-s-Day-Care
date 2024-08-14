@@ -75,22 +75,28 @@ public class KidAdapter extends RecyclerView.Adapter<KidAdapter.KidViewHolder> {
 
             // Check if the first part of the split contains the day value
             if (parts.length > 0) {
-                String firstPart = parts[0];
+                String dayNum = parts[0];
+                String time = parts[1];
 
-                if (firstPart.contains("1")) {
+                if (dayNum.contains("1")) {
                     holder.DayCare_kidData_CV_day1.setCardBackgroundColor(ContextCompat.getColor(context, R.color.buttonDaysColorChecked));
+                    holder.DayCare_kidData_LBL_time1.setText(time);
                 }
-                if (firstPart.contains("2")) {
+                if (dayNum.contains("2")) {
                     holder.DayCare_kidData_CV_day2.setCardBackgroundColor(ContextCompat.getColor(context, R.color.buttonDaysColorChecked));
+                    holder.DayCare_kidData_LBL_time2.setText(time);
                 }
-                if (firstPart.contains("3")) {
+                if (dayNum.contains("3")) {
                     holder.DayCare_kidData_CV_day3.setCardBackgroundColor(ContextCompat.getColor(context, R.color.buttonDaysColorChecked));
+                    holder.DayCare_kidData_LBL_time3.setText(time);
                 }
-                if (firstPart.contains("4")) {
+                if (dayNum.contains("4")) {
                     holder.DayCare_kidData_CV_day4.setCardBackgroundColor(ContextCompat.getColor(context, R.color.buttonDaysColorChecked));
+                    holder.DayCare_kidData_LBL_time4.setText(time);
                 }
-                if (firstPart.contains("5")) {
+                if (dayNum.contains("5")) {
                     holder.DayCare_kidData_CV_day5.setCardBackgroundColor(ContextCompat.getColor(context, R.color.buttonDaysColorChecked));
+                    holder.DayCare_kidData_LBL_time5.setText(time);
                 }
             }
 
@@ -161,6 +167,12 @@ public class KidAdapter extends RecyclerView.Adapter<KidAdapter.KidViewHolder> {
         private ShapeableImageView DayCare_kidData_IMG_logo;
         private ShapeableImageView DayCare_kidData_IMG_delete;
 
+        private MaterialTextView DayCare_kidData_LBL_time1;
+        private MaterialTextView DayCare_kidData_LBL_time2;
+        private MaterialTextView DayCare_kidData_LBL_time3;
+        private MaterialTextView DayCare_kidData_LBL_time4;
+        private MaterialTextView DayCare_kidData_LBL_time5;
+
         public KidViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -181,6 +193,12 @@ public class KidAdapter extends RecyclerView.Adapter<KidAdapter.KidViewHolder> {
             DayCare_kidData_CV_day5 = itemView.findViewById(R.id.DayCare_kidData_CV_day5);
             DayCare_kidData_IMG_logo = itemView.findViewById(R.id.DayCare_kidData_IMG_logo);
             DayCare_kidData_IMG_delete = itemView.findViewById(R.id.DayCare_kidData_IMG_delete);
+
+            DayCare_kidData_LBL_time1 = itemView.findViewById(R.id.DayCare_kidData_LBL_time1);
+            DayCare_kidData_LBL_time2 = itemView.findViewById(R.id.DayCare_kidData_LBL_time2);
+            DayCare_kidData_LBL_time3 = itemView.findViewById(R.id.DayCare_kidData_LBL_time3);
+            DayCare_kidData_LBL_time4 = itemView.findViewById(R.id.DayCare_kidData_LBL_time4);
+            DayCare_kidData_LBL_time5 = itemView.findViewById(R.id.DayCare_kidData_LBL_time5);
 
             DayCare_kidData_IMG_delete.setOnClickListener(v -> {
                 if (kidDeleteCallBack != null)

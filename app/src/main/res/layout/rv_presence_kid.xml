@@ -66,6 +66,18 @@
                             android:textStyle="bold"
                             tools:text="שם הילד" />
 
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/DayCare_rvPresence_LBL_time"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            android:layout_marginEnd="6dp"
+                            android:layout_alignParentBottom="true"
+                            android:gravity="end"
+                            tools:text="Time"
+                            android:textStyle="bold"/>
+
                     </RelativeLayout>
 
 

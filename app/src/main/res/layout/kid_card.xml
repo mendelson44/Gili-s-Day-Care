@@ -575,6 +575,16 @@
                                                 android:textColor="@color/white"
                                                 android:gravity="center" />
 
+                                            <com.google.android.material.textview.MaterialTextView
+                                                android:id="@+id/DayCare_kidData_LBL_time1"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:textColor="@color/black"
+                                                android:textSize="9sp"
+                                                android:gravity="center"
+                                                tools:text="Time"
+                                                android:textStyle="bold"/>
+
                                         </com.google.android.material.card.MaterialCardView>
 
                                     </RelativeLayout>
@@ -614,6 +624,16 @@
                                                 android:background="@android:color/transparent"
                                                 android:textColor="@color/white"
                                                 android:gravity="center" />
+
+                                            <com.google.android.material.textview.MaterialTextView
+                                                android:id="@+id/DayCare_kidData_LBL_time2"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:textColor="@color/black"
+                                                android:textSize="9sp"
+                                                android:gravity="center"
+                                                tools:text="Time"
+                                                android:textStyle="bold"/>
 
                                         </com.google.android.material.card.MaterialCardView>
 
@@ -655,6 +675,16 @@
                                                 android:textColor="@color/white"
                                                 android:gravity="center" />
 
+                                            <com.google.android.material.textview.MaterialTextView
+                                                android:id="@+id/DayCare_kidData_LBL_time3"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:textColor="@color/black"
+                                                android:textSize="9sp"
+                                                android:gravity="center"
+                                                tools:text="Time"
+                                                android:textStyle="bold"/>
+
                                         </com.google.android.material.card.MaterialCardView>
 
                                     </RelativeLayout>
@@ -694,6 +724,16 @@
                                                 android:background="@android:color/transparent"
                                                 android:textColor="@color/white"
                                                 android:gravity="center" />
+
+                                            <com.google.android.material.textview.MaterialTextView
+                                                android:id="@+id/DayCare_kidData_LBL_time4"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:textColor="@color/black"
+                                                android:textSize="9sp"
+                                                android:gravity="center"
+                                                tools:text="Time"
+                                                android:textStyle="bold"/>
 
                                         </com.google.android.material.card.MaterialCardView>
 
@@ -735,6 +775,16 @@
                                                 android:background="@android:color/transparent"
                                                 android:textColor="@color/white"
                                                 android:gravity="center" />
+
+                                            <com.google.android.material.textview.MaterialTextView
+                                                android:id="@+id/DayCare_kidData_LBL_time5"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:textColor="@color/black"
+                                                android:textSize="9sp"
+                                                android:gravity="center"
+                                                tools:text="Time"
+                                                android:textStyle="bold"/>
 
                                         </com.google.android.material.card.MaterialCardView>
 
