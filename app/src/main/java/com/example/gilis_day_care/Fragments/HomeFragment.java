@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Handler;
 import android.util.Log;
 import android.util.Printer;
 import android.util.SparseArray;
@@ -30,15 +31,19 @@ import android.widget.TableLayout;
 import android.widget.TextView;
 
 
+import java.time.Duration;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Stack;
 
 import com.example.gilis_day_care.R;
 import com.example.gilis_day_care.adapters.PresenceKidAdapter;
+import com.example.gilis_day_care.model.Event;
 import com.example.gilis_day_care.model.Kid;
 import com.example.gilis_day_care.model.Manager;
 import com.google.android.material.button.MaterialButton;
@@ -99,6 +104,7 @@ public class HomeFragment extends Fragment {
     private ShapeableImageView DayCare_kidsTable_IMG_list5;
     private ShapeableImageView DayCare_kidsTable_IMG_list6;
 
+    private MaterialTextView DayCare_rvPresence_LBL_time;
 
 
 
@@ -119,7 +125,7 @@ public class HomeFragment extends Fragment {
 
     public HomeFragment (ArrayList<Kid> kidsList,int currentDay) {
        this.kidsList = kidsList;
-       this.manager = new Manager();
+       this.manager = Manager.getInstance();
        this.foodTableList = new HashMap<>();
        this.kidsTableListByHour = new HashMap<>();
        this.countFoodGroups = 0;
@@ -349,9 +355,13 @@ public class HomeFragment extends Fragment {
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
+    public void onStart() {
+        super.onStart();
+    }
 
+    @Override
+    public void onStop() {
+        super.onStop();
     }
 
 
@@ -403,6 +413,7 @@ public class HomeFragment extends Fragment {
         DayCare_kidsTable_IMG_list6 = view.findViewById(R.id.DayCare_kidsTable_IMG_list6);
 
 
+        DayCare_rvPresence_LBL_time = view.findViewById(R.id.DayCare_rvPresence_LBL_time);
         DayCare_home_BTN_back = view.findViewById(R.id.DayCare_home_BTN_back);
         DayCare_home_BTN_forward = view.findViewById(R.id.DayCare_home_BTN_forward);
 
@@ -429,6 +440,7 @@ public class HomeFragment extends Fragment {
         DayCare_presence_RV_kidsPresenceList.setAdapter(adapter);
         adapter.setKidCallback((kid, position) -> {
             kid.setState(kid.getState() == 0 ? 1 : 0);
+            kid.setLate(!kid.isLate());
             UpdatePresentList();
             adapter.notifyItemChanged(position);
             makeSound();
@@ -441,7 +453,10 @@ public class HomeFragment extends Fragment {
         int count  = getCountOfKidsInByState(1);
         int kidsInState2  = getCountOfKidsInByState(2);
         int finalCount = count + kidsInState2;
-        DayCare_home_progressBar_presence.setProgress((finalCount*100)/kidsList.size());
+        if (kidsList.isEmpty())
+            DayCare_home_progressBar_presence.setProgress(0);
+        else
+            DayCare_home_progressBar_presence.setProgress((finalCount*100)/kidsList.size());
         DayCare_home_progressBar_LBL_countPresentKids.setText(finalCount + "/" + kidsList.size());
         Log.d("Presence progress", "Update Present List count : " + finalCount);
     }
@@ -451,7 +466,6 @@ public class HomeFragment extends Fragment {
         for (Kid kid:kidsList) {
             if (kid.getState() == state)
                 count++;
-
         }
         return count;
     }

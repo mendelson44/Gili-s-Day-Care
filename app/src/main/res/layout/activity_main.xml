@@ -11,7 +11,6 @@ android:background="@drawable/daycare_main_background"
 android:layoutDirection="rtl">
 
 
-
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -194,7 +193,6 @@ android:layoutDirection="rtl">
                                     android:id="@+id/DayCare_notificationCard_LAY"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:visibility="visible"
                                     android:orientation="horizontal">
 
 
@@ -224,16 +222,6 @@ android:layoutDirection="rtl">
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1">
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/DayCare_main_BTN_START"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:text="START"
-                android:textColor="@color/darkBGfood"
-                app:backgroundTint="@color/black"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
 
             <FrameLayout
                 android:id="@+id/Main_frame_layout"

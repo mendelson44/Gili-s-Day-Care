@@ -17,6 +17,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.gilis_day_care.Activities.MainActivity;
 import com.example.gilis_day_care.R;
 import com.example.gilis_day_care.Utilities.MyFireBase;
 import com.example.gilis_day_care.adapters.EventAdapter;
@@ -45,20 +46,22 @@ public class ManagementFragment extends Fragment {
     private ProgressBar DayCare_management_progressBar_activity;
     private OnItemRemovedCallback onItemRemovedCallback;
     private MyFireBase fireBase;
+    private Manager manager;
 
-    public ManagementFragment (ArrayList<Event> eventsList) {
+    public ManagementFragment () {
 
-        this.eventsList = eventsList;
-        fireBase = new MyFireBase();
+        this.manager = Manager.getInstance();
+        this.fireBase = new MyFireBase();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_management, container, false);
+        this.eventsList = manager.getEventsList();
         findViews(view);
         initRecyclerView();  // Initialize RecyclerView
-        UpdateEventList();
+        UpdateEventProgressBar();
 
         DayCare_management_BTN_event.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -178,23 +181,28 @@ public class ManagementFragment extends Fragment {
                         }
                         fireBase.deleteEvent(eventsList.get(position).getId());
                         adapter.removeItem(position);
-                        UpdateEventList();
+                        UpdateEventProgressBar();
                     }
                 });
             } else {
                 // Handle the case where the ViewHolder is null
-                adapter.removeItem(position);
+                //adapter.removeItem(position);
             }
         });
 
         Log.d("ManagementFragment", "RecyclerView initialized with adapter.");
     }
 
-    private void UpdateEventList() {
+    private void UpdateEventProgressBar() {
 
         DayCare_management_progressBar_event.setProgress(( 100 - eventsList.size()));
         DayCare_management_progressBar_LBL_countEvents.setText(String.valueOf(eventsList.size()));
-        Log.d("Event progress", "Update event List progress : ");
+    }
+
+    public void updateAddEventFromMain(Event event) {
+        this.eventsList.add(event);
+        Log.d("ManagementFragment", "add event for late kids" + eventsList);
+        adapter.notify();
     }
 
     public void setOnItemRemovedCallback(OnItemRemovedCallback callback) {

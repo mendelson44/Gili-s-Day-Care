@@ -1,5 +1,7 @@
 package com.example.gilis_day_care.adapters;
 
+import android.animation.Animator;
+import android.animation.AnimatorInflater;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,7 +33,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
         if (position >= 0 && position < eventList.size()) {
             eventList.remove(position);
             notifyItemRemoved(position);
-            notifyItemRangeChanged(position, eventList.size()); // Update positions of remaining items
+            notifyDataSetChanged();
         }
     }
 
@@ -64,7 +66,9 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
         holder.DayCare_rvEvent_LBL_time.setText(event.getTime());
         holder.DayCare_rvEvent_LBL_date.setText(event.getDate());
 
-        holder.DayCare_rvEvent_IMG_delete.setImageResource(R.drawable.daycare_delete);
+
+        holder.itemView.setX(0);
+        holder.DayCare_rvEvent_IMG_delete.setVisibility(View.INVISIBLE);
 
         holder.itemView.setOnClickListener(v -> listener.onItemClick(position));
 

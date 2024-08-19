@@ -22,6 +22,7 @@ public class Kid {
     private ArrayList<String> days;
     private int state;
     private boolean girl;
+    private boolean isLate = false;
 
 
     public Kid() {}
@@ -172,6 +173,14 @@ public class Kid {
 
     public boolean isGirl() {
         return girl;
+    }
+
+    public boolean isLate() {
+        return isLate;
+    }
+
+    public void setLate(boolean late) {
+        isLate = late;
     }
 
     public void setGirl(boolean girl) {

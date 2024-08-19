@@ -34,7 +34,7 @@ public class KidAdapter extends RecyclerView.Adapter<KidAdapter.KidViewHolder> {
         if (position >= 0 && position < allKidsList.size()) {
             allKidsList.remove(position);
             notifyItemRemoved(position);
-            notifyItemRangeChanged(position, allKidsList.size()); // Update positions of remaining items
+            notifyDataSetChanged();
         }
     }
 
@@ -112,7 +112,8 @@ public class KidAdapter extends RecyclerView.Adapter<KidAdapter.KidViewHolder> {
         }
 
 
-        holder.DayCare_kidData_IMG_delete.setImageResource(R.drawable.daycare_delete);
+        holder.itemView.setX(0);
+        holder.DayCare_kidData_IMG_delete.setVisibility(View.INVISIBLE);
 
         holder.itemView.setOnClickListener(v -> listener.onItemClick(position));
 

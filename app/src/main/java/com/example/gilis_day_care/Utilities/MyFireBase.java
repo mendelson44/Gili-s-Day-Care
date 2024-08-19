@@ -8,6 +8,7 @@ import com.example.gilis_day_care.model.Event;
 import com.example.gilis_day_care.model.Kid;
 import com.example.gilis_day_care.Interface.KidListCallBack;
 import com.example.gilis_day_care.Interface.EventListCallBack;
+import com.example.gilis_day_care.model.User;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -38,6 +39,12 @@ public class MyFireBase {
 
     }
 
+    public void saveUser (User user) {
+        Log.d("saveUser-FireBase", "save user: " + user.toString());
+        database.getReference("Users").child(user.getUid()).setValue(user);
+
+    }
+
     public void deleteEvent (String eventId) {
 
         Log.d("delete-Event-FireBase", "delete event: " + eventId);
@@ -52,7 +59,7 @@ public class MyFireBase {
 
     public void loadKidsList(KidListCallBack callBack) {
         Query eventsQuery = database.getReference().child("Kids");
-        eventsQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+        eventsQuery.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 ArrayList<Kid> kidsList = new ArrayList<>();
@@ -79,34 +86,65 @@ public class MyFireBase {
         });
     }
 
+
+
     public void loadEventsList(EventListCallBack callBack) {
         Query eventsQuery = database.getReference().child("Events");
-        eventsQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+        eventsQuery.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 ArrayList<Event> eventsList = new ArrayList<>();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                   Event event = snapshot.getValue(Event.class);
+                    Event event = snapshot.getValue(Event.class);
                     if (event != null) {
                         eventsList.add(event);
                     } else {
-                        Log.e("FirebaseDataManager", "Failed to load events List from Firebase.");
+                        Log.e("FirebaseDataManager", "Failed to load event from Firebase.");
                     }
                 }
                 if (!eventsList.isEmpty()) {
                     callBack.onLoadSucceeded(eventsList);
                 } else {
-                    callBack.onLoadFailed(new Exception("No events found for events: "));
+                    callBack.onLoadFailed(new Exception("No events found."));
                 }
             }
 
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                Log.e("FirebaseDataManager", "Error loading events: " + error.getMessage());
+                callBack.onLoadFailed(error.toException());
             }
         });
     }
 
+
+    public void onDataChangedEventsList(EventListCallBack callBack) {
+        Query eventsQuery = database.getReference().child("Events");
+        eventsQuery.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                ArrayList<Event> eventsList = new ArrayList<>();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Event event = snapshot.getValue(Event.class);
+                    if (event != null) {
+                        eventsList.add(event);
+                    } else {
+                        Log.e("FirebaseDataManager", "Failed to load event from Firebase.");
+                    }
+                }
+                if (!eventsList.isEmpty()) {
+                    callBack.onLoadSucceeded(eventsList);
+                } else {
+                    callBack.onLoadFailed(new Exception("No events found."));
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.e("FirebaseDataManager", "Error loading events: " + error.getMessage());
+                callBack.onLoadFailed(error.toException());
+            }
+        });
+    }
 
 }

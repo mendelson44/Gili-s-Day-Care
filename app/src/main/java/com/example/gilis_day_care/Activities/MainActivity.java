@@ -30,6 +30,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.gilis_day_care.Fragments.HomeFragment;
+import com.example.gilis_day_care.Interface.EventListCallBack;
 import com.example.gilis_day_care.Utilities.MyFireBase;
 import com.example.gilis_day_care.adapters.EventAdapter;
 import com.example.gilis_day_care.adapters.KidAdapter;
@@ -44,9 +45,13 @@ import com.example.gilis_day_care.model.Manager;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textview.MaterialTextView;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
+import java.time.Duration;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -56,12 +61,11 @@ public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
 
-    private MaterialButton DayCare_main_BTN_START;
     private MaterialTextView DayCare_home_LBL_date;
     private RelativeLayout DayCare_main_LAY;
     private ArrayList<Kid> kidsList = new ArrayList<>();
     private ArrayList<Kid> workDayList = new ArrayList<>();
-    private ArrayList<Event> workDayEventList = new ArrayList<>();
+    private ArrayList<Event> workDayEventList;
     private FloatingActionButton DayCare_main_BTN_addKid;
     private FloatingActionButton DayCare_main_BTN_addEvent;
     private MaterialTextView DayCare_main_LBL_dayOfWeek;
@@ -91,80 +95,76 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         EdgeToEdge.enable(this);
 
-
-        this.manager = new Manager();
-        this.fireBase = new MyFireBase();
-
-        manager.loadKidsListFireBase(this, new Manager.KidsListCallback() {
-            @Override
-            public void onSuccess(ArrayList<Kid> loadedKidsList) {
-                // Assign the loaded data to the MainActivity's kidsList field
-                MainActivity.this.kidsList = loadedKidsList;
-                MainActivity.this.initKidsRecycleView(loadedKidsList);
-                Log.d("MainActivity", "kids list." + MainActivity.this.kidsList);
-                UpdateWorkList(dayOfWeek);
-                Log.d("MainActivity", "work day kids list." + MainActivity.this.workDayList);
-                MainActivity.this.homeFragment = new HomeFragment(workDayList,dayOfWeek);
-            }
-
-            @Override
-            public void onFailure(Exception exception) {
-                // Handle error if needed
-            }
-        });
-
-        manager.loadEventsListFireBase(this, new Manager.EventsListCallback() {
-            @Override
-            public void onSuccess(ArrayList<Event> loadedEventList) {
-                // Assign the loaded data to the MainActivity's eventList field
-                MainActivity.this.eventsList = loadedEventList;
-                Log.d("MainActivity", "events list." + MainActivity.this.eventsList);
-                UpdateEventList(dateOfToday);
-                Log.d("MainActivity", "events day list." + MainActivity.this.workDayEventList);
-                MainActivity.this.initRecyclerView();
-                MainActivity.this.managementFragment = new ManagementFragment(eventsList);
-
-                managementFragment.setOnItemRemovedCallback((event) -> {
-                    int position = MainActivity.this.adapter.getItemPosition(event);
-                    // Get the ViewHolder for the given position
-
-                    if (position >= 0) {
-                        Log.d("MainActivity", "event remove" + event.toString() + " , position : " +  position );
-                        RecyclerView.ViewHolder viewHolder = DayCare_notificationCard_RV_EventsList.findViewHolderForAdapterPosition(position);
-
-                        if (viewHolder != null) {
-                            View view = viewHolder.itemView;
-
-                            // Load and set the animation
-                            Animator animator = AnimatorInflater.loadAnimator(MainActivity.this, R.animator.slide_right_delete);
-                            animator.setTarget(view);
-                            animator.start();
-
-                            // Add a listener to remove the item after the animation ends
-                            animator.addListener(new AnimatorListenerAdapter() {
-                                @Override
-                                public void onAnimationEnd(Animator animation) {
-                                    // notify the item from the adapter's data source
-                                    MainActivity.this.adapter.removeItem(position);
-                                }
-                            });
-                        } else {
-                            // Handle the case where the ViewHolder is null
-                            //adapter.removeItem(position);
-                        }
-                    }
-                });
-            }
-
-            @Override
-            public void onFailure(Exception exception) {
-                // Handle error if needed
-            }
-        });
-
         findViews();
         this.dayOfWeek = getDayOfWeek();
         this.dateOfToday = getTodayDate();
+
+
+        manager = Manager.getInstance();
+        kidsList = manager.getKidsList();
+        Log.d("MainActivity", "kids list." + MainActivity.this.kidsList);
+        eventsList = manager.getEventsList();
+        workDayEventList = manager.getWorkDayEventList();
+        workDayList = manager.getWorkDayKidsList();
+        Log.d("MainActivity", "events list." + MainActivity.this.eventsList);
+        initKidsRecycleView(kidsList);
+        initRecyclerView();
+        //UpdateEventList(dateOfToday);
+        Log.d("MainActivity", "work day kids list." + MainActivity.this.workDayList);
+        Log.d("MainActivity", "events day list." + MainActivity.this.workDayEventList);
+        homeFragment = new HomeFragment(workDayList,dayOfWeek);
+        managementFragment = new ManagementFragment();
+
+        replaceFragment(homeFragment, new KidsFragment(), true, true);
+
+        this.fireBase = new MyFireBase();
+
+
+        fireBase.onDataChangedEventsList(new EventListCallBack() {
+            @Override
+            public void onLoadSucceeded(ArrayList<Event> events) {
+               // MainActivity.this.adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onLoadFailed(Exception exception) {
+
+            }
+        });
+
+
+        managementFragment.setOnItemRemovedCallback((event) -> {
+            int position = MainActivity.this.adapter.getItemPosition(event);
+            // Get the ViewHolder for the given position
+
+            if (position >= 0) {
+                Log.d("MainActivity", "event remove" + event.toString() + " , position : " +  position );
+                RecyclerView.ViewHolder viewHolder = DayCare_notificationCard_RV_EventsList.findViewHolderForAdapterPosition(position);
+
+                if (viewHolder != null) {
+                    View view = viewHolder.itemView;
+
+                    // Load and set the animation
+                    Animator animator = AnimatorInflater.loadAnimator(MainActivity.this, R.animator.slide_right_delete);
+                    animator.setTarget(view);
+                    animator.start();
+
+                    // Add a listener to remove the item after the animation ends
+                    animator.addListener(new AnimatorListenerAdapter() {
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            // notify the item from the adapter's data source
+                            MainActivity.this.adapter.notifyItemRemoved(position);
+                            adapter.notifyDataSetChanged();
+                        }
+                    });
+                } else {
+                    // Handle the case where the ViewHolder is null
+                    //adapter.removeItem(position);
+                }
+            }
+        });
+
         DayCare_home_LBL_date.setText(dateOfToday);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.bottomNavigationView), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -207,28 +207,22 @@ public class MainActivity extends AppCompatActivity {
             return true;
         });
 
-
-        DayCare_main_BTN_START.setOnClickListener(view -> startWorkDay());
         DayCare_main_BTN_addKid.setOnClickListener(view -> addKidActivity());
         DayCare_main_BTN_addEvent.setOnClickListener(view -> addEventActivity());
+
     }
+
 
     private void startWorkDay() {
 
         if(workDayList == null || workDayList.isEmpty()) {
             Toast.makeText(this, "NO KIDS TODAY: " , Toast.LENGTH_SHORT).show();
         }
-        else {
-            DayCare_main_LAY.setVisibility(View.VISIBLE);
-            DayCare_main_BTN_START.setVisibility(View.GONE);
-            replaceFragment(homeFragment, new KidsFragment(), true, true);
-        }
     }
 
     private void findViews() {
 
         DayCare_main_LAY = findViewById(R.id.DayCare_main_LAY);
-        DayCare_main_BTN_START = findViewById(R.id.DayCare_main_BTN_START);
         DayCare_main_LBL_title = findViewById(R.id.DayCare_main_LBL_title);
         DayCare_main_BTN_addKid = findViewById(R.id.DayCare_main_BTN_addKid);
         DayCare_main_BTN_addEvent = findViewById(R.id.DayCare_main_BTN_addEvent);
@@ -382,6 +376,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void UpdateWorkList(int day) {
 
+        workDayList.clear();
         for (Kid kid : kidsList) {
             for (String dayTime : kid.getDays()) {
                 // Split the day string by the delimiter
@@ -394,14 +389,6 @@ public class MainActivity extends AppCompatActivity {
                         workDayList.add(kid);
                 }
             }
-        }
-    }
-
-    public void UpdateEventList(String day) {
-
-        for (Event event: eventsList) {
-            if (event.getDate().equals(day))    // TODO: JUST FOR TEST
-                workDayEventList.add(event);
         }
     }
 
@@ -497,6 +484,9 @@ public class MainActivity extends AppCompatActivity {
                         Log.d("mainActivity", "kid remove" + kid.toString() + " , position : " +  position );
                         fireBase.deleteKid(kidsList.get(position).getId());
                         kidAdapter.removeItem(position);
+                        UpdateWorkList(dayOfWeek);
+                        homeFragment = new HomeFragment(workDayList,dayOfWeek);
+                        Log.d("mainActivity", "updated Kid list after remove kid" + kidsList );
                     }
                 });
             } else {
@@ -507,6 +497,7 @@ public class MainActivity extends AppCompatActivity {
 
         Log.d("mainActivity", "RecyclerView initialized with adapter.");
     }
+
 
 }
 

@@ -7,7 +7,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Activities.AddKid"
     android:background="@drawable/daycare_main_background"
-    android:layoutDirection="rtl">
+    android:layoutDirection="rtl"
+    android:fitsSystemWindows="true">
 
 
     <androidx.appcompat.widget.LinearLayoutCompat
@@ -50,25 +51,10 @@
                 android:textSize="16sp"
                 android:textStyle="bold"/>
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/DayCare_addKid_MTV_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppinsbold"
-                android:layout_margin="12dp"
-                android:text="01/08/2024"
-                android:textColor="@color/white"
-                android:shadowColor="@color/black"
-                android:shadowDx="2"
-                android:shadowDy="4"
-                android:shadowRadius="4"
-                android:textSize="8sp"
-                android:textStyle="bold"/>
-
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/DayCare_addKid_SIV_logo"
-                android:layout_width="56dp"
-                android:layout_height="56dp"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
                 android:scaleType="fitStart"
                 android:layout_alignParentBottom="true"
                 android:src="@drawable/daycare_logo" />
@@ -853,6 +839,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_centerHorizontal="true"
                                     android:text="הוספה"
+                                    android:textSize="18sp"
                                     android:textColor="@color/black"
                                     app:backgroundTint="@color/button_addkid_color_selector"
                                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>

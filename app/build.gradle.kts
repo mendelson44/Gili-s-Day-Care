@@ -46,6 +46,13 @@ dependencies {
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.analytics)
     implementation(libs.firebase.database)
+    implementation(libs.firebase.auth)
+    implementation(libs.firebase.storage)
+    implementation(libs.glide)
+
+    implementation ("com.firebaseui:firebase-ui-auth:7.2.0")
+
+    implementation("com.google.android.gms:play-services-auth:20.7.0")
 
     }
 

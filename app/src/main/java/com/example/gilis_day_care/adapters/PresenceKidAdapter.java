@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.gilis_day_care.model.Kid;
@@ -46,6 +47,12 @@ public class PresenceKidAdapter extends RecyclerView.Adapter<PresenceKidAdapter.
 
         else
             holder.DayCare_rvPresence_IMG_check.setImageResource(R.drawable.daycare_green_check);
+
+        if (kid.isLate())
+            holder.DayCare_rvPresence_LBL_time.setTextColor(ContextCompat.getColor(context, R.color.red));
+
+        else
+            holder.DayCare_rvPresence_LBL_time.setTextColor(ContextCompat.getColor(context, R.color.kidGirlChecked));
 
 
         for (String day : kid.getDays()) {
