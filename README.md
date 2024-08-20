@@ -50,6 +50,35 @@ Customizable Alerts: Set up custom notifications based on specific criteria to k
 <img src="https://github.com/user-attachments/assets/536689ef-9f7b-47f9-8ab6-8658be6cc965" alt="Screenshot 3" width="250" style="border-radius: 10px;">
 <img src="https://github.com/user-attachments/assets/6043ebac-e44f-49b4-8cad-44c1c1d9a0bc" alt="Screenshot 3" width="250" style="border-radius: 10px;">
 
+<h2><img src="https://github.com/YosiBs/Pokemon-Escape-Mobile-Game/assets/105666011/008a508e-5484-46ba-be36-ac359d603f01" alt="Features Icon" width="40" height="40"> Features</h2>
+<ul>
+    <li>Real-time kid presence tracking and notifications</li>
+    <li>Detailed kid lists with schedules and upcoming events</li>
+    <li>Food management with allergy information</li>
+    <li>Customizable notifications for missed arrivals and other important events</li>
+</ul>
+<h2><img src="https://github.com/YosiBs/Gotcha-App/assets/105666011/f09bd9dd-b5e2-4076-a617-fd71fe7deceb" alt="Technologies Icon" width="40" height="40"> Technologies Used</h2>
+<ul>
+    <li><strong>Android Studio</strong>: IDE for Android development</li>
+    <li><strong>Firebase Cloud Messaging</strong>: For real-time notifications and alerts</li>
+    <li><strong>SQLite</strong>: For local data storage</li>
+    <li><strong>Material Design</strong>: For a consistent and modern user interface</li>
+</ul>
+<h2><img src="https://your-image-url.com/usage-icon.png" alt="Usage Icon" width="40" height="40"> Usage</h2>
+<p>Upon launching the app, users need to sign up or log in. Once authenticated, users can:</p>
+<ul>
+    <li>Mark and track kid presence in real-time</li>
+    <li>View and manage kid schedules and upcoming events</li>
+    <li>Manage meal plans and check allergy information</li>
+    <li>Receive notifications for important events such as missed arrivals</li>
+</ul>
+<h2><img src="https://github.com/YosiBs/Gotcha-App/assets/105666011/65ede3d1-631b-4d43-801a-3c17777938fb" alt="References Icon" width="40" height="40"> References</h2>
+<ul>
+    <li><a href="https://developer.android.com/studio">Android Studio</a>: Official IDE for Android development</li>
+    <li><a href="https://firebase.google.com/docs/cloud-messaging">Firebase Cloud Messaging</a>: Official documentation for Firebase notifications</li>
+    <li><a href="https://developer.android.com/guide/topics/ui/look-and-feel/material-design">Material Design</a>: Official guidelines for designing modern user interfaces</li>
+</ul>
+
 <h2><img src="https://github.com/YosiBs/Gotcha-App/assets/105666011/9f5d6637-b1e1-4037-8f60-64388e5ab109" alt=pic5 width="40" height="40"> Authors</h2>
 <ul>
     <li><a href="https://github.com/mendelson44">Ben Mendelson</a></li>
