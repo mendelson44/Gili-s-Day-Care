@@ -2,13 +2,11 @@
 
 
 <p align= center>
-  <img src="https://github.com/user-attachments/assets/4ba932a6-0c31-462a-a064-8683487aeb5c" alt="icon" width="300" style="border-radius: 30px;">
+  <img src="https://github.com/mendelson44/Gili-s-Day-Care/blob/main/app/src/main/res/drawable/daycare_logo.png?raw=true" alt="icon" width="300" style="border-radius: 30px;">
 </p>
 
 <h2><img src="https://github.com/YosiBs/Gotcha-App/assets/105666011/558f0957-6604-47a4-a202-66a02a2835e7" alt=pic5 width="40" height="40"> Overview</h2>
-<p>   Gold Miner is an engaging and fun app game developed as a project for the Android Studio course. 
-      The game challenges players to move left or right for collecting gold while avoiding obstacles. 
-      Designed with an intuitive user interface and exciting gameplay mechanics with levels and areal maping score board!, Gold Miner provides an entertaining experience for users of all ages..</p>
+<p>   Welcome to the Daycare Management App, designed specifically for managing the daily operations of my family buisness day care located in Moshav Kidron. With over 12 years of experience in providing exceptional care for children aged 6-8, this app streamlines the management of kid presence, event notifications, and food planning to enhance our daycare services.</p>
 
 <p><strong>App Presentation Video:</strong></p>
 
