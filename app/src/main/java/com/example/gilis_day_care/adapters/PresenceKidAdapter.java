@@ -16,6 +16,7 @@ import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.textview.MaterialTextView;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class PresenceKidAdapter extends RecyclerView.Adapter<PresenceKidAdapter.KidViewHolder> {
 
@@ -79,6 +80,33 @@ public class PresenceKidAdapter extends RecyclerView.Adapter<PresenceKidAdapter.
     private Kid getItem(int position) {
 
         return allKidsList.get(position);
+    }
+
+    public void sortKidsByTime(int currentDay) {
+        if (allKidsList != null) {
+            // Sort the list by time
+            allKidsList.sort(new Comparator<Kid>() {
+                @Override
+                public int compare(Kid k1, Kid k2) {
+                    String time1 = getTimeForDay(k1, currentDay);
+                    String time2 = getTimeForDay(k2, currentDay);
+
+                    // Compare based on time
+                    return time1.compareTo(time2);
+                }
+
+                private String getTimeForDay(Kid kid, int day) {
+                    for (String dayTime : kid.getDays()) {
+                        String[] parts = dayTime.split("#");
+                        if (parts.length > 1 && Integer.parseInt(parts[0]) == day) {
+                            return parts[1];
+                        }
+                    }
+                    return "00:00"; // Default time if not found
+                }
+            });
+            notifyDataSetChanged(); // Notify adapter after sorting
+        }
     }
 
     public void setKidCallback(KidCallBack kidCallBack) {

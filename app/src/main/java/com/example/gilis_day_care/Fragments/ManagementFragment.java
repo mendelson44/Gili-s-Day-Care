@@ -177,9 +177,8 @@ public class ManagementFragment extends Fragment {
                         // Remove the item from the adapter's data source
                         Log.d("ManagementFragment", "event remove" + event.toString() + " , position : " +  position );
                         if (onItemRemovedCallback != null) {
-                            onItemRemovedCallback.onItemRemoved(eventsList.get(position));
+                            onItemRemovedCallback.onItemRemoved(eventsList.get(position),position);
                         }
-                        fireBase.deleteEvent(eventsList.get(position).getId());
                         adapter.removeItem(position);
                         UpdateEventProgressBar();
                     }
@@ -199,18 +198,12 @@ public class ManagementFragment extends Fragment {
         DayCare_management_progressBar_LBL_countEvents.setText(String.valueOf(eventsList.size()));
     }
 
-    public void updateAddEventFromMain(Event event) {
-        this.eventsList.add(event);
-        Log.d("ManagementFragment", "add event for late kids" + eventsList);
-        adapter.notify();
-    }
-
     public void setOnItemRemovedCallback(OnItemRemovedCallback callback) {
         this.onItemRemovedCallback = callback;
     }
 
     public interface OnItemRemovedCallback {
-        void onItemRemoved(Event event);
+        void onItemRemoved(Event event,int pos);
     }
 
 }

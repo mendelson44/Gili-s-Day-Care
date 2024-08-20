@@ -198,7 +198,6 @@ public class AddKid extends AppCompatActivity {
 
     private void findViews() {
 
-        DayCare_addKid_MTV_date = findViewById(R.id.DayCare_addKid_MTV_date);
         DayCare_addKid_INP_name = findViewById(R.id.DayCare_addKid_INP_name);
         DayCare_addKid_INP_class = findViewById(R.id.DayCare_addKid_INP_class);
         DayCare_addKid_INP_email = findViewById(R.id.DayCare_addKid_INP_email);

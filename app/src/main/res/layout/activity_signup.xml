@@ -8,12 +8,12 @@
     android:layout_height="match_parent"
     android:fillViewport="true"
     android:background="#ffffff"
-    tools:context=".Activities.SignUpActivity">
+    tools:context=".Activities.SignUpActivity"
+    android:layoutDirection="rtl">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
+        android:layout_height="wrap_content">
 
         <RelativeLayout
             android:id="@+id/register_REL_main"
@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_centerHorizontal="true"
-                android:text="SigUp"
+                android:text="יצירת משתמש"
                 android:textSize="27sp"
                 android:fontFamily="@font/poppinsbold"
                 android:textColor="@color/black"/>
@@ -41,56 +41,54 @@
                 android:orientation="vertical">
 
 
+
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/register_LAY_email"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:hint="Email"
-                    android:textColorHint="@color/black"
-                    app:boxStrokeColor="@android:color/black"
-                    app:boxStrokeWidth="2dp"
+                    android:hint="מייל"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    app:startIconDrawable="@drawable/daycare_email"
                     app:endIconMode="clear_text"
-                    app:endIconTint="@color/black"
                     app:helperText="Required"
-                    app:hintTextColor="@color/black">
+                    app:startIconTint="@color/black"
+                    app:endIconTint="@color/red"
+                    app:boxStrokeColor="@color/purple"
+                    app:hintTextColor="@color/purple">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/register_INP_email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@android:color/black"
-                        android:textColorHint="@color/black"
                         android:inputType="textEmailAddress"
-                        android:textSize="14sp"
-                        android:fontFamily="@font/poppinsmedium"/>
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
                 </com.google.android.material.textfield.TextInputLayout>
+
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/register_LAY_password"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:hint="Password"
-                    android:textColorHint="@color/black"
-                    app:boxStrokeColor="@android:color/black"
-                    app:boxStrokeWidth="2dp"
+                    android:hint="סיסמה"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     app:endIconMode="password_toggle"
-                    app:endIconTint="@color/black"
                     app:helperText="Required"
-                    app:hintTextColor="@color/black">
+                    app:startIconTint="@color/black"
+                    app:endIconTint="@color/red"
+                    app:boxStrokeColor="@color/purple"
+                    app:hintTextColor="@color/purple">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/register_INP_password"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textPassword"
-                        android:textColor="@android:color/black"
-                        android:textColorHint="@color/black"
-                        android:textSize="14sp"
-                        android:fontFamily="@font/poppinsmedium"/>
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.button.MaterialButton
@@ -99,56 +97,53 @@
                     android:layout_height="wrap_content"
                     style="@style/Widget.MaterialComponents.Button"
                     android:layout_marginTop="20dp"
-                    android:backgroundTint="@color/black"
-                    android:text="Register"
-                    android:textColor="@color/white"
+                    android:backgroundTint="@color/material_dynamic_secondary90"
+                    android:text="הרשמה"
+                    android:fontFamily="@font/poppinsbold"
+                    android:textColor="@color/black"
                     android:textSize="16sp" />
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/register_IMG_logo"
+                    android:layout_width="282dp"
+                    android:layout_height="282dp"
+                    android:layout_marginTop="62dp"
+                    android:src="@drawable/daycare_logo"
+                    android:layout_gravity="center"/>
+
+
             </androidx.appcompat.widget.LinearLayoutCompat>
         </RelativeLayout>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/register_CARD_loading"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="142dp"
+            android:layout_height="142dp"
             android:layout_centerInParent="true"
-            android:layout_marginHorizontal="24dp"
-            android:backgroundTint="@color/white"
+            android:backgroundTint="@color/material_dynamic_secondary90"
             android:visibility="gone"
             android:elevation="14dp">
 
             <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp"
                 android:orientation="vertical">
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Registering"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:text="טוען"
+                    android:layout_marginStart="8dp"
                     android:textSize="28sp"
+                    android:layout_weight="1"
                     android:fontFamily="@font/poppinsbold"/>
 
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="16dp">
+                <ProgressBar
+                    android:id="@+id/register_PB_loading"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"/>
 
-                    <ProgressBar
-                        android:id="@+id/register_PB_loading"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Please wait"
-                        android:fontFamily="@font/poppinsmedium"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="16dp"
-                        android:textSize="16sp"/>
-                </androidx.appcompat.widget.LinearLayoutCompat>
             </androidx.appcompat.widget.LinearLayoutCompat>
 
         </androidx.cardview.widget.CardView>

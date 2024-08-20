@@ -44,6 +44,7 @@ import com.example.gilis_day_care.R;
 import com.example.gilis_day_care.model.Manager;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.textview.MaterialTextView;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -62,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
 
     private MaterialTextView DayCare_home_LBL_date;
-    private RelativeLayout DayCare_main_LAY;
+    private ShapeableImageView DayCare_main_IMG_signOut;
     private ArrayList<Kid> kidsList = new ArrayList<>();
     private ArrayList<Kid> workDayList = new ArrayList<>();
     private ArrayList<Event> workDayEventList;
@@ -123,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
         fireBase.onDataChangedEventsList(new EventListCallBack() {
             @Override
             public void onLoadSucceeded(ArrayList<Event> events) {
-               // MainActivity.this.adapter.notifyDataSetChanged();
+               MainActivity.this.adapter.notifyDataSetChanged();
             }
 
             @Override
@@ -133,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        managementFragment.setOnItemRemovedCallback((event) -> {
+        managementFragment.setOnItemRemovedCallback((event,pos) -> {
             int position = MainActivity.this.adapter.getItemPosition(event);
             // Get the ViewHolder for the given position
 
@@ -154,8 +155,9 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onAnimationEnd(Animator animation) {
                             // notify the item from the adapter's data source
-                            MainActivity.this.adapter.notifyItemRemoved(position);
-                            adapter.notifyDataSetChanged();
+                            fireBase.deleteEvent(event.getId());
+                            MainActivity.this.adapter.removeItem(position);
+
                         }
                     });
                 } else {
@@ -209,6 +211,7 @@ public class MainActivity extends AppCompatActivity {
 
         DayCare_main_BTN_addKid.setOnClickListener(view -> addKidActivity());
         DayCare_main_BTN_addEvent.setOnClickListener(view -> addEventActivity());
+        DayCare_main_IMG_signOut.setOnClickListener(view -> logOut());
 
     }
 
@@ -222,7 +225,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void findViews() {
 
-        DayCare_main_LAY = findViewById(R.id.DayCare_main_LAY);
+        DayCare_main_IMG_signOut = findViewById(R.id.DayCare_main_IMG_signOut);
         DayCare_main_LBL_title = findViewById(R.id.DayCare_main_LBL_title);
         DayCare_main_BTN_addKid = findViewById(R.id.DayCare_main_BTN_addKid);
         DayCare_main_BTN_addEvent = findViewById(R.id.DayCare_main_BTN_addEvent);
@@ -318,6 +321,13 @@ public class MainActivity extends AppCompatActivity {
     private void addEventActivity(){
 
         Intent intent = new Intent(this, AddEvent.class);
+        startActivity(intent);
+        finish();
+    }
+
+    private void logOut(){
+
+        Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
         finish();
     }

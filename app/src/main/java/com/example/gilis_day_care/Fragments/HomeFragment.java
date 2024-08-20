@@ -429,6 +429,9 @@ public class HomeFragment extends Fragment {
 
         DayCare_KidsTable = view.findViewById(R.id.DayCare_KidsTable);
 
+        DayCare_home_BTN_presence.setChecked(false);
+        DayCare_home_BTN_food.setChecked(false);
+
     }
 
 
@@ -438,9 +441,9 @@ public class HomeFragment extends Fragment {
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
         DayCare_presence_RV_kidsPresenceList.setLayoutManager(linearLayoutManager);
         DayCare_presence_RV_kidsPresenceList.setAdapter(adapter);
+        adapter.sortKidsByTime(currentDay);
         adapter.setKidCallback((kid, position) -> {
             kid.setState(kid.getState() == 0 ? 1 : 0);
-            kid.setLate(!kid.isLate());
             UpdatePresentList();
             adapter.notifyItemChanged(position);
             makeSound();

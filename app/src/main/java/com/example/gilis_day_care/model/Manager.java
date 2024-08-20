@@ -202,7 +202,7 @@ public class Manager {
         DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
 
         for (Kid kid : kidsList) {
-            if(!kid.isLate()) {
+            if(!kid.isLate() && kid.getState() == 0) {
 
                 for (String dayTime : kid.getDays()) {
                     String[] parts = dayTime.split("#");
