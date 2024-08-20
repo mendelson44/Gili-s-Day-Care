@@ -1,6 +1,5 @@
-package com.example.gilis_day_care.model;
+package com.example.gilis_day_care.Model;
 
-import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 

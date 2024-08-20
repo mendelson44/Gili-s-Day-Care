@@ -1,4 +1,4 @@
-package com.example.gilis_day_care.model;
+package com.example.gilis_day_care.Model;
 
 
 public class User {

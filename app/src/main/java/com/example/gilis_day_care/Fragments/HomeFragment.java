@@ -1,22 +1,16 @@
 package com.example.gilis_day_care.Fragments;
 
-import android.content.Context;
 import android.content.DialogInterface;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.LinearLayoutCompat;
-import androidx.appcompat.widget.SwitchCompat;
 import androidx.cardview.widget.CardView;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Handler;
 import android.util.Log;
-import android.util.Printer;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,28 +18,23 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
 
-import java.time.Duration;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 import java.util.Stack;
 
 import com.example.gilis_day_care.R;
-import com.example.gilis_day_care.adapters.PresenceKidAdapter;
-import com.example.gilis_day_care.model.Event;
-import com.example.gilis_day_care.model.Kid;
-import com.example.gilis_day_care.model.Manager;
+import com.example.gilis_day_care.Adapters.PresenceKidAdapter;
+import com.example.gilis_day_care.Model.Kid;
+import com.example.gilis_day_care.Model.Manager;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.button.MaterialButtonToggleGroup;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -56,6 +45,7 @@ import com.google.android.material.textview.MaterialTextView;
 public class HomeFragment extends Fragment {
 
     private CardView DayCare_home_CV_background;
+    private MaterialButtonToggleGroup DayCare_home_TBG_newDayWork;
     private MaterialButton DayCare_home_BTN_presence;
     private MaterialButton DayCare_home_BTN_food;
     private LinearLayoutCompat DayCare_presence_LAY;
@@ -356,7 +346,9 @@ public class HomeFragment extends Fragment {
 
     @Override
     public void onStart() {
+
         super.onStart();
+        DayCare_home_TBG_newDayWork.clearChecked();
     }
 
     @Override
@@ -368,6 +360,7 @@ public class HomeFragment extends Fragment {
     private void findViews(View view) {
 
         DayCare_home_CV_background = view.findViewById(R.id.DayCare_home_CV_background);
+        DayCare_home_TBG_newDayWork = view.findViewById(R.id.DayCare_home_TBG_newDayWork);
         DayCare_home_BTN_presence = view.findViewById(R.id.DayCare_home_BTN_presence);
         DayCare_home_BTN_food = view.findViewById(R.id.DayCare_home_BTN_food);
         DayCare_presence_RV_kidsPresenceList = view.findViewById(R.id.DayCare_presence_RV_kidsPresenceList);
@@ -428,9 +421,6 @@ public class HomeFragment extends Fragment {
 
 
         DayCare_KidsTable = view.findViewById(R.id.DayCare_KidsTable);
-
-        DayCare_home_BTN_presence.setChecked(false);
-        DayCare_home_BTN_food.setChecked(false);
 
     }
 

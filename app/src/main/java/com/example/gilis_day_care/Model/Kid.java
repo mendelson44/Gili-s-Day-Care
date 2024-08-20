@@ -1,4 +1,4 @@
-package com.example.gilis_day_care.model;
+package com.example.gilis_day_care.Model;
 
 import java.util.ArrayList;
 import java.util.Objects;

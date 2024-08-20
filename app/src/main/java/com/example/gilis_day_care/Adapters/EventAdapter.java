@@ -1,7 +1,5 @@
-package com.example.gilis_day_care.adapters;
+package com.example.gilis_day_care.Adapters;
 
-import android.animation.Animator;
-import android.animation.AnimatorInflater;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,10 +9,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.gilis_day_care.Interface.EventDeleteCallBack;
-import com.example.gilis_day_care.Interface.KidCallBack;
 import com.example.gilis_day_care.R;
-import com.example.gilis_day_care.model.Event;
-import com.example.gilis_day_care.model.Kid;
+import com.example.gilis_day_care.Model.Event;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.textview.MaterialTextView;
 

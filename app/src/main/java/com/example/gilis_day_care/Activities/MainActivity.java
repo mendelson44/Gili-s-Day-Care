@@ -5,15 +5,11 @@ import android.animation.AnimatorInflater;
 import android.animation.AnimatorListenerAdapter;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.util.Log;
-import android.util.Printer;
 import android.view.View;
 import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -29,33 +25,25 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.gilis_day_care.Adapters.EventAdapter;
 import com.example.gilis_day_care.Fragments.HomeFragment;
 import com.example.gilis_day_care.Interface.EventListCallBack;
 import com.example.gilis_day_care.Utilities.MyFireBase;
-import com.example.gilis_day_care.adapters.EventAdapter;
-import com.example.gilis_day_care.adapters.KidAdapter;
-import com.example.gilis_day_care.adapters.PresenceKidAdapter;
-import com.example.gilis_day_care.model.Event;
-import com.example.gilis_day_care.model.Kid;
+import com.example.gilis_day_care.Adapters.KidAdapter;
+import com.example.gilis_day_care.Model.Event;
+import com.example.gilis_day_care.Model.Kid;
 import com.example.gilis_day_care.Fragments.KidsFragment;
 import com.example.gilis_day_care.Fragments.ManagementFragment;
 import com.example.gilis_day_care.databinding.ActivityMainBinding;
 import com.example.gilis_day_care.R;
-import com.example.gilis_day_care.model.Manager;
-import com.google.android.material.button.MaterialButton;
+import com.example.gilis_day_care.Model.Manager;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.textview.MaterialTextView;
-import com.google.firebase.auth.FirebaseAuth;
 
-import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
-import java.time.Duration;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
@@ -70,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
     private FloatingActionButton DayCare_main_BTN_addKid;
     private FloatingActionButton DayCare_main_BTN_addEvent;
     private MaterialTextView DayCare_main_LBL_dayOfWeek;
+    private MaterialTextView DayCare_main_LBL_kidsCounter;
     private MaterialTextView DayCare_main_LBL_title;
     private int dayOfWeek;
     private String dateOfToday;
@@ -110,7 +99,8 @@ public class MainActivity extends AppCompatActivity {
         Log.d("MainActivity", "events list." + MainActivity.this.eventsList);
         initKidsRecycleView(kidsList);
         initRecyclerView();
-        //UpdateEventList(dateOfToday);
+
+        DayCare_main_LBL_kidsCounter.setText("ילדים רשומים - " + kidsList.size());
         Log.d("MainActivity", "work day kids list." + MainActivity.this.workDayList);
         Log.d("MainActivity", "events day list." + MainActivity.this.workDayEventList);
         homeFragment = new HomeFragment(workDayList,dayOfWeek);
@@ -230,6 +220,7 @@ public class MainActivity extends AppCompatActivity {
         DayCare_main_BTN_addKid = findViewById(R.id.DayCare_main_BTN_addKid);
         DayCare_main_BTN_addEvent = findViewById(R.id.DayCare_main_BTN_addEvent);
         DayCare_main_LBL_dayOfWeek = findViewById(R.id.DayCare_main_LBL_dayOfWeek);
+        DayCare_main_LBL_kidsCounter = findViewById(R.id.DayCare_main_LBL_kidsCounter);
         DayCare_notificationCard_RV_EventsList = findViewById(R.id.DayCare_notificationCard_RV_EventsList);
         DayCare_main_kids_RV = findViewById(R.id.DayCare_main_kids_RV);
         DayCare_main_kidsRV_LAY = findViewById(R.id.DayCare_main_kidsRV_LAY);

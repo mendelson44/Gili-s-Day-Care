@@ -14,7 +14,7 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.gilis_day_care.model.Kid;
+import com.example.gilis_day_care.Model.Kid;
 import com.example.gilis_day_care.R;
 import com.example.gilis_day_care.Utilities.MyFireBase;
 import com.google.android.material.button.MaterialButton;
@@ -26,10 +26,8 @@ import com.google.android.material.textview.MaterialTextView;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 
 
 public class AddKid extends AppCompatActivity {

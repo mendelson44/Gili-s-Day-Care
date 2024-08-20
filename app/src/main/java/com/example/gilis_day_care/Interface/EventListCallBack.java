@@ -1,7 +1,6 @@
 package com.example.gilis_day_care.Interface;
 
-import com.example.gilis_day_care.model.Event;
-import com.example.gilis_day_care.model.Kid;
+import com.example.gilis_day_care.Model.Event;
 
 import java.util.ArrayList;
 

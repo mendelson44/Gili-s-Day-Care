@@ -1,4 +1,4 @@
-package com.example.gilis_day_care.model;
+package com.example.gilis_day_care.Model;
 
 
 import android.content.Context;
@@ -6,14 +6,10 @@ import android.os.Handler;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.example.gilis_day_care.Activities.MainActivity;
 import com.example.gilis_day_care.Interface.EventListCallBack;
 import com.example.gilis_day_care.Interface.KidListCallBack;
-import com.example.gilis_day_care.Utilities.MyDbUserManager;
 import com.example.gilis_day_care.Utilities.MyFireBase;
-import com.google.firebase.auth.FirebaseAuth;
 
-import java.time.DayOfWeek;
 import java.time.Duration;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -26,10 +22,11 @@ import java.util.Map;
 public class Manager {
 
     private ArrayList<Kid> kidsList;
+    private ArrayList<Kid> workDayKidsList;
     private ArrayList<Event> eventsList;
     private ArrayList<Event> workDayEventList;
     private Map<Integer,ArrayList<Kid>> foodTableList;
-    private ArrayList<Kid> workDayKidsList;
+    private ArrayList<Kid> eventsLateKidsList;
     private MyFireBase database;
     private String dateOfToday;
 
@@ -60,6 +57,7 @@ public class Manager {
         this.eventsList = new ArrayList<>();
         this.workDayEventList = new ArrayList<>();
         this.foodTableList = new HashMap<>();
+        this.eventsLateKidsList = new ArrayList<>();
 
         this.dateOfToday = getTodayDate();
 
@@ -132,6 +130,7 @@ public class Manager {
         @Override
         public void onLoadFailed(Exception exception) {
             // Handle the failure scenario
+            eventsList.clear();
             Toast.makeText(context, "Failed to load events list: " + exception.getMessage(), Toast.LENGTH_SHORT).show();
             Log.e("Manager", "Error loading events list", exception);
         }
@@ -202,7 +201,7 @@ public class Manager {
         DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
 
         for (Kid kid : kidsList) {
-            if(!kid.isLate() && kid.getState() == 0) {
+            if(!kid.isLate() && kid.getState() == 0 && !eventsLateKidsList.contains(kid)) {
 
                 for (String dayTime : kid.getDays()) {
                     String[] parts = dayTime.split("#");
@@ -218,6 +217,7 @@ public class Manager {
                                 // Kid is late beyond the acceptable window
                                 Event event = createEventForLateKid(kid,String.format("%02d:%02d", currentTime.getHour(),currentTime.getMinute()));
                                 kid.setLate(true);
+                                eventsLateKidsList.add(kid);
                             }
                         }
                     }
@@ -237,11 +237,11 @@ public class Manager {
         return event;
     }
 
-    private void startTimeChecks() {
+    public void startTimeChecks() {
         handler.post(timeCheckRunnable);
     }
 
-    private void stopTimeChecks() {
+    public void stopTimeChecks() {
         handler.removeCallbacks(timeCheckRunnable);
     }
 

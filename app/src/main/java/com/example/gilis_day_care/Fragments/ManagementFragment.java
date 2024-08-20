@@ -8,8 +8,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.ProgressBar;
 
 import androidx.cardview.widget.CardView;
@@ -17,15 +15,13 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.gilis_day_care.Activities.MainActivity;
 import com.example.gilis_day_care.R;
 import com.example.gilis_day_care.Utilities.MyFireBase;
-import com.example.gilis_day_care.adapters.EventAdapter;
-import com.example.gilis_day_care.adapters.PresenceKidAdapter;
-import com.example.gilis_day_care.model.Event;
-import com.example.gilis_day_care.model.Kid;
-import com.example.gilis_day_care.model.Manager;
+import com.example.gilis_day_care.Adapters.EventAdapter;
+import com.example.gilis_day_care.Model.Event;
+import com.example.gilis_day_care.Model.Manager;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.button.MaterialButtonToggleGroup;
 import com.google.android.material.textview.MaterialTextView;
 
 import java.util.ArrayList;
@@ -34,6 +30,7 @@ import java.util.ArrayList;
 public class ManagementFragment extends Fragment {
 
     private CardView DayCare_management_CV_background;
+    private MaterialButtonToggleGroup DayCare_management_TBG_newDayWork;
     private MaterialButton DayCare_management_BTN_event;
     private MaterialButton DayCare_management_BTN_activity;
     private RecyclerView DayCare_event_RV;
@@ -113,6 +110,13 @@ public class ManagementFragment extends Fragment {
     }
 
     @Override
+    public void onStart() {
+
+        super.onStart();
+        DayCare_management_TBG_newDayWork.clearChecked();
+    }
+
+    @Override
     public void onResume() {
         super.onResume();
 
@@ -121,6 +125,7 @@ public class ManagementFragment extends Fragment {
     private void findViews(View view) {
 
         DayCare_management_CV_background = view.findViewById(R.id.DayCare_management_CV_background);
+        DayCare_management_TBG_newDayWork = view.findViewById(R.id.DayCare_management_TBG_newDayWork);
         DayCare_management_BTN_event = view.findViewById(R.id.DayCare_management_BTN_event);
         DayCare_management_BTN_activity = view.findViewById(R.id.DayCare_management_BTN_activity);
         DayCare_event_RV = view.findViewById(R.id.DayCare_event_RV);

@@ -4,11 +4,11 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import com.example.gilis_day_care.model.Event;
-import com.example.gilis_day_care.model.Kid;
+import com.example.gilis_day_care.Model.Event;
+import com.example.gilis_day_care.Model.Kid;
 import com.example.gilis_day_care.Interface.KidListCallBack;
 import com.example.gilis_day_care.Interface.EventListCallBack;
-import com.example.gilis_day_care.model.User;
+import com.example.gilis_day_care.Model.User;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;

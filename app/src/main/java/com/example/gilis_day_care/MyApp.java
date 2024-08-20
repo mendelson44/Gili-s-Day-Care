@@ -4,7 +4,7 @@ import android.app.Application;
 
 import com.example.gilis_day_care.Activities.FullScreenManager;
 import com.example.gilis_day_care.Utilities.MyDbUserManager;
-import com.example.gilis_day_care.model.Manager;
+import com.example.gilis_day_care.Model.Manager;
 
 
 public class MyApp extends Application {

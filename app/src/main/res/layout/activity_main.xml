@@ -26,7 +26,8 @@ android:layoutDirection="rtl">
                 android:id="@+id/DayCare_main_LBL_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="22dp"
                 android:fontFamily="@font/poppinsbold"
                 android:text="דף בית"
                 android:textColor="@color/white"
@@ -34,7 +35,7 @@ android:layoutDirection="rtl">
                 android:shadowDx="4"
                 android:shadowDy="4"
                 android:shadowRadius="4"
-                android:textSize="16sp"
+                android:textSize="22sp"
                 android:textStyle="bold"/>
 
             <com.google.android.material.textview.MaterialTextView
@@ -42,14 +43,14 @@ android:layoutDirection="rtl">
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppinsbold"
-                android:layout_margin="12dp"
+                android:layout_margin="18dp"
                 android:text="01/08/2024"
                 android:textColor="@color/white"
                 android:shadowColor="@color/black"
                 android:shadowDx="2"
                 android:shadowDy="4"
                 android:shadowRadius="4"
-                android:textSize="8sp"
+                android:textSize="12sp"
                 android:textStyle="bold"/>
 
         </RelativeLayout>
@@ -86,7 +87,7 @@ android:layoutDirection="rtl">
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:layout_weight="6">
+                            android:layout_weight="7">
 
                             <com.google.android.material.imageview.ShapeableImageView
                                 android:id="@+id/DayCare_MAIN_IMG_logo"
@@ -112,7 +113,28 @@ android:layoutDirection="rtl">
                                 android:shadowDx="4"
                                 android:shadowDy="4"
                                 android:shadowRadius="4"
-                                android:textSize="16sp"
+                                android:textSize="12sp"
+                                android:textStyle="bold"/>
+
+
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1">
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/DayCare_main_LBL_kidsCounter"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppinsbold"
+                                android:text="ילדים רשומים - "
+                                android:textColor="@color/black"
+                                android:shadowColor="@color/black"
+                                android:layout_marginStart="4dp"
+                                android:textSize="9sp"
                                 android:textStyle="bold"/>
 
                         </RelativeLayout>

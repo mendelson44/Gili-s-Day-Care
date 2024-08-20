@@ -1,20 +1,14 @@
 package com.example.gilis_day_care.Fragments;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.gilis_day_care.Activities.MainActivity;
 import com.example.gilis_day_care.R;
-import com.example.gilis_day_care.adapters.KidAdapter;
-import com.example.gilis_day_care.model.Kid;
-import com.example.gilis_day_care.model.Manager;
+import com.example.gilis_day_care.Model.Kid;
 
 import java.util.ArrayList;
 

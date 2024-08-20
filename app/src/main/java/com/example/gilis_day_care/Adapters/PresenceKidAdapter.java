@@ -1,4 +1,4 @@
-package com.example.gilis_day_care.adapters;
+package com.example.gilis_day_care.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.gilis_day_care.model.Kid;
+import com.example.gilis_day_care.Model.Kid;
 import com.example.gilis_day_care.Interface.KidCallBack;
 import com.example.gilis_day_care.R;
 import com.google.android.material.imageview.ShapeableImageView;

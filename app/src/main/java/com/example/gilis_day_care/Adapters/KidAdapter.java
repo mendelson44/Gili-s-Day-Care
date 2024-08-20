@@ -1,4 +1,4 @@
-package com.example.gilis_day_care.adapters;
+package com.example.gilis_day_care.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,11 +11,9 @@ import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.gilis_day_care.Interface.EventDeleteCallBack;
 import com.example.gilis_day_care.Interface.KidDeleteCallBack;
 import com.example.gilis_day_care.R;
-import com.example.gilis_day_care.model.Event;
-import com.example.gilis_day_care.model.Kid;
+import com.example.gilis_day_care.Model.Kid;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.textview.MaterialTextView;
 
@@ -68,6 +66,19 @@ public class KidAdapter extends RecyclerView.Adapter<KidAdapter.KidViewHolder> {
             holder.DayCare_kidData_LBL_email.setText(kid.getEmail());
             holder.DayCare_kidData_LBL_allergies.setText(kid.getAllergies());
             holder.DayCare_kidData_LBL_SOS.setText(kid.getSos());
+
+        holder.DayCare_kidData_CV_day1.setCardBackgroundColor(ContextCompat.getColor(context, R.color.buttonDaysColorUnchecked));
+        holder.DayCare_kidData_CV_day2.setCardBackgroundColor(ContextCompat.getColor(context, R.color.buttonDaysColorUnchecked));
+        holder.DayCare_kidData_CV_day3.setCardBackgroundColor(ContextCompat.getColor(context, R.color.buttonDaysColorUnchecked));
+        holder.DayCare_kidData_CV_day4.setCardBackgroundColor(ContextCompat.getColor(context, R.color.buttonDaysColorUnchecked));
+        holder.DayCare_kidData_CV_day5.setCardBackgroundColor(ContextCompat.getColor(context, R.color.buttonDaysColorUnchecked));
+        holder.DayCare_kidData_LBL_time1.setText(null);
+        holder.DayCare_kidData_LBL_time2.setText(null);
+        holder.DayCare_kidData_LBL_time3.setText(null);
+        holder.DayCare_kidData_LBL_time4.setText(null);
+        holder.DayCare_kidData_LBL_time5.setText(null);
+
+
 
         for (String day : kid.getDays()) {
             // Split the day string by the delimiter

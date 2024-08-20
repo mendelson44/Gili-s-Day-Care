@@ -150,7 +150,7 @@
                             android:textColor="@color/black"
                             android:layout_centerVertical="true"
                             android:layout_alignParentEnd="true"
-                            android:layout_marginEnd="42dp"
+                            android:layout_marginEnd="40dp"
                             android:textSize="16dp"/>
 
                         <ProgressBar
@@ -366,13 +366,15 @@
                             android:layout_height="wrap_content"
                             android:textColor="@color/black"
                             android:layout_weight="1"
+                            android:textStyle="bold"
                             android:text="שם הילד" />
                         <TextView
                             android:id="@+id/DayCare_foodTable_LBL_ALR1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/black"
+                            android:textColor="@color/red"
                             android:layout_weight="1"
+                            android:textStyle="bold"
                             android:text="אלרגיות" />
 
                         <com.google.android.material.imageview.ShapeableImageView
@@ -397,12 +399,14 @@
                             android:layout_height="wrap_content"
                             android:textColor="@color/black"
                             android:layout_weight="1"
+                            android:textStyle="bold"
                             android:text="שם הילד" />
                         <TextView
                             android:id="@+id/DayCare_foodTable_LBL_ALR2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/black"
+                            android:textColor="@color/red"
+                            android:textStyle="bold"
                             android:layout_weight="1"
                             android:text="אלרגיות" />
                         <com.google.android.material.imageview.ShapeableImageView
@@ -428,13 +432,15 @@
                             android:layout_height="wrap_content"
                             android:textColor="@color/black"
                             android:layout_weight="1"
+                            android:textStyle="bold"
                             android:text="שם הילד" />
                         <TextView
                             android:id="@+id/DayCare_foodTable_LBL_ALR3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/black"
+                            android:textColor="@color/red"
                             android:layout_weight="1"
+                            android:textStyle="bold"
                             android:text="אלרגיות" />
                         <com.google.android.material.imageview.ShapeableImageView
                             android:id="@+id/DayCare_foodTable_IMG_check3"
@@ -459,13 +465,15 @@
                             android:layout_height="wrap_content"
                             android:textColor="@color/black"
                             android:layout_weight="1"
+                            android:textStyle="bold"
                             android:text="שם הילד" />
                         <TextView
                             android:id="@+id/DayCare_foodTable_LBL_ALR4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/black"
+                            android:textColor="@color/red"
                             android:layout_weight="1"
+                            android:textStyle="bold"
                             android:text="אלרגיות" />
                         <com.google.android.material.imageview.ShapeableImageView
                             android:id="@+id/DayCare_foodTable_IMG_check4"
@@ -490,13 +498,15 @@
                             android:layout_height="wrap_content"
                             android:textColor="@color/black"
                             android:layout_weight="1"
+                            android:textStyle="bold"
                             android:text="שם הילד" />
                         <TextView
                             android:id="@+id/DayCare_foodTable_LBL_ALR5"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/black"
+                            android:textColor="@color/red"
                             android:layout_weight="1"
+                            android:textStyle="bold"
                             android:text="אלרגיות" />
                         <com.google.android.material.imageview.ShapeableImageView
                             android:id="@+id/DayCare_foodTable_IMG_check5"
@@ -521,13 +531,15 @@
                             android:layout_height="wrap_content"
                             android:textColor="@color/black"
                             android:layout_weight="1"
+                            android:textStyle="bold"
                             android:text="שם הילד" />
                         <TextView
                             android:id="@+id/DayCare_foodTable_LBL_ALR6"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/black"
+                            android:textColor="@color/red"
                             android:layout_weight="1"
+                            android:textStyle="bold"
                             android:text="אלרגיות" />
                         <com.google.android.material.imageview.ShapeableImageView
                             android:id="@+id/DayCare_foodTable_IMG_check6"
