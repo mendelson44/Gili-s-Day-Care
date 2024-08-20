@@ -1,4 +1,4 @@
-<h1><img src="https://github.com/user-attachments/assets/521232c4-198e-4853-9472-c2329d766648" alt=pic5 width="60" height="60"> Gold Miner - android app </h1>
+<h1><img src="https://github.com/mendelson44/Gili-s-Day-Care/blob/main/app/src/main/res/drawable/daycare_logo.png?raw=true" alt=pic5 width="60" height="60"> Gili's Day Care - android app </h1>
 
 
 <p align= center>
